@@ -81,6 +81,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.php)
 - [Solução Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/compra_e_venda_de_acoes/CompraEVendaDeAcoes.swift)
 - [Testes Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.swift)
+- [Solução Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/compra_e_venda_de_acoes/acoes.pas)
+- [Testes Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/compra_e_venda_de_acoes/compra_e_venda_de_acoes_test.pas)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/compra_e_venda_de_acoes.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#compra_e_venda_de_acoes.javascript)
 
@@ -157,6 +159,16 @@ swift test --package-path src/swift --jobs 2 --filter CompraEVendaDeAcoesTest
 ```
 
 Com Docker, todos os desafios de Swift: `docker compose run --build --rm swift`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Pascal
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm pascal sh src/pascal/executar.sh testes compra_e_venda_de_acoes
+```
+
+Com Docker, todos os desafios de Pascal: `docker compose run --build --rm pascal`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Java
 

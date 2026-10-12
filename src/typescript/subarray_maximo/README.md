@@ -80,6 +80,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/subarray_maximo/SubarrayMaximoTest.php)
 - [Solução Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/subarray_maximo/SubarrayMaximo.swift)
 - [Testes Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/subarray_maximo/SubarrayMaximoTest.swift)
+- [Solução Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/subarray_maximo/subarray.pas)
+- [Testes Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/subarray_maximo/subarray_maximo_test.pas)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subarray_maximo.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subarray_maximo.javascript)
 
@@ -156,6 +158,16 @@ swift test --package-path src/swift --jobs 2 --filter SubarrayMaximoTest
 ```
 
 Com Docker, todos os desafios de Swift: `docker compose run --build --rm swift`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Pascal
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm pascal sh src/pascal/executar.sh testes subarray_maximo
+```
+
+Com Docker, todos os desafios de Pascal: `docker compose run --build --rm pascal`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Lendo os tipos desta solução
 

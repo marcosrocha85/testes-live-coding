@@ -173,7 +173,47 @@
         "ciclo_em_lista_ligada": "src/swift/ciclo_em_lista_ligada/CicloEmListaLigada.swift"
       }
     },
-    { "id": "pascal", "name": "Pascal", "status": "planned", "extension": "pas" },
+    {
+      "id": "pascal",
+      "name": "Pascal",
+      "status": "implemented",
+      "extension": "pas",
+      "runtime": "Free Pascal 3.2.2; Object Pascal (objfpc); RTL e FCL 3.2.2+dfsg-20",
+      "testCommand": "sh src/pascal/executar.sh check",
+      "dockerTestCommand": "docker compose run --build --rm pascal",
+      "solutionFiles": {
+        "soma_de_dois": "src/pascal/soma_de_dois/soma_dois.pas",
+        "parenteses_validos": "src/pascal/parenteses_validos/parenteses.pas",
+        "inverter_lista_ligada": "src/pascal/inverter_lista_ligada/inverter_lista.pas",
+        "busca_binaria": "src/pascal/busca_binaria/busca.pas",
+        "mesclar_listas_ordenadas": "src/pascal/mesclar_listas_ordenadas/mesclar_listas.pas",
+        "compra_e_venda_de_acoes": "src/pascal/compra_e_venda_de_acoes/acoes.pas",
+        "subarray_maximo": "src/pascal/subarray_maximo/subarray.pas",
+        "subir_escadas": "src/pascal/subir_escadas/escadas.pas",
+        "anagrama_valido": "src/pascal/anagrama_valido/anagrama.pas",
+        "ciclo_em_lista_ligada": "src/pascal/ciclo_em_lista_ligada/ciclo.pas"
+      },
+      "testFiles": {
+        "soma_de_dois": "src/pascal/soma_de_dois/soma_de_dois_test.pas",
+        "parenteses_validos": "src/pascal/parenteses_validos/parenteses_validos_test.pas",
+        "inverter_lista_ligada": "src/pascal/inverter_lista_ligada/inverter_lista_ligada_test.pas",
+        "busca_binaria": "src/pascal/busca_binaria/busca_binaria_test.pas",
+        "mesclar_listas_ordenadas": "src/pascal/mesclar_listas_ordenadas/mesclar_listas_ordenadas_test.pas",
+        "compra_e_venda_de_acoes": "src/pascal/compra_e_venda_de_acoes/compra_e_venda_de_acoes_test.pas",
+        "subarray_maximo": "src/pascal/subarray_maximo/subarray_maximo_test.pas",
+        "subir_escadas": "src/pascal/subir_escadas/subir_escadas_test.pas",
+        "anagrama_valido": "src/pascal/anagrama_valido/anagrama_valido_test.pas",
+        "ciclo_em_lista_ligada": "src/pascal/ciclo_em_lista_ligada/ciclo_em_lista_ligada_test.pas"
+      },
+      "supportFilesByExercise": {
+        "soma_de_dois": ["src/pascal/_shared/tipos.pas", "src/pascal/_shared/mapa_inteiro.pas"],
+        "inverter_lista_ligada": ["src/pascal/_shared/no.pas"],
+        "mesclar_listas_ordenadas": ["src/pascal/_shared/no.pas"],
+        "subarray_maximo": ["src/pascal/_shared/tipos.pas"],
+        "anagrama_valido": ["src/pascal/_shared/mapa_inteiro.pas", "src/pascal/_shared/unicode.pas"],
+        "ciclo_em_lista_ligada": ["src/pascal/_shared/no.pas"]
+      }
+    },
     { "id": "cpp", "name": "C++", "status": "planned", "extension": "cpp" }
   ],
   "exercises": [

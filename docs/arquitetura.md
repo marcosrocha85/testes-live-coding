@@ -26,11 +26,15 @@ Swift usa Swift 6.3.3, Swift Package Manager e Swift Testing, sem pacotes extern
 
 A suíte Swift lê diretamente os 86 casos JSON da raiz e acrescenta 21 testes específicos e de referências independentes, totalizando 107 execuções. A CI testa Swift em Linux, macOS e no Docker do microprojeto; Pages roda Docker Swift antes de publicar. A imagem oficial tem digest fixado, executa sem privilégios e não monta o checkout. Artefatos `.build` e `.swiftpm` ficam fora do Git e do contexto. Nenhum SDK Swift é necessário no host.
 
-Os outros dois diretórios contêm somente a indicação da etapa planejada. Ao implementar um deles, escolha o runner adequado, declare a versão da ferramenta, adicione a execução na CI e mantenha a solução independente das outras linguagens.
+Pascal usa Free Pascal 3.2.2 em modo Object Pascal, com uma unit de solução e uma unit de teste por pasta. `_shared` contém tipos opcionais, nós reais (`PNo`), tabela hash e leitura UTF-8 por pontos de código. As somas e contagens usam `Int64`. O parser dos testes é `fpjson` da FCL; os executáveis inicializam `fpwidestring` para preservar Unicode no container mínimo. Não há dependências externas das soluções.
+
+O runner Pascal lê os 86 casos JSON e compara os algoritmos com referências independentes, incluindo combinatória para todo o domínio de escadas. Confere identidade, estabilidade, mutação e listas longas; `heaptrc` faz vazamentos falharem. `compilar.sh` trata avisos como erros e ativa verificações de limites e overflow. Docker fixa Debian por digest e os pacotes FPC/RTL/FCL em `3.2.2+dfsg-20`; compilação, testes e dez exemplos rodam como usuário sem privilégios. A CI inclui Pascal pela matriz do catálogo e Pages executa a mesma suíte antes de publicar. Não há compilador instalado no host nem montagem do checkout.
+
+C++ contém somente a indicação da etapa planejada. Ao implementar essa linguagem, escolha o runner adequado, declare a versão da ferramenta, adicione a execução na CI e mantenha a solução independente das outras linguagens.
 
 ## Uma fonte para as explicações
 
-`docs/catalogo.json` guarda nomes, problemas, ideias, contratos, raciocínio e capacidades avaliadas. `docs/casos/*.json` guarda entradas e resultados independentes do código da solução. `npm run docs` gera os documentos em `docs/tests`, os READMEs dos desafios das linguagens implementadas e a projeção em `docs/wiki`. Os READMEs TypeScript, Java, Kotlin, PHP e Swift acrescentam explicações dos tipos e exemplos; o gerador mantém links e comandos das seis linguagens. Para PHP e Swift, também gera exemplos executáveis e verifica sua atualização em `docs:check`.
+`docs/catalogo.json` guarda nomes, problemas, ideias, contratos, raciocínio e capacidades avaliadas. `docs/casos/*.json` guarda entradas e resultados independentes do código da solução. `npm run docs` gera os documentos em `docs/tests`, os READMEs dos desafios das linguagens implementadas e a projeção em `docs/wiki`. Os READMEs TypeScript, Java, Kotlin, PHP, Swift e Pascal acrescentam explicações dos tipos e exemplos; o gerador mantém links e comandos das sete linguagens. Para PHP, Swift e Pascal, também gera exemplos executáveis e verifica sua atualização em `docs:check`. `scripts/pascal-docs.mjs` mantém os trechos usados no programa `_examples/exemplos.pas` e nos READMEs Pascal.
 
 `npm run docs:check` compara o conteúdo esperado com o versionado. A CI falha se uma explicação gerada estiver desatualizada. Documentos de arquitetura e linguagens são escritos diretamente em Markdown.
 

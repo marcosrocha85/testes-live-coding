@@ -40,6 +40,8 @@ jobs:
       - run: composer --working-dir=src/php check
       - name: Compilar e testar Swift no container temporário
         run: docker compose run --build --rm -T swift
+      - name: Compilar e testar Pascal e seus dez exemplos no container temporário
+        run: docker compose run --build --rm -T pascal
       - run: npm run docs:check
       - run: npm run build
       - uses: actions/configure-pages@v6

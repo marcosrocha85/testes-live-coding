@@ -11,3 +11,6 @@ vendor/
 *.log
 .build/
 .swiftpm/
+*.o
+*.ppu
+heap.trc

@@ -47,6 +47,13 @@ services:
       context: .
       dockerfile: src/swift/Dockerfile
 
+  pascal:
+    profiles: [pascal]
+    image: testes-live-coding-pascal:local
+    build:
+      context: .
+      dockerfile: src/pascal/Dockerfile
+
 volumes:
   java_maven:
   kotlin_gradle:

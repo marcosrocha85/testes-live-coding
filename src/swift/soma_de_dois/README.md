@@ -82,6 +82,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/soma_de_dois/SomaDeDoisTest.php)
 - [Solução Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/soma_de_dois/SomaDeDois.swift)
 - [Testes Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/soma_de_dois/SomaDeDoisTest.swift)
+- [Solução Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/soma_de_dois/soma_dois.pas)
+- [Testes Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/soma_de_dois/soma_de_dois_test.pas)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/soma_de_dois.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#soma_de_dois.javascript)
 
@@ -158,6 +160,16 @@ swift test --package-path src/swift --jobs 2 --filter SomaDeDoisTest
 ```
 
 Com Docker, todos os desafios de Swift: `docker compose run --build --rm swift`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Pascal
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm pascal sh src/pascal/executar.sh testes soma_de_dois
+```
+
+Com Docker, todos os desafios de Pascal: `docker compose run --build --rm pascal`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Swift
 

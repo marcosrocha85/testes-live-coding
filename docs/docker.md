@@ -15,6 +15,7 @@ docker compose run --build --rm java
 docker compose run --build --rm kotlin
 docker compose run --build --rm php
 docker compose run --build --rm swift
+docker compose run --build --rm pascal
 ```
 
 Os comandos funcionam em PowerShell, Linux e macOS:
@@ -34,6 +35,7 @@ As imagens base estão fixadas por digest, que identifica seu conteúdo. TypeScr
 | `kotlin` | JDK 21, Gradle Wrapper, compilação Kotlin, 102 testes JUnit e JAR |
 | `php` | PHP de 64 bits, Composer, checagem de sintaxe e 106 testes PHPUnit |
 | `swift` | Swift 6.3.3 de 64 bits, SwiftPM, 86 casos compartilhados e 21 testes adicionais |
+| `pascal` | Free Pascal 3.2.2, 86 casos compartilhados, referências independentes e dez exemplos compilados |
 
 Os serviços têm perfis para evitar iniciar todos por acidente. Ao indicar o serviço em `run`, seu perfil é ativado automaticamente. Não use `docker compose up` para esse fluxo: os testes são execuções temporárias, sem portas nem processos permanentes.
 
@@ -93,6 +95,15 @@ O próximo teste Kotlin baixa as ferramentas e dependências novamente.
 PHP instala suas dependências de desenvolvimento em uma camada da imagem usando `composer.lock`; essa camada é reutilizada enquanto os manifests não mudarem. Não há volume de cache PHP, nem diretório `vendor` escrito no computador. O cache do PHPUnit é criado no container temporário. `vendor` e `.phpunit.cache` ficam fora do contexto Docker.
 
 Swift usa uma imagem oficial 6.3.3 Ubuntu 24.04 fixada por digest. Swift Package Manager e Swift Testing vêm no SDK; não há pacotes externos para baixar. Não usa volume de cache: `.build`, `.swiftpm` e caches da toolchain ficam dentro do container temporário, como usuário sem privilégios. Esses diretórios ficam fora do Git e do contexto Docker. Nenhum SDK Swift é instalado no host.
+
+Pascal usa a imagem oficial Debian bookworm-slim fixada por digest. Compilador e units RTL/base/FCL são fixados em `3.2.2+dfsg-20`, e binutils em `2.40-2`. `runner` (UID 10001) compila e executa testes e exemplos com checagens de limites, overflow e memória. Os artefatos ficam em `src/pascal/build` dentro do container temporário, sem volumes de cache. `.o`, `.ppu` e `heap.trc` também são excluídos do Git e do contexto. Nenhum compilador é instalado no computador.
+
+Um desafio e um exemplo Pascal:
+
+```sh
+docker compose run --build --rm pascal sh src/pascal/executar.sh testes busca_binaria
+docker compose run --build --rm pascal sh src/pascal/executar.sh exemplo soma_de_dois
+```
 
 ## Adicionar uma linguagem
 

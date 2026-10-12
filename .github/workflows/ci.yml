@@ -22,6 +22,7 @@ jobs:
       - run: npm run docs:check
       - run: npm run build
       - name: Selecionar microprojetos Docker
+        # Inclui Pascal: o comando padrão valida a suíte completa e os dez exemplos.
         id: docker-matrix
         run: |
           node --input-type=module -e '
