@@ -84,6 +84,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/ciclo_em_lista_ligada/ciclo_em_lista_ligada_test.pas)
 - [Solução C++](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/cpp/ciclo_em_lista_ligada/ciclo_em_lista_ligada.cpp)
 - [Testes C++](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/cpp/ciclo_em_lista_ligada/ciclo_em_lista_ligada_test.cpp)
+- [Solução Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/ciclo_em_lista_ligada/ciclo_em_lista_ligada.go)
+- [Testes Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/ciclo_em_lista_ligada/ciclo_em_lista_ligada_test.go)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/ciclo_em_lista_ligada.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#ciclo_em_lista_ligada.javascript)
 
@@ -180,6 +182,16 @@ docker compose run --build --rm cpp sh src/cpp/executar.sh testes ciclo_em_lista
 ```
 
 Com Docker, todos os desafios de C++: `docker compose run --build --rm cpp`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Go
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm go sh executar.sh testes ciclo_em_lista_ligada
+```
+
+Com Docker, todos os desafios de Go: `docker compose run --build --rm go`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Kotlin
 

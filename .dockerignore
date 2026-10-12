@@ -22,3 +22,6 @@
 **/*.o
 **/*.ppu
 **/heap.trc
+# Executáveis Go gerados localmente também ficam fora do contexto.
+**/*.test
+**/*.exe

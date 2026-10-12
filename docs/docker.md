@@ -17,6 +17,7 @@ docker compose run --build --rm php
 docker compose run --build --rm swift
 docker compose run --build --rm pascal
 docker compose run --build --rm cpp
+docker compose run --build --rm go
 ```
 
 Os comandos funcionam em PowerShell, Linux e macOS:
@@ -38,6 +39,7 @@ As imagens base estão fixadas por digest, que identifica seu conteúdo. TypeScr
 | `swift` | Swift 6.3.3 de 64 bits, SwiftPM, 86 casos compartilhados e 21 testes adicionais |
 | `pascal` | Free Pascal 3.2.2, 86 casos compartilhados, referências independentes e dez exemplos compilados |
 | `cpp` | C++20, GCC 15.2.0, 86 casos compartilhados, referências independentes, ASan/UBSan e dez exemplos |
+| `go` | Go 1.27.2, gofmt, go vet, 86 casos compartilhados, referências independentes, detector de corridas, testes em 32 bits e dez exemplos |
 
 Os serviços têm perfis para evitar iniciar todos por acidente. Ao indicar o serviço em `run`, seu perfil é ativado automaticamente. Não use `docker compose up` para esse fluxo: os testes são execuções temporárias, sem portas nem processos permanentes.
 
@@ -114,6 +116,15 @@ Um desafio e um exemplo C++:
 ```sh
 docker compose run --build --rm cpp sh src/cpp/executar.sh testes busca_binaria
 docker compose run --build --rm cpp sh src/cpp/executar.sh exemplo soma_de_dois
+```
+
+Go usa a imagem oficial `golang:1.27.2-bookworm`, fixada pelo digest `sha256:5cf287a799e6b94384bad13d16b14904c531f51ba65792237e122ce42b392f61`. Compilação, testes e exemplos executam como `runner` (UID 10001), com fontes copiados e sem módulos externos. `GOTOOLCHAIN=local` impede baixar outra versão; `GOPROXY=off` impede buscar módulos. O comando padrão confere formatação, análise estática, testes com `-race`, repete a suíte em `GOARCH=386` e valida os dez exemplos. Os caches de Go e o executável `src/go/build/exemplos` ficam no container, sem volumes persistentes. `build`, `*.test` e `*.exe` ficam fora do Git e do contexto Docker.
+
+Um desafio e um exemplo Go, da raiz:
+
+```sh
+docker compose run --build --rm go sh executar.sh testes busca_binaria
+docker compose run --build --rm go sh executar.sh exemplo soma_de_dois
 ```
 
 ## Adicionar uma linguagem

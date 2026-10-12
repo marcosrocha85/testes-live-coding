@@ -86,6 +86,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/subir_escadas/subir_escadas_test.pas)
 - [Solução C++](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/cpp/subir_escadas/subir_escadas.cpp)
 - [Testes C++](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/cpp/subir_escadas/subir_escadas_test.cpp)
+- [Solução Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/subir_escadas/subir_escadas.go)
+- [Testes Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/subir_escadas/subir_escadas_test.go)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subir_escadas.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subir_escadas.javascript)
 
@@ -182,6 +184,16 @@ docker compose run --build --rm cpp sh src/cpp/executar.sh testes subir_escadas
 ```
 
 Com Docker, todos os desafios de C++: `docker compose run --build --rm cpp`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Go
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm go sh executar.sh testes subir_escadas
+```
+
+Com Docker, todos os desafios de Go: `docker compose run --build --rm go`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Swift
 

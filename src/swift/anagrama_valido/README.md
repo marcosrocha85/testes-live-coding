@@ -87,6 +87,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/anagrama_valido/anagrama_valido_test.pas)
 - [Solução C++](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/cpp/anagrama_valido/anagrama_valido.cpp)
 - [Testes C++](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/cpp/anagrama_valido/anagrama_valido_test.cpp)
+- [Solução Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/anagrama_valido/anagrama_valido.go)
+- [Testes Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/anagrama_valido/anagrama_valido_test.go)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/anagrama_valido.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#anagrama_valido.javascript)
 
@@ -183,6 +185,16 @@ docker compose run --build --rm cpp sh src/cpp/executar.sh testes anagrama_valid
 ```
 
 Com Docker, todos os desafios de C++: `docker compose run --build --rm cpp`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Go
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm go sh executar.sh testes anagrama_valido
+```
+
+Com Docker, todos os desafios de Go: `docker compose run --build --rm go`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Swift
 

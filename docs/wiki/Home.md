@@ -15,6 +15,6 @@ Estude o problema, tente resolvê-lo e depois compare a implementação e os tes
 - [Anagrama válido](anagrama_valido) — Valid Anagram
 - [Ciclo em lista ligada](ciclo_em_lista_ligada) — Linked List Cycle (Floyd)
 
-Implementações disponíveis na base: **JavaScript, TypeScript, Java, Kotlin, PHP, Swift, Pascal e C++**.
+Implementações disponíveis na base: **JavaScript, TypeScript, Java, Kotlin, PHP, Swift, Pascal, C++ e Go**.
 
 [Implementações por linguagem](https://marcosrocha85.github.io/testes-live-coding/) · [Arquitetura](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/arquitetura.md) · [Roteiro](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/roadmap.md) · [Sugerir novo desafio](https://github.com/marcosrocha85/testes-live-coding/issues/new/choose)

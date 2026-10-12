@@ -2,7 +2,7 @@
 
 # Roteiro de implementação
 
-Trabalhamos uma linguagem por vez, nesta ordem: JavaScript, TypeScript, Java, Kotlin, PHP, Swift, Pascal e C++. Cada etapa tem uma issue principal e dez sub-issues reais. Implementações disponíveis na base: **JavaScript, TypeScript, Java, Kotlin, PHP, Swift, Pascal e C++**. Todas as etapas do roteiro têm implementações disponíveis.
+Trabalhamos uma linguagem por vez, nesta ordem: JavaScript, TypeScript, Java, Kotlin, PHP, Swift, Pascal, C++ e Go. Cada etapa tem uma issue principal e dez sub-issues reais. Implementações disponíveis na base: **JavaScript, TypeScript, Java, Kotlin, PHP, Swift, Pascal, C++ e Go**. Todas as etapas do roteiro têm implementações disponíveis.
 
 As issues são encerradas na integração da PR correspondente. Uma linguagem precisa de seus dez desafios, testes, explicações, CI e revisão de Marcos Rocha. O site recebe as implementações após a integração na main.
 
@@ -143,3 +143,20 @@ Estado da implementação: disponível na base.
 - [#86 — Subir escadas](https://github.com/marcosrocha85/testes-live-coding/issues/86)
 - [#87 — Anagrama válido](https://github.com/marcosrocha85/testes-live-coding/issues/87)
 - [#88 — Ciclo em lista ligada](https://github.com/marcosrocha85/testes-live-coding/issues/88)
+
+## Go
+
+Estado da implementação: disponível na base.
+
+[Issue principal #100](https://github.com/marcosrocha85/testes-live-coding/issues/100)
+
+- [#101 — Soma de dois](https://github.com/marcosrocha85/testes-live-coding/issues/101)
+- [#102 — Parênteses válidos](https://github.com/marcosrocha85/testes-live-coding/issues/102)
+- [#103 — Inverter lista ligada](https://github.com/marcosrocha85/testes-live-coding/issues/103)
+- [#104 — Busca binária](https://github.com/marcosrocha85/testes-live-coding/issues/104)
+- [#105 — Mesclar listas ordenadas](https://github.com/marcosrocha85/testes-live-coding/issues/105)
+- [#106 — Compra e venda de ações](https://github.com/marcosrocha85/testes-live-coding/issues/106)
+- [#107 — Subarray máximo](https://github.com/marcosrocha85/testes-live-coding/issues/107)
+- [#108 — Subir escadas](https://github.com/marcosrocha85/testes-live-coding/issues/108)
+- [#109 — Anagrama válido](https://github.com/marcosrocha85/testes-live-coding/issues/109)
+- [#110 — Ciclo em lista ligada](https://github.com/marcosrocha85/testes-live-coding/issues/110)

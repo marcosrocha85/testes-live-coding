@@ -13,15 +13,15 @@ function textoDoDestaque(html) {
   return semSpans.replace(/&(?:amp|lt|gt|quot|#x27);/g, (entidade) => entidades[entidade]);
 }
 
-test('site contém os fontes e auxiliares das oito linguagens implementadas', async (t) => {
+test('site contém os fontes e auxiliares das nove linguagens implementadas', async (t) => {
   const output = await mkdtemp(resolve(tmpdir(), 'live-coding-site-'));
   t.after(() => rm(output, { recursive: true, force: true }));
   const resultado = await buildSite({ output });
   assert.equal(resultado.exercises, 10);
-  assert.equal(resultado.languages, 8);
+  assert.equal(resultado.languages, 9);
   const dados = JSON.parse(await readFile(resolve(output, 'catalogo.json'), 'utf8'));
   const disponiveis = dados.languages.filter((linguagem) => linguagem.status === 'implemented');
-  assert.deepEqual(disponiveis.map((linguagem) => linguagem.id), ['javascript', 'typescript', 'java', 'kotlin', 'php', 'swift', 'pascal', 'cpp']);
+  assert.deepEqual(disponiveis.map((linguagem) => linguagem.id), ['javascript', 'typescript', 'java', 'kotlin', 'php', 'swift', 'pascal', 'cpp', 'go']);
   for (const exercicio of dados.exercises) {
     assert.ok(exercicio.cases.length > 0);
     assert.ok(exercicio.why.length > 0);
@@ -48,6 +48,10 @@ test('site contém os fontes e auxiliares das oito linguagens implementadas', as
         if (usaLista) esperados.push('src/cpp/_shared/no.hpp');
         if (exercicio.id === 'anagrama_valido') esperados.push('src/cpp/_shared/unicode.hpp');
         assert.deepEqual(solucao.support.map(item => item.path), esperados);
+      } else if (linguagem.id === 'go') {
+        assert.deepEqual(solucao.support.map(item => item.path), usaLista ? ['src/go/lista/no.go'] : []);
+        assert.match(solucao.code, /package /);
+        assert.match(solucao.code, /func /);
       } else assert.equal(solucao.support.length, usaLista || usaUnicode ? 1 : 0);
       for (const auxiliar of solucao.support) {
         assert.equal(auxiliar.code, await readFile(resolve(projectRoot, auxiliar.path), 'utf8'));
@@ -62,7 +66,7 @@ test('site contém os fontes e auxiliares das oito linguagens implementadas', as
   assert.ok((await readFile(resolve(output, 'app.js'), 'utf8')).includes('textContent'));
 });
 
-test('destaque reconhece as oito linguagens do roteiro sem alterar o texto', () => {
+test('destaque reconhece as nove linguagens do roteiro sem alterar o texto', () => {
   const exemplos = {
     javascript: 'const valor = 42; // número',
     typescript: 'const valor: number = 42; // tipo',
@@ -71,7 +75,8 @@ test('destaque reconhece as oito linguagens do roteiro sem alterar o texto', () 
     php: '<?php $valor = 42; echo "exemplo";',
     swift: 'let valor: Int = 42',
     pascal: 'program Exemplo; var valor: integer; begin valor := 42; end.',
-    cpp: 'int main() { return 42; }'
+    cpp: 'int main() { return 42; }',
+    go: 'package exemplo\nfunc valor() int64 { return 42 }'
   };
   for (const [linguagem, codigo] of Object.entries(exemplos)) {
     const html = destacarCodigo(codigo, linguagem);

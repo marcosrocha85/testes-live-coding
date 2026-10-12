@@ -22,7 +22,7 @@ jobs:
       - run: npm run docs:check
       - run: npm run build
       - name: Selecionar microprojetos Docker
-        # Pascal e C++ incluem também os dez exemplos no comando padrão.
+        # Pascal, C++ e Go incluem também os dez exemplos no comando padrão.
         id: docker-matrix
         run: |
           node --input-type=module -e '
@@ -84,6 +84,20 @@ jobs:
           coverage: none
       - run: composer --working-dir=src/php install --no-interaction --prefer-dist --no-progress --no-scripts
       - run: composer --working-dir=src/php check
+  go:
+    name: Go 1.27.2
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    container:
+      image: golang:1.27.2-bookworm@sha256:5cf287a799e6b94384bad13d16b14904c531f51ba65792237e122ce42b392f61
+    steps:
+      - uses: actions/checkout@v7
+      - name: Preparar usuário sem privilégios no runner
+        run: |
+          useradd --create-home --uid 10001 runner
+          chown -R runner:runner "$GITHUB_WORKSPACE"
+      - name: Conferir formatação, analisar, testar em 64 e 32 bits e executar exemplos
+        run: runuser -u runner -- sh src/go/executar.sh check
   cpp:
     name: C++20 GCC 15.2.0
     runs-on: ubuntu-24.04
