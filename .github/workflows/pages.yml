@@ -42,6 +42,8 @@ jobs:
         run: docker compose run --build --rm -T swift
       - name: Compilar e testar Pascal e seus dez exemplos no container temporário
         run: docker compose run --build --rm -T pascal
+      - name: Compilar e testar C++ e seus dez exemplos com sanitizadores
+        run: docker compose run --build --rm -T cpp
       - run: npm run docs:check
       - run: npm run build
       - uses: actions/configure-pages@v6

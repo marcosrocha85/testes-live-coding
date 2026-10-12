@@ -13,7 +13,7 @@ function textoDoDestaque(html) {
   return semSpans.replace(/&(?:amp|lt|gt|quot|#x27);/g, (entidade) => entidades[entidade]);
 }
 
-test('site contém as sete linguagens implementadas e distingue a planejada', async (t) => {
+test('site contém os fontes e auxiliares das oito linguagens implementadas', async (t) => {
   const output = await mkdtemp(resolve(tmpdir(), 'live-coding-site-'));
   t.after(() => rm(output, { recursive: true, force: true }));
   const resultado = await buildSite({ output });
@@ -21,7 +21,7 @@ test('site contém as sete linguagens implementadas e distingue a planejada', as
   assert.equal(resultado.languages, 8);
   const dados = JSON.parse(await readFile(resolve(output, 'catalogo.json'), 'utf8'));
   const disponiveis = dados.languages.filter((linguagem) => linguagem.status === 'implemented');
-  assert.deepEqual(disponiveis.map((linguagem) => linguagem.id), ['javascript', 'typescript', 'java', 'kotlin', 'php', 'swift', 'pascal']);
+  assert.deepEqual(disponiveis.map((linguagem) => linguagem.id), ['javascript', 'typescript', 'java', 'kotlin', 'php', 'swift', 'pascal', 'cpp']);
   for (const exercicio of dados.exercises) {
     assert.ok(exercicio.cases.length > 0);
     assert.ok(exercicio.why.length > 0);
@@ -43,6 +43,11 @@ test('site contém as sete linguagens implementadas e distingue a planejada', as
       };
       if (linguagem.id === 'pascal') {
         assert.deepEqual(solucao.support.map(item => item.path), (auxiliaresPascal[exercicio.id] ?? []).map(nome => `src/pascal/_shared/${nome}`));
+      } else if (linguagem.id === 'cpp') {
+        const esperados = [`src/cpp/${exercicio.id}/${exercicio.id}.hpp`];
+        if (usaLista) esperados.push('src/cpp/_shared/no.hpp');
+        if (exercicio.id === 'anagrama_valido') esperados.push('src/cpp/_shared/unicode.hpp');
+        assert.deepEqual(solucao.support.map(item => item.path), esperados);
       } else assert.equal(solucao.support.length, usaLista || usaUnicode ? 1 : 0);
       for (const auxiliar of solucao.support) {
         assert.equal(auxiliar.code, await readFile(resolve(projectRoot, auxiliar.path), 'utf8'));
@@ -51,7 +56,7 @@ test('site contém as sete linguagens implementadas e distingue a planejada', as
         assert.ok(auxiliar.path.startsWith(`src/${linguagem.id}/`));
       }
     }
-    assert.equal(exercicio.solutions.filter((solucao) => solucao.code === null).length, 1);
+    assert.equal(exercicio.solutions.filter((solucao) => solucao.code === null).length, 0);
   }
   assert.match(await readFile(resolve(output, 'index.html'), 'utf8'), /lang="pt-BR"/);
   assert.ok((await readFile(resolve(output, 'app.js'), 'utf8')).includes('textContent'));

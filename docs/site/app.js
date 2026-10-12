@@ -116,10 +116,6 @@ try {
     botao.setAttribute('aria-controls', 'solution-panel');
     botao.textContent = linguagem.name;
     if (linguagem.status === 'implemented') {
-      const ponto = document.createElement('span');
-      ponto.className = 'tab-dot';
-      ponto.setAttribute('aria-hidden', 'true');
-      botao.append(ponto);
       botao.setAttribute('aria-label', `${linguagem.name}, implementação disponível`);
     }
     botao.addEventListener('click', () => escolher(exercicioAtual.id, linguagem.id));

@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { notasPascal, exemplosPascal, programaPascal } from './pascal-docs.mjs';
+import { notasCpp, exemplosCpp, programaCpp } from './cpp-docs.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const catalogo = JSON.parse(await readFile(resolve(root, 'docs/catalogo.json'), 'utf8'));
@@ -144,6 +145,7 @@ async function salvar(caminho, conteudo) {
 }
 
 function comandoDesafio(linguagem, id) {
+  if (linguagem.id === 'cpp') return `docker compose run --build --rm cpp sh src/cpp/executar.sh testes ${id}`;
   if (linguagem.id === 'pascal') return `docker compose run --build --rm pascal sh src/pascal/executar.sh testes ${id}`;
   if (linguagem.id === 'javascript') return `node --test src/javascript/${id}/index.test.js`;
   if (linguagem.id === 'typescript') return `npm run build --workspace src/typescript\nnode --test src/typescript/dist/${id}/index.test.js`;
@@ -169,8 +171,8 @@ for (const exercicio of catalogo.exercises) {
     if (!linguagem.dockerTestCommand) throw new Error(`Linguagem implementada sem comando Docker: ${linguagem.id}`);
     const comando = comandoDesafio(linguagem, exercicio.id);
     const docker = `\nCom Docker, todos os desafios de ${linguagem.name}: \`${linguagem.dockerTestCommand}\`. Veja [como executar sem SDK local](${baseGitHub}/blob/main/docs/docker.md).\n`;
-    if (linguagem.id === 'pascal') {
-      return `### Pascal\n\nDa raiz, sem instalar compilador no computador:\n\n\`\`\`sh\n${comando}\n\`\`\`\n` + docker;
+    if (linguagem.id === 'pascal' || linguagem.id === 'cpp') {
+      return `### ${linguagem.name}\n\nDa raiz, sem instalar compilador no computador:\n\n\`\`\`sh\n${comando}\n\`\`\`\n` + docker;
     }
     if (linguagem.id === 'java') {
       const windows = comando.replace('./src/java/mvnw', '.\\src\\java\\mvnw.cmd').replace(/-Dtest=([^ ]+)/, '"-Dtest=$1"');
@@ -237,12 +239,19 @@ for (const exercicio of catalogo.exercises) {
     if (linguagem.id === 'pascal') {
       notas = `\n## Particularidades em Pascal\n\n${notasPascal[exercicio.id]}\n\n## Exemplo executável em Pascal\n\nDa raiz, compile e execute no container:\n\n\`\`\`sh\ndocker compose run --build --rm pascal sh src/pascal/executar.sh exemplo ${exercicio.id}\n\`\`\`\n\nEste trecho pertence ao programa gerado \`_examples/exemplos.pas\`. \`Exigir\` lança uma exceção se o exemplo produzir um resultado inesperado. As variáveis e units usadas estão declaradas no programa completo:\n\n\`\`\`pascal\n${exemplosPascal[exercicio.id]}\n\`\`\`\n\nVeja [o guia Pascal](${baseGitHub}/blob/main/docs/linguagens/pascal.md) para compilação, tipos, Unicode e gerenciamento de memória.\n`;
     }
+    if (linguagem.id === 'cpp') {
+      notas = `\n## Particularidades em C++\n\n${notasCpp[exercicio.id]}\n\n## Exemplo executável em C++\n\nDa raiz, compile e execute no container:\n\n\`\`\`sh\ndocker compose run --build --rm cpp sh src/cpp/executar.sh exemplo ${exercicio.id}\n\`\`\`\n\nEste trecho faz parte de \`_examples/main.cpp\`, gerado com os headers de cada desafio. Os nomes estão no namespace \`desafios\`; \`exigir\` lança uma exceção se a resposta estiver incorreta:\n\n\`\`\`cpp\n${exemplosCpp[exercicio.id]}\n\`\`\`\n\nVeja [o guia C++](${baseGitHub}/blob/main/docs/linguagens/cpp.md) para compilação, tipos, Unicode e propriedade da memória.\n`;
+    }
     await salvar(`src/${linguagem.id}/${exercicio.id}/README.md`, aviso + corpo + notas);
   }
 }
 
 if (disponiveis.some(item => item.id === 'pascal')) {
   await salvar('src/pascal/_examples/exemplos.pas', programaPascal(catalogo.exercises));
+}
+
+if (disponiveis.some(item => item.id === 'cpp')) {
+  await salvar('src/cpp/_examples/main.cpp', programaCpp(catalogo.exercises));
 }
 
 if (disponiveis.some(item => item.id === 'swift')) {
@@ -257,7 +266,8 @@ await salvar('docs/wiki/_Sidebar.md', aviso + '[Início](Home)\n\n' + catalogo.e
 let issues = [];
 try { issues = JSON.parse(await readFile(resolve(root, 'docs/roadmap-issues.json'), 'utf8')); }
 catch (erro) { if (erro.code !== 'ENOENT') throw erro; }
-let roteiro = aviso + `# Roteiro de implementação\n\nTrabalhamos uma linguagem por vez, nesta ordem: ${listaNomes(catalogo.languages)}. Cada etapa tem uma issue principal e dez sub-issues reais. Implementações disponíveis na base: **${listaNomes(disponiveis)}**. As outras linguagens estão planejadas.\n\nAs issues são encerradas na integração da PR correspondente. Uma linguagem precisa de seus dez desafios, testes, explicações, CI e revisão de Marcos Rocha. O site recebe as implementações após a integração na main.\n\nNovos desafios são registrados pelo [template de issue](${baseGitHub}/issues/new/choose). Eles recebem contrato e casos antes da implementação.\n`;
+const estadoRoteiro = disponiveis.length === catalogo.languages.length ? 'Todas as etapas do roteiro têm implementações disponíveis.' : 'As outras linguagens estão planejadas.';
+let roteiro = aviso + `# Roteiro de implementação\n\nTrabalhamos uma linguagem por vez, nesta ordem: ${listaNomes(catalogo.languages)}. Cada etapa tem uma issue principal e dez sub-issues reais. Implementações disponíveis na base: **${listaNomes(disponiveis)}**. ${estadoRoteiro}\n\nAs issues são encerradas na integração da PR correspondente. Uma linguagem precisa de seus dez desafios, testes, explicações, CI e revisão de Marcos Rocha. O site recebe as implementações após a integração na main.\n\nNovos desafios são registrados pelo [template de issue](${baseGitHub}/issues/new/choose). Eles recebem contrato e casos antes da implementação.\n`;
 for (const linguagem of catalogo.languages) {
   const etapa = issues.find((issue) => issue.language === linguagem.id);
   roteiro += `\n## ${linguagem.name}\n\nEstado da implementação: ${linguagem.status === 'implemented' ? 'disponível na base' : 'planejada'}.\n\n`;
