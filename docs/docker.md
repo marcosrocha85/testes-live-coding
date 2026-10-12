@@ -16,6 +16,7 @@ docker compose run --build --rm kotlin
 docker compose run --build --rm php
 docker compose run --build --rm swift
 docker compose run --build --rm pascal
+docker compose run --build --rm cpp
 ```
 
 Os comandos funcionam em PowerShell, Linux e macOS:
@@ -36,6 +37,7 @@ As imagens base estão fixadas por digest, que identifica seu conteúdo. TypeScr
 | `php` | PHP de 64 bits, Composer, checagem de sintaxe e 106 testes PHPUnit |
 | `swift` | Swift 6.3.3 de 64 bits, SwiftPM, 86 casos compartilhados e 21 testes adicionais |
 | `pascal` | Free Pascal 3.2.2, 86 casos compartilhados, referências independentes e dez exemplos compilados |
+| `cpp` | C++20, GCC 15.2.0, 86 casos compartilhados, referências independentes, ASan/UBSan e dez exemplos |
 
 Os serviços têm perfis para evitar iniciar todos por acidente. Ao indicar o serviço em `run`, seu perfil é ativado automaticamente. Não use `docker compose up` para esse fluxo: os testes são execuções temporárias, sem portas nem processos permanentes.
 
@@ -103,6 +105,15 @@ Um desafio e um exemplo Pascal:
 ```sh
 docker compose run --build --rm pascal sh src/pascal/executar.sh testes busca_binaria
 docker compose run --build --rm pascal sh src/pascal/executar.sh exemplo soma_de_dois
+```
+
+C++ usa a imagem oficial GCC 15.2.0 fixada por digest e o padrão C++20. nlohmann JSON 3.12.0 é usado apenas nos testes, com header verificado por SHA-256. `runner` (UID 10001) baixa o parser, compila e testa com avisos como erros, ASan/UBSan e detecção de vazamentos. Os artefatos ficam em `src/cpp/build` no container temporário. Não há volume de cache C++ nem compilador instalado no host. `.dockerignore` exclui `build`, inclusive headers baixados e executáveis locais.
+
+Um desafio e um exemplo C++:
+
+```sh
+docker compose run --build --rm cpp sh src/cpp/executar.sh testes busca_binaria
+docker compose run --build --rm cpp sh src/cpp/executar.sh exemplo soma_de_dois
 ```
 
 ## Adicionar uma linguagem

@@ -72,7 +72,6 @@ h3 { font: 500 15px 'Space Grotesk', sans-serif; margin: 0 0 10px; }
 .tabs button { flex-shrink: 0; background: transparent; border: 0; border-bottom: 2px solid transparent; padding: 12px 12px 11px; color: var(--muted); font-size: 12px; }
 .tabs button[aria-selected="true"] { border-bottom-color: var(--green); color: var(--green); }
 .tabs button:hover { color: var(--text); }
-.tab-dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--green); margin-left: 5px; vertical-align: 2px; }
 #solution-panel { background: #0d1210; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 6px 6px; }
 .code-header { display: flex; align-items: center; justify-content: space-between; padding: 11px 17px; gap: 12px; border-bottom: 1px solid #26322b; }
 .code-header span { color: var(--muted); font: 10px var(--mono); overflow-wrap: anywhere; }

@@ -22,7 +22,7 @@ jobs:
       - run: npm run docs:check
       - run: npm run build
       - name: Selecionar microprojetos Docker
-        # Inclui Pascal: o comando padrão valida a suíte completa e os dez exemplos.
+        # Pascal e C++ incluem também os dez exemplos no comando padrão.
         id: docker-matrix
         run: |
           node --input-type=module -e '
@@ -84,6 +84,20 @@ jobs:
           coverage: none
       - run: composer --working-dir=src/php install --no-interaction --prefer-dist --no-progress --no-scripts
       - run: composer --working-dir=src/php check
+  cpp:
+    name: C++20 GCC 15.2.0
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    container:
+      image: gcc:15.2.0@sha256:3ae15afe768b06d0c0fe088d822ba5f8045c26630bdacc8d8e7713cf5d8e7289
+    steps:
+      - uses: actions/checkout@v7
+      - name: Preparar usuário sem privilégios no runner
+        run: |
+          useradd --create-home --uid 10001 runner
+          chown -R runner:runner "$GITHUB_WORKSPACE"
+      - name: Compilar fontes e executar testes e exemplos com sanitizadores
+        run: runuser -u runner -- sh src/cpp/executar.sh check
   pascal:
     name: Pascal 3.2.2 Ubuntu 24.04
     runs-on: ubuntu-24.04

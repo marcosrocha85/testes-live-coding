@@ -80,6 +80,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/mesclar_listas_ordenadas/MesclarListasOrdenadasTest.swift)
 - [Solução Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/mesclar_listas_ordenadas/mesclar_listas.pas)
 - [Testes Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/mesclar_listas_ordenadas/mesclar_listas_ordenadas_test.pas)
+- [Solução C++](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/cpp/mesclar_listas_ordenadas/mesclar_listas_ordenadas.cpp)
+- [Testes C++](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/cpp/mesclar_listas_ordenadas/mesclar_listas_ordenadas_test.cpp)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/mesclar_listas_ordenadas.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#mesclar_listas_ordenadas.javascript)
 
@@ -166,6 +168,16 @@ docker compose run --build --rm pascal sh src/pascal/executar.sh testes mesclar_
 ```
 
 Com Docker, todos os desafios de Pascal: `docker compose run --build --rm pascal`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### C++
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm cpp sh src/cpp/executar.sh testes mesclar_listas_ordenadas
+```
+
+Com Docker, todos os desafios de C++: `docker compose run --build --rm cpp`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Lendo os tipos desta solução
 

@@ -7,7 +7,7 @@ Um contrato explica o que a função recebe, devolve e pode modificar. Isso perm
 - Arrays numéricos usam inteiros entre -1.000.000 e 1.000.000 e têm no máximo 10.000 elementos. Alvos usam o mesmo intervalo. Preços não podem ser negativos. Esses limites mantêm somas e diferenças exatas em JavaScript e cabem em inteiros de 64 bits nos portes.
 - Busca binária recebe um array ordenado. Mesclagem recebe listas ordenadas e independentes, sem ciclos.
 - Inversão recebe uma lista sem ciclo. Detecção de ciclo aceita listas cíclicas ou terminadas em `null`.
-- Nós têm `valor` e `proximo` nos sete portes implementados. Cada linguagem pode usar nomes idiomáticos, preservando a identidade e os vínculos.
+- Nós têm `valor` e `proximo` nos oito portes implementados. Cada linguagem pode usar nomes idiomáticos, preservando a identidade e os vínculos.
 - Anagramas comparam pontos de código Unicode de strings bem formadas. Maiúsculas e espaços importam. Não há normalização nem comparação de grafemas. Portes devem preservar esse comportamento ao decodificar UTF-8 ou UTF-16.
 - Escadas aceita inteiros de 0 a 77. O resultado de 77 degraus cabe em `Number` com precisão e em inteiros de 64 bits. Valores fora desse domínio são rejeitados.
 
@@ -38,6 +38,8 @@ Pascal usa `Int64` para somas e contagens, `TParIndices.Encontrado` para ausênc
 Os exemplos compartilhados não bastam para comprovar tudo. Testes locais precisam verificar que a inversão e a mesclagem reutilizam os nós, que a detecção de ciclo não modifica ponteiros e que os demais exercícios não modificam seus arrays de entrada. Em empate, a mesclagem mantém primeiro o nó vindo da primeira lista.
 
 JavaScript e TypeScript incluem comparações com algoritmos exaustivos para soma de dois, busca, lucro e subarray máximo, além de uma contagem combinatória independente para todo o domínio de escadas. TypeScript também compara parênteses com remoção de pares adjacentes e verifica a detecção de ciclos com todas as posições de retorno em listas de até 20 nós. As entradas pseudoaleatórias usam semente fixa para permitir reproduzir falhas.
+
+C++20 usa `std::int64_t` nas somas e contagens e `std::optional` para ausência de par ou soma. Escadas lança `std::invalid_argument` para entradas inválidas. Strings são vistas UTF-8 e o anagrama conta pontos `char32_t` sem normalização. `No*` liga nós reais sem possuir memória; testes e exemplos mantêm os donos vivos durante a consulta ou mutação. Sanitizadores verificam acessos, overflow e vazamentos. Essas escolhas preservam as mesmas entradas e respostas.
 
 ## Complexidade em palavras simples
 

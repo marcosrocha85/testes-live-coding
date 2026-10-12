@@ -214,7 +214,75 @@
         "ciclo_em_lista_ligada": ["src/pascal/_shared/no.pas"]
       }
     },
-    { "id": "cpp", "name": "C++", "status": "planned", "extension": "cpp" }
+    {
+      "id": "cpp",
+      "name": "C++",
+      "status": "implemented",
+      "extension": "cpp",
+      "runtime": "C++20; GCC 15.2.0; nlohmann JSON 3.12.0 apenas nos testes",
+      "testCommand": "sh src/cpp/executar.sh check",
+      "dockerTestCommand": "docker compose run --build --rm cpp",
+      "solutionFiles": {
+        "soma_de_dois": "src/cpp/soma_de_dois/soma_de_dois.cpp",
+        "parenteses_validos": "src/cpp/parenteses_validos/parenteses_validos.cpp",
+        "inverter_lista_ligada": "src/cpp/inverter_lista_ligada/inverter_lista_ligada.cpp",
+        "busca_binaria": "src/cpp/busca_binaria/busca_binaria.cpp",
+        "mesclar_listas_ordenadas": "src/cpp/mesclar_listas_ordenadas/mesclar_listas_ordenadas.cpp",
+        "compra_e_venda_de_acoes": "src/cpp/compra_e_venda_de_acoes/compra_e_venda_de_acoes.cpp",
+        "subarray_maximo": "src/cpp/subarray_maximo/subarray_maximo.cpp",
+        "subir_escadas": "src/cpp/subir_escadas/subir_escadas.cpp",
+        "anagrama_valido": "src/cpp/anagrama_valido/anagrama_valido.cpp",
+        "ciclo_em_lista_ligada": "src/cpp/ciclo_em_lista_ligada/ciclo_em_lista_ligada.cpp"
+      },
+      "testFiles": {
+        "soma_de_dois": "src/cpp/soma_de_dois/soma_de_dois_test.cpp",
+        "parenteses_validos": "src/cpp/parenteses_validos/parenteses_validos_test.cpp",
+        "inverter_lista_ligada": "src/cpp/inverter_lista_ligada/inverter_lista_ligada_test.cpp",
+        "busca_binaria": "src/cpp/busca_binaria/busca_binaria_test.cpp",
+        "mesclar_listas_ordenadas": "src/cpp/mesclar_listas_ordenadas/mesclar_listas_ordenadas_test.cpp",
+        "compra_e_venda_de_acoes": "src/cpp/compra_e_venda_de_acoes/compra_e_venda_de_acoes_test.cpp",
+        "subarray_maximo": "src/cpp/subarray_maximo/subarray_maximo_test.cpp",
+        "subir_escadas": "src/cpp/subir_escadas/subir_escadas_test.cpp",
+        "anagrama_valido": "src/cpp/anagrama_valido/anagrama_valido_test.cpp",
+        "ciclo_em_lista_ligada": "src/cpp/ciclo_em_lista_ligada/ciclo_em_lista_ligada_test.cpp"
+      },
+      "supportFilesByExercise": {
+        "soma_de_dois": [
+          "src/cpp/soma_de_dois/soma_de_dois.hpp"
+        ],
+        "parenteses_validos": [
+          "src/cpp/parenteses_validos/parenteses_validos.hpp"
+        ],
+        "inverter_lista_ligada": [
+          "src/cpp/inverter_lista_ligada/inverter_lista_ligada.hpp",
+          "src/cpp/_shared/no.hpp"
+        ],
+        "busca_binaria": [
+          "src/cpp/busca_binaria/busca_binaria.hpp"
+        ],
+        "mesclar_listas_ordenadas": [
+          "src/cpp/mesclar_listas_ordenadas/mesclar_listas_ordenadas.hpp",
+          "src/cpp/_shared/no.hpp"
+        ],
+        "compra_e_venda_de_acoes": [
+          "src/cpp/compra_e_venda_de_acoes/compra_e_venda_de_acoes.hpp"
+        ],
+        "subarray_maximo": [
+          "src/cpp/subarray_maximo/subarray_maximo.hpp"
+        ],
+        "subir_escadas": [
+          "src/cpp/subir_escadas/subir_escadas.hpp"
+        ],
+        "anagrama_valido": [
+          "src/cpp/anagrama_valido/anagrama_valido.hpp",
+          "src/cpp/_shared/unicode.hpp"
+        ],
+        "ciclo_em_lista_ligada": [
+          "src/cpp/ciclo_em_lista_ligada/ciclo_em_lista_ligada.hpp",
+          "src/cpp/_shared/no.hpp"
+        ]
+      }
+    }
   ],
   "exercises": [
     {

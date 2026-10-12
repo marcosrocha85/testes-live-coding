@@ -35,6 +35,7 @@ Este repositório é um guia de estudo de live coding para iniciantes. A priorid
 - Atualize `docs/catalogo.json` e execute `npm run docs` quando mudar as explicações. Não edite manualmente os arquivos gerados indicados no cabeçalho.
 - Para Pascal, use `docker compose run --build --rm pascal`, sem instalar compilador no host. Free Pascal 3.2.2 usa `{$mode objfpc}`, `Int64` nas somas e `UTF8String` com leitura de pontos completos. O runner inicializa `fpwidestring` antes de ler JSON, trata avisos como erros, verifica limites/overflow e falha por vazamentos com `heaptrc`. O comando padrão testa também os dez exemplos. `npm test` não executa Pascal. O gerador mantém `_examples/exemplos.pas` a partir de `scripts/pascal-docs.mjs`; não edite o arquivo gerado manualmente.
 - Antes de concluir, registre na issue ou PR o que mudou e quais comandos passaram. Não afirme ter executado compiladores ou testes que não foram executados.
+- Para C++, use `docker compose run --build --rm cpp`, sem instalar compilador no host. O microprojeto fixa C++20 e GCC 15.2.0 na imagem oficial por digest. `sh src/cpp/executar.sh check` compila com avisos como erros, ASan/UBSan e detecção de vazamentos e valida os dez exemplos. Preserve `json.sha256` e nlohmann JSON 3.12.0, usados apenas nos testes. As soluções usam `int64_t`, UTF-8 por pontos completos e ligações `No*` sem propriedade da memória; cada dono deve viver até o fim do uso da lista. O gerador mantém `_examples/main.cpp` a partir de `scripts/cpp-docs.mjs`. `npm test` não executa C++.
 
 ## Containers de teste
 
