@@ -19,6 +19,7 @@
 **/*.log
 **/.build
 **/.swiftpm
+**/.cargo
 **/*.o
 **/*.ppu
 **/heap.trc

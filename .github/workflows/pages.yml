@@ -46,6 +46,8 @@ jobs:
         run: docker compose run --build --rm -T cpp
       - name: Verificar Go 1.27.2, testar em 64 e 32 bits e executar os dez exemplos
         run: docker compose run --build --rm -T go
+      - name: Verificar Rust 1.92.0, testar debug e release e executar os dez exemplos
+        run: docker compose run --build --rm -T rust
       - run: npm run docs:check
       - run: npm run build
       - uses: actions/configure-pages@v6

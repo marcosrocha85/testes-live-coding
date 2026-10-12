@@ -89,6 +89,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes C++](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/cpp/anagrama_valido/anagrama_valido_test.cpp)
 - [Solução Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/anagrama_valido/anagrama_valido.go)
 - [Testes Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/anagrama_valido/anagrama_valido_test.go)
+- [Solução Rust](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/rust/anagrama_valido/anagrama_valido.rs)
+- [Testes Rust](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/rust/anagrama_valido/anagrama_valido_test.rs)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/anagrama_valido.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#anagrama_valido.javascript)
 
@@ -195,6 +197,16 @@ docker compose run --build --rm go sh executar.sh testes anagrama_valido
 ```
 
 Com Docker, todos os desafios de Go: `docker compose run --build --rm go`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Rust
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm rust sh executar.sh testes anagrama_valido
+```
+
+Com Docker, todos os desafios de Rust: `docker compose run --build --rm rust`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Lendo os tipos desta solução
 
