@@ -1,5 +1,7 @@
 # TypeScript
 
+Para compilar e testar sem instalar Node.js ou TypeScript no computador, execute `docker compose run --build --rm typescript` da raiz. Veja [o guia Docker](../docker.md). As instruções de instalação abaixo são para execução local.
+
 Os dez desafios estão implementados, com testes que leem os mesmos casos usados por JavaScript. As soluções ficam em `src/typescript/<desafio>/index.ts`. Cada pasta tem testes e um README que explica o algoritmo e os tipos empregados.
 
 ## Instalação e primeiros passos

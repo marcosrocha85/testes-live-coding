@@ -2,7 +2,19 @@
 
 Os dez desafios estão implementados com módulos ESM e testes nativos do Node.js 24. Cada pasta contém solução, teste e explicação local. Não há dependências externas.
 
-A partir da raiz do repositório:
+## Testes com Docker
+
+Da raiz, sem instalar Node.js no computador:
+
+```sh
+docker compose run --build --rm javascript
+```
+
+O container executa todos os testes e é removido ao terminar. Leia [o guia Docker](../../docs/docker.md) para entender imagens e comandos.
+
+## Execução local
+
+A partir da raiz do repositório, com Node.js 24 ou superior:
 
 ```sh
 npm ci

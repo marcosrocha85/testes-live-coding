@@ -1,5 +1,7 @@
 # JavaScript
 
+Para testar sem instalar Node.js no computador, execute `docker compose run --build --rm javascript` da raiz. Veja [o guia Docker](../docker.md). As instruções de Node.js abaixo são para execução local.
+
 JavaScript é a primeira implementação completa. Usamos Node.js 24 ou superior para executar arquivos fora do navegador e módulos ESM (`import` e `export`) para compartilhar funções.
 
 ## Conceitos usados

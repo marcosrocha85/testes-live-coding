@@ -1,5 +1,7 @@
 # Java
 
+Para compilar e testar sem instalar JDK ou Maven no computador, execute `docker compose run --build --rm java` da raiz. Veja [o guia Docker](../docker.md). As instruções de instalação abaixo são para execução local.
+
 Os dez desafios estão implementados em `src/java`. As soluções usam a biblioteca padrão, com testes JUnit dos casos compartilhados e verificações específicas para Java. Cada README explica o algoritmo, os tipos e como executar um exemplo.
 
 ## Instalação e execução

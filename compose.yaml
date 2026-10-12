@@ -1,0 +1,28 @@
+name: testes-live-coding
+
+services:
+  javascript:
+    profiles: [javascript]
+    image: testes-live-coding-javascript:local
+    build:
+      context: .
+      dockerfile: src/javascript/Dockerfile
+
+  typescript:
+    profiles: [typescript]
+    image: testes-live-coding-typescript:local
+    build:
+      context: .
+      dockerfile: src/typescript/Dockerfile
+
+  java:
+    profiles: [java]
+    image: testes-live-coding-java:local
+    build:
+      context: .
+      dockerfile: src/java/Dockerfile
+    volumes:
+      - java_maven:/home/runner/.m2
+
+volumes:
+  java_maven:

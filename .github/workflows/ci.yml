@@ -9,6 +9,8 @@ jobs:
   node:
     name: JavaScript e TypeScript
     runs-on: ubuntu-latest
+    outputs:
+      docker-languages: ${{ steps.docker-matrix.outputs.languages }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -19,6 +21,26 @@ jobs:
       - run: npm test
       - run: npm run docs:check
       - run: npm run build
+      - name: Selecionar microprojetos Docker
+        id: docker-matrix
+        run: |
+          node --input-type=module -e '
+            import { readFileSync } from "node:fs";
+            const { languages } = JSON.parse(readFileSync("docs/catalogo.json", "utf8"));
+            console.log("languages=" + JSON.stringify(languages.filter(item => item.status === "implemented").map(item => item.id)));
+          ' >> "$GITHUB_OUTPUT"
+  docker:
+    name: Docker ${{ matrix.language }}
+    needs: node
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ${{ fromJSON(needs.node.outputs.docker-languages) }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Executar todos os testes no container temporário
+        run: docker compose run --build --rm -T "${{ matrix.language }}"
   java:
     name: Java ${{ matrix.java }}
     runs-on: ubuntu-latest

@@ -9,6 +9,7 @@ Os **dez desafios estão implementados em JavaScript, TypeScript e Java**, com t
 - [Wiki do projeto](https://github.com/marcosrocha85/testes-live-coding/wiki)
 - [Explicações dos desafios](docs/tests/README.md)
 - [Arquitetura](docs/arquitetura.md) e [contratos dos testes](docs/contratos.md)
+- [Testes em Docker, sem instalar SDKs](docs/docker.md)
 - [Guia de JavaScript para iniciantes](docs/linguagens/javascript.md)
 - [Guia de TypeScript para iniciantes](docs/linguagens/typescript.md)
 - [Guia de Java para iniciantes](docs/linguagens/java.md)
@@ -17,6 +18,22 @@ Os **dez desafios estão implementados em JavaScript, TypeScript e Java**, com t
 O site é atualizado após a integração de cada entrega à `main`. A Wiki tem explicações dos dez desafios; suas fontes estão versionadas em [docs/wiki](docs/wiki/Home.md).
 
 ## Como começar
+
+### Com Docker
+
+Instale Git e Docker com suporte a containers Linux. Cada linguagem tem seu próprio container de testes; você pode executar só a que estiver estudando, sem instalar Node.js, TypeScript, JDK ou Maven no computador:
+
+```sh
+git clone https://github.com/marcosrocha85/testes-live-coding.git
+cd testes-live-coding
+docker compose run --build --rm javascript
+docker compose run --build --rm typescript
+docker compose run --build --rm java
+```
+
+O primeiro uso baixa a imagem e as dependências. `--build` inclui suas alterações e `--rm` remove o container após os testes. Os testes usam uma cópia dos fontes, e os arquivos de build ficam dentro do Docker. Veja [o guia Docker](docs/docker.md) para entender os comandos, caches e como adicionar uma linguagem.
+
+### Com ferramentas locais
 
 Instale **Node.js 24 ou superior**, que inclui npm. Não há bibliotecas externas nas soluções.
 
@@ -101,6 +118,9 @@ Cada linguagem será um microprojeto independente, com ferramentas e testes adeq
 
 | Comando | Finalidade |
 | --- | --- |
+| `docker compose run --build --rm javascript` | Todos os testes JavaScript em um container temporário |
+| `docker compose run --build --rm typescript` | Compilação e todos os testes TypeScript em um container temporário |
+| `docker compose run --build --rm java` | Maven e todos os testes Java em um container temporário |
 | `npm test` | Testes JavaScript, TypeScript e verificações do gerador do site |
 | `npm run typecheck` | Checagem estrita de tipos do microprojeto TypeScript |
 | `./src/java/mvnw -f src/java/pom.xml clean verify` | Compilar e testar os dez desafios Java em Linux/macOS |
