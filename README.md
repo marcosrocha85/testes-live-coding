@@ -4,7 +4,7 @@
 
 Um guia de estudo para entender, implementar e explicar desafios comuns de entrevistas técnicas. Cada solução tem comentários simples, testes automatizados e uma explicação do raciocínio e da capacidade avaliada.
 
-Os **dez desafios estão implementados em JavaScript, TypeScript, Java e Kotlin**, com testes próprios para cada linguagem. As próximas etapas serão PHP, Swift, Pascal e C++, uma linguagem por vez, com revisão de Marcos Rocha.
+Os **dez desafios estão implementados em JavaScript, TypeScript, Java, Kotlin e PHP**, com testes próprios para cada linguagem. As próximas etapas serão Swift, Pascal e C++, uma linguagem por vez, com revisão de Marcos Rocha.
 
 - [Wiki do projeto](https://github.com/marcosrocha85/testes-live-coding/wiki)
 - [Explicações dos desafios](docs/tests/README.md)
@@ -14,6 +14,7 @@ Os **dez desafios estão implementados em JavaScript, TypeScript, Java e Kotlin*
 - [Guia de TypeScript para iniciantes](docs/linguagens/typescript.md)
 - [Guia de Java para iniciantes](docs/linguagens/java.md)
 - [Guia de Kotlin para iniciantes](docs/linguagens/kotlin.md)
+- [Guia de PHP para iniciantes](docs/linguagens/php.md)
 - [Roteiro e issues por linguagem](docs/roadmap.md)
 
 O site é atualizado após a integração de cada entrega à `main`. A Wiki tem explicações dos dez desafios; suas fontes estão versionadas em [docs/wiki](docs/wiki/Home.md).
@@ -22,7 +23,7 @@ O site é atualizado após a integração de cada entrega à `main`. A Wiki tem 
 
 ### Com Docker
 
-Instale Git e Docker com suporte a containers Linux. Cada linguagem tem seu próprio container de testes; você pode executar só a que estiver estudando, sem instalar Node.js, TypeScript, JDK, Maven, Gradle ou Kotlin no computador:
+Instale Git e Docker com suporte a containers Linux. Cada linguagem tem seu próprio container de testes; você pode executar só a que estiver estudando, sem instalar Node.js, TypeScript, JDK, Maven, Gradle, Kotlin, PHP ou Composer no computador:
 
 ```sh
 git clone https://github.com/marcosrocha85/testes-live-coding.git
@@ -31,6 +32,7 @@ docker compose run --build --rm javascript
 docker compose run --build --rm typescript
 docker compose run --build --rm java
 docker compose run --build --rm kotlin
+docker compose run --build --rm php
 ```
 
 O primeiro uso baixa a imagem e as dependências. `--build` inclui suas alterações e `--rm` remove o container após os testes. Os testes usam uma cópia dos fontes, e os arquivos de build ficam dentro do Docker. Veja [o guia Docker](docs/docker.md) para entender os comandos, caches e como adicionar uma linguagem.
@@ -76,7 +78,7 @@ No PowerShell:
 .\src\java\mvnw.cmd -f src/java/pom.xml clean verify
 ```
 
-Java tem testes JUnit independentes dos workspaces npm. As soluções usam a biblioteca padrão; JUnit e Gson são dependências somente dos testes. A CI e o workflow Pages conferem as quatro linguagens antes da publicação.
+Java tem testes JUnit independentes dos workspaces npm. As soluções usam a biblioteca padrão; JUnit e Gson são dependências somente dos testes. A CI e o workflow Pages conferem as cinco linguagens antes da publicação.
 
 Para Kotlin, prefira `docker compose run --build --rm kotlin`, que valida sem instalar SDK no computador. Se já tiver **JDK 21** local, use o Gradle Wrapper:
 
@@ -91,6 +93,16 @@ No PowerShell:
 ```
 
 Kotlin tem 102 testes JUnit próprios e usa Gradle 9.7.0 e Kotlin 2.4.21. As soluções não dependem das outras linguagens.
+
+Para PHP, use `docker compose run --build --rm php`. A suíte tem 106 testes PHPUnit e usa PHP de 64 bits. Com PHP 8.4 ou 8.5 e Composer 2.9.8 local:
+
+```sh
+composer --working-dir=src/php install
+composer --working-dir=src/php check
+php src/php/soma_de_dois/exemplo.php
+```
+
+O exemplo imprime `[0,1]` e pode ser executado sem instalar as dependências de testes. Cada desafio PHP tem um exemplo executável; veja [o guia da linguagem](docs/linguagens/php.md).
 
 ## Os dez desafios iniciais
 
@@ -124,7 +136,8 @@ src/
   typescript/             # Dez desafios, compilação estrita e testes próprios
   java/                   # Dez desafios, Maven Wrapper e testes JUnit
   kotlin/                 # Dez desafios, Gradle Wrapper e testes JUnit
-  php/ swift/ pascal/ cpp/ # Etapas planejadas
+  php/                    # Dez desafios, Composer, PHPUnit e exemplos executáveis
+  swift/ pascal/ cpp/      # Etapas planejadas
 scripts/                  # Geradores, preview e publicação da Wiki
 .github/                  # CI, publicação e templates de issues
 ```
@@ -139,6 +152,8 @@ Cada linguagem será um microprojeto independente, com ferramentas e testes adeq
 | `docker compose run --build --rm typescript` | Compilação e todos os testes TypeScript em um container temporário |
 | `docker compose run --build --rm java` | Maven e todos os testes Java em um container temporário |
 | `docker compose run --build --rm kotlin` | Gradle, compilação e todos os testes Kotlin em um container temporário |
+| `docker compose run --build --rm php` | Lint e todos os testes PHP em um container temporário |
+| `composer --working-dir=src/php check` | Lint e testes PHP com ferramentas locais |
 | `./src/kotlin/gradlew --no-daemon -p src/kotlin clean check jar` | Compilar e testar Kotlin com JDK 21 local |
 | `npm test` | Testes JavaScript, TypeScript e verificações do gerador do site |
 | `npm run typecheck` | Checagem estrita de tipos do microprojeto TypeScript |

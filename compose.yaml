@@ -33,6 +33,13 @@ services:
     volumes:
       - kotlin_gradle:/home/runner/.gradle
 
+  php:
+    profiles: [php]
+    image: testes-live-coding-php:local
+    build:
+      context: .
+      dockerfile: src/php/Dockerfile
+
 volumes:
   java_maven:
   kotlin_gradle:

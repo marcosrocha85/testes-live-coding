@@ -1,0 +1,23 @@
+{
+  "name": "marcosrochagpm/testes-live-coding-php",
+  "description": "Dez desafios de live coding em PHP com explicações e testes",
+  "type": "project",
+  "require": {
+    "php": ">=8.4 <8.6",
+    "php-64bit": ">=8.4",
+    "ext-json": "*",
+    "ext-pcre": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "12.5.34"
+  },
+  "config": {
+    "allow-plugins": {},
+    "sort-packages": true
+  },
+  "scripts": {
+    "lint": "@php _tools/lint.php",
+    "test": "@php vendor/bin/phpunit --configuration phpunit.xml",
+    "check": ["@lint", "@test"]
+  }
+}

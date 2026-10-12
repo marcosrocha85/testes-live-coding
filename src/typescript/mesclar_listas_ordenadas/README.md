@@ -74,6 +74,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/mesclar_listas_ordenadas/MesclarListasOrdenadasTest.java)
 - [Solução Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/mesclar_listas_ordenadas/MesclarListasOrdenadas.kt)
 - [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/mesclar_listas_ordenadas/MesclarListasOrdenadasTest.kt)
+- [Solução PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/mesclar_listas_ordenadas/index.php)
+- [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/mesclar_listas_ordenadas/MesclarListasOrdenadasTest.php)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/mesclar_listas_ordenadas.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#mesclar_listas_ordenadas.javascript)
 
@@ -129,6 +131,17 @@ PowerShell:
 ```
 
 Com Docker, todos os desafios de Kotlin: `docker compose run --build --rm kotlin`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### PHP
+
+Da raiz, com PHP 8.4 ou 8.5 de 64 bits e Composer. O comando funciona também no PowerShell:
+
+```sh
+composer --working-dir=src/php install
+composer --working-dir=src/php test -- --filter MesclarListasOrdenadasTest
+```
+
+Com Docker, todos os desafios de PHP: `docker compose run --build --rm php`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Lendo os tipos desta solução
 

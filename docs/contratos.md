@@ -7,7 +7,7 @@ Um contrato explica o que a função recebe, devolve e pode modificar. Isso perm
 - Arrays numéricos usam inteiros entre -1.000.000 e 1.000.000 e têm no máximo 10.000 elementos. Alvos usam o mesmo intervalo. Preços não podem ser negativos. Esses limites mantêm somas e diferenças exatas em JavaScript e cabem em inteiros de 64 bits nos portes.
 - Busca binária recebe um array ordenado. Mesclagem recebe listas ordenadas e independentes, sem ciclos.
 - Inversão recebe uma lista sem ciclo. Detecção de ciclo aceita listas cíclicas ou terminadas em `null`.
-- Nós têm `valor` e `proximo` em JavaScript, TypeScript e Java. Cada linguagem pode usar nomes idiomáticos, preservando a identidade e os vínculos.
+- Nós têm `valor` e `proximo` nos cinco portes implementados. Cada linguagem pode usar nomes idiomáticos, preservando a identidade e os vínculos.
 - Anagramas comparam pontos de código Unicode de strings bem formadas. Maiúsculas e espaços importam. Não há normalização nem comparação de grafemas. Portes devem preservar esse comportamento ao decodificar UTF-8 ou UTF-16.
 - Escadas aceita inteiros de 0 a 77. O resultado de 77 degraus cabe em `Number` com precisão e em inteiros de 64 bits. Valores fora desse domínio são rejeitados.
 
@@ -24,6 +24,8 @@ Cada `docs/casos/<desafio>.json` é uma lista com `name`, `input` e uma destas f
 `expected` contém o resultado, inclusive `null`, boolean ou array. Na busca binária, `expectedIndices` aceita qualquer um dos índices indicados para duplicatas. `error: "RangeError"` indica rejeição de entrada em JavaScript; outras linguagens devem testar seu erro equivalente, não procurar literalmente uma classe com esse nome.
 
 Java rejeita o domínio inválido de escadas com `IllegalArgumentException`. Usa `long` para escadas e `Long` para subarray máximo, cujo resultado pode ser `null`. A soma máxima do contrato pode ultrapassar `int`; os testes Java verificam esse limite.
+
+PHP usa `int` de 64 bits para contagens e somas, e `?int` para o subarray que pode estar vazio. Escadas rejeita o domínio inválido com `InvalidArgumentException`. Arrays numéricos são listas com índices consecutivos desde zero; as soluções os recebem por valor. Strings são UTF-8 bem formado e anagrama conta pontos completos com um gerador. Esses detalhes não mudam as entradas ou respostas comuns.
 
 Arrays de valores representam listas ligadas somente na preparação e na comparação dos testes. Na detecção de ciclo, `indiceCiclo: -1` significa sem ciclo; outro índice liga a cauda de volta à posição indicada. O algoritmo recebe a cabeça da lista montada, não o índice do ciclo.
 

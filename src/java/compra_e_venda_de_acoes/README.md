@@ -77,6 +77,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.java)
 - [Solução Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/compra_e_venda_de_acoes/CompraEVendaDeAcoes.kt)
 - [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.kt)
+- [Solução PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/compra_e_venda_de_acoes/index.php)
+- [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.php)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/compra_e_venda_de_acoes.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#compra_e_venda_de_acoes.javascript)
 
@@ -132,6 +134,17 @@ PowerShell:
 ```
 
 Com Docker, todos os desafios de Kotlin: `docker compose run --build --rm kotlin`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### PHP
+
+Da raiz, com PHP 8.4 ou 8.5 de 64 bits e Composer. O comando funciona também no PowerShell:
+
+```sh
+composer --working-dir=src/php install
+composer --working-dir=src/php test -- --filter CompraEVendaDeAcoesTest
+```
+
+Com Docker, todos os desafios de PHP: `docker compose run --build --rm php`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Java
 

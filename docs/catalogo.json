@@ -92,7 +92,42 @@
         ]
       }
     },
-    { "id": "php", "name": "PHP", "status": "planned", "extension": "php" },
+    {
+      "id": "php",
+      "name": "PHP",
+      "status": "implemented",
+      "extension": "php",
+      "runtime": "PHP 8.4 ou 8.5 de 64 bits; Composer 2.9.8; PHPUnit 12.5.34",
+      "testCommand": "composer --working-dir=src/php check",
+      "dockerTestCommand": "docker compose run --build --rm php",
+      "testFiles": {
+        "soma_de_dois": "src/php/soma_de_dois/SomaDeDoisTest.php",
+        "parenteses_validos": "src/php/parenteses_validos/ParentesesValidosTest.php",
+        "inverter_lista_ligada": "src/php/inverter_lista_ligada/InverterListaLigadaTest.php",
+        "busca_binaria": "src/php/busca_binaria/BuscaBinariaTest.php",
+        "mesclar_listas_ordenadas": "src/php/mesclar_listas_ordenadas/MesclarListasOrdenadasTest.php",
+        "compra_e_venda_de_acoes": "src/php/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.php",
+        "subarray_maximo": "src/php/subarray_maximo/SubarrayMaximoTest.php",
+        "subir_escadas": "src/php/subir_escadas/SubirEscadasTest.php",
+        "anagrama_valido": "src/php/anagrama_valido/AnagramaValidoTest.php",
+        "ciclo_em_lista_ligada": "src/php/ciclo_em_lista_ligada/CicloEmListaLigadaTest.php"
+      },
+      "exerciseTestCommand": "composer --working-dir=src/php test -- --filter {testClass}",
+      "supportFilesByExercise": {
+        "inverter_lista_ligada": [
+          "src/php/_shared/No.php"
+        ],
+        "mesclar_listas_ordenadas": [
+          "src/php/_shared/No.php"
+        ],
+        "ciclo_em_lista_ligada": [
+          "src/php/_shared/No.php"
+        ],
+        "anagrama_valido": [
+          "src/php/_shared/unicode.php"
+        ]
+      }
+    },
     { "id": "swift", "name": "Swift", "status": "planned", "extension": "swift" },
     { "id": "pascal", "name": "Pascal", "status": "planned", "extension": "pas" },
     { "id": "cpp", "name": "C++", "status": "planned", "extension": "cpp" }

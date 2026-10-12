@@ -78,6 +78,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/busca_binaria/BuscaBinariaTest.java)
 - [Solução Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/busca_binaria/BuscaBinaria.kt)
 - [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/busca_binaria/BuscaBinariaTest.kt)
+- [Solução PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/busca_binaria/index.php)
+- [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/busca_binaria/BuscaBinariaTest.php)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/busca_binaria.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#busca_binaria.javascript)
 
@@ -133,6 +135,17 @@ PowerShell:
 ```
 
 Com Docker, todos os desafios de Kotlin: `docker compose run --build --rm kotlin`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### PHP
+
+Da raiz, com PHP 8.4 ou 8.5 de 64 bits e Composer. O comando funciona também no PowerShell:
+
+```sh
+composer --working-dir=src/php install
+composer --working-dir=src/php test -- --filter BuscaBinariaTest
+```
+
+Com Docker, todos os desafios de PHP: `docker compose run --build --rm php`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Java
 

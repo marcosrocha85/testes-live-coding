@@ -66,3 +66,20 @@ jobs:
           distribution: temurin
           java-version: '21'
       - run: ./src/kotlin/gradlew --no-daemon --console=plain -p src/kotlin clean check jar
+  php:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        php: ['8.4', '8.5']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, json, mbstring, xml, xmlwriter
+          tools: composer:2.9.8
+          coverage: none
+      - run: composer --working-dir=src/php install --no-interaction --prefer-dist --no-progress --no-scripts
+      - run: composer --working-dir=src/php check
