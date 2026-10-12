@@ -1,0 +1,151 @@
+<!-- Gerado por npm run docs a partir de docs/catalogo.json e docs/casos. -->
+
+# Subarray máximo
+
+Nome na entrevista: **Maximum Subarray (Kadane)**. Pasta: `subarray_maximo`.
+
+## Problema
+
+Encontre a maior soma de um trecho contíguo não vazio de um array.
+
+## Ideia
+
+Estende o trecho ou recomeça.
+
+1. Comece com a soma do primeiro elemento.
+2. Para cada novo número, compare começar nele com estender o trecho anterior.
+3. Guarde a maior soma vista em qualquer passo.
+
+## Exemplo explicado
+
+Em [-2, 1, -3, 4, -1, 2, 1, -5, 4], o trecho [4, -1, 2, 1] soma 6. Uma soma ruim é abandonada ao iniciar um trecho melhor.
+
+```js
+subarrayMaximo([-2, 1, -3, 4, -1, 2, 1, -5, 4]) // 6
+```
+
+## Por que pedir este teste?
+
+O teste introduz programação dinâmica com estado pequeno. Ele mostra se o candidato entende contiguidade e percebe que uma entrada só de negativos ainda tem uma resposta não vazia.
+
+Capacidades avaliadas:
+
+- Programação dinâmica
+- Decisão local e resultado global
+- Casos com números negativos
+
+O exercício fornece evidência dessas habilidades. A avaliação deve considerar também como a pessoa explica, testa e discute alternativas; uma resposta memorizada sozinha não comprova domínio.
+
+## Contrato
+
+Recebe numeros. Retorna a maior soma de um trecho contíguo não vazio. Array vazio retorna null. Retorna a soma, não os índices nem o trecho. Não modifica o array.
+
+## Complexidade
+
+- Tempo: O(n).
+- Espaço adicional: O(1).
+
+Consulte as definições de complexidade e o domínio das entradas em [Contratos](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/contratos.md).
+
+## Erros comuns
+
+- Começar a melhor soma em zero e errar arrays só negativos
+- Escolher números não contíguos
+- Confundir maior soma atual com maior soma global
+
+## Casos compartilhados
+
+- **trecho interno**: entrada `{"numeros":[-2,1,-3,4,-1,2,1,-5,4]}`; saída `6`.
+- **todos negativos**: entrada `{"numeros":[-8,-3,-6,-2,-5]}`; saída `-2`.
+- **todos positivos**: entrada `{"numeros":[1,2,3]}`; saída `6`.
+- **nó único**: entrada `{"numeros":[-4]}`; saída `-4`.
+- **zeros**: entrada `{"numeros":[0,0]}`; saída `0`.
+- **precisa recomeçar**: entrada `{"numeros":[2,-10,4,3]}`; saída `7`.
+- **não pode pular número**: entrada `{"numeros":[5,-10,5]}`; saída `5`.
+- **vazio**: entrada `{"numeros":[]}`; saída `null`.
+
+Os portes devem executar esses exemplos e acrescentar testes próprios da linguagem. Os exercícios de listas também precisam verificar identidade dos nós e efeitos nos ponteiros.
+
+## Implementação e testes
+
+- [Solução JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/subarray_maximo/index.js)
+- [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/subarray_maximo/index.test.js)
+- [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/subarray_maximo/index.ts)
+- [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/subarray_maximo/index.test.ts)
+- [Solução Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/subarray_maximo/SubarrayMaximo.java)
+- [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/subarray_maximo/SubarrayMaximoTest.java)
+- [Solução Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/subarray_maximo/SubarrayMaximo.kt)
+- [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/subarray_maximo/SubarrayMaximoTest.kt)
+- [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subarray_maximo.json)
+- [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subarray_maximo.javascript)
+
+### JavaScript
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+node --test src/javascript/subarray_maximo/index.test.js
+```
+
+Com Docker, todos os desafios de JavaScript: `docker compose run --build --rm javascript`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### TypeScript
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+npm run build --workspace src/typescript
+node --test src/typescript/dist/subarray_maximo/index.test.js
+```
+
+Com Docker, todos os desafios de TypeScript: `docker compose run --build --rm typescript`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Java
+
+Da raiz, com JDK 21 ou superior. Linux/macOS:
+
+```sh
+./src/java/mvnw -f src/java/pom.xml -Dtest=SubarrayMaximoTest test
+```
+
+PowerShell:
+
+```powershell
+.\src\java\mvnw.cmd -f src/java/pom.xml "-Dtest=SubarrayMaximoTest" test
+```
+
+Com Docker, todos os desafios de Java: `docker compose run --build --rm java`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Kotlin
+
+Da raiz, com JDK 21. O Wrapper baixa Gradle e o compilador Kotlin. Linux/macOS:
+
+```sh
+./src/kotlin/gradlew --no-daemon -p src/kotlin test --tests "SubarrayMaximoTest"
+```
+
+PowerShell:
+
+```powershell
+.\src\kotlin\gradlew.bat --no-daemon -p src/kotlin test --tests "SubarrayMaximoTest"
+```
+
+Com Docker, todos os desafios de Kotlin: `docker compose run --build --rm kotlin`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+## Particularidades em Kotlin
+
+`Long?` representa uma soma de 64 bits ou ausência de elementos. `toLong()` amplia cada número antes da adição: somar em `Int` e converter depois poderia perder a resposta. O primeiro valor inicializa as somas para aceitar trechos só negativos.
+
+## Exemplo de uso em Kotlin
+
+As funções são declaradas no topo do arquivo. Em um programa Kotlin que use este microprojeto:
+
+```kotlin
+import livecoding.subarray_maximo.subarrayMaximo
+
+fun main() {
+    println(subarrayMaximo(intArrayOf(-2, 1, -3, 4, -1, 2, 1, -5, 4))) // 6
+}
+```
+
+Veja [o guia de Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/linguagens/kotlin.md) para ferramentas, tipos, Unicode e comandos.

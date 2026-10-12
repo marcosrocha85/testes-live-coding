@@ -1,0 +1,153 @@
+<!-- Gerado por npm run docs a partir de docs/catalogo.json e docs/casos. -->
+
+# Soma de dois
+
+Nome na entrevista: **Two Sum**. Pasta: `soma_de_dois`.
+
+## Problema
+
+Dado um array de números e um alvo, encontre dois índices diferentes cujos valores somem o alvo.
+
+## Ideia
+
+Mapa de complemento, uma passagem.
+
+1. Leia um número e calcule quanto falta para chegar ao alvo.
+2. Procure esse complemento entre os números já vistos.
+3. Se encontrar, devolva os dois índices. Caso contrário, guarde o número e continue.
+
+## Exemplo explicado
+
+Em [2, 7, 11, 15], com alvo 9: guarde 2 no índice 0. Ao ler 7, falta 2. Como 2 já foi visto, a resposta é [0, 1].
+
+```js
+somaDeDois([2, 7, 11, 15], 9) // [0, 1]
+```
+
+## Por que pedir este teste?
+
+Um par de laços resolve o problema, mas repete muitas comparações. O teste revela se o candidato sabe trocar memória por velocidade e escolher uma estrutura de busca adequada.
+
+Capacidades avaliadas:
+
+- Mapas e busca por chave
+- Índices diferentes e duplicatas
+- Comparação entre O(n²) e O(n)
+
+O exercício fornece evidência dessas habilidades. A avaliação deve considerar também como a pessoa explica, testa e discute alternativas; uma resposta memorizada sozinha não comprova domínio.
+
+## Contrato
+
+Recebe numeros e alvo. Retorna [indiceAnterior, indiceAtual] ou null. Se houver várias soluções, retorna a primeira encontrada ao percorrer da esquerda para a direita, preservando o primeiro índice de cada valor. Não modifica o array.
+
+## Complexidade
+
+- Tempo: O(n) em média, considerando operações de mapa com custo médio constante.
+- Espaço adicional: O(n).
+
+Consulte as definições de complexidade e o domínio das entradas em [Contratos](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/contratos.md).
+
+## Erros comuns
+
+- Usar duas vezes a mesma posição
+- Retornar valores em vez de índices
+- Perder a primeira ocorrência de um número repetido
+
+## Casos compartilhados
+
+- **exemplo clássico**: entrada `{"numeros":[2,7,11,15],"alvo":9}`; saída `[0,1]`.
+- **complemento no meio**: entrada `{"numeros":[3,2,4],"alvo":6}`; saída `[1,2]`.
+- **valores iguais em índices distintos**: entrada `{"numeros":[3,3],"alvo":6}`; saída `[0,1]`.
+- **negativos**: entrada `{"numeros":[-3,4,3,90],"alvo":0}`; saída `[0,2]`.
+- **zeros**: entrada `{"numeros":[0,0],"alvo":0}`; saída `[0,1]`.
+- **sem solução**: entrada `{"numeros":[1,2,3],"alvo":10}`; saída `null`.
+- **não reutiliza uma posição**: entrada `{"numeros":[3],"alvo":6}`; saída `null`.
+- **vazio**: entrada `{"numeros":[],"alvo":1}`; saída `null`.
+- **preserva primeiro índice**: entrada `{"numeros":[1,1,4],"alvo":5}`; saída `[0,2]`.
+- **primeira solução encontrada**: entrada `{"numeros":[1,2,3,4],"alvo":5}`; saída `[1,2]`.
+
+Os portes devem executar esses exemplos e acrescentar testes próprios da linguagem. Os exercícios de listas também precisam verificar identidade dos nós e efeitos nos ponteiros.
+
+## Implementação e testes
+
+- [Solução JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/soma_de_dois/index.js)
+- [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/soma_de_dois/index.test.js)
+- [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/soma_de_dois/index.ts)
+- [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/soma_de_dois/index.test.ts)
+- [Solução Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/soma_de_dois/SomaDeDois.java)
+- [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/soma_de_dois/SomaDeDoisTest.java)
+- [Solução Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/soma_de_dois/SomaDeDois.kt)
+- [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/soma_de_dois/SomaDeDoisTest.kt)
+- [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/soma_de_dois.json)
+- [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#soma_de_dois.javascript)
+
+### JavaScript
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+node --test src/javascript/soma_de_dois/index.test.js
+```
+
+Com Docker, todos os desafios de JavaScript: `docker compose run --build --rm javascript`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### TypeScript
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+npm run build --workspace src/typescript
+node --test src/typescript/dist/soma_de_dois/index.test.js
+```
+
+Com Docker, todos os desafios de TypeScript: `docker compose run --build --rm typescript`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Java
+
+Da raiz, com JDK 21 ou superior. Linux/macOS:
+
+```sh
+./src/java/mvnw -f src/java/pom.xml -Dtest=SomaDeDoisTest test
+```
+
+PowerShell:
+
+```powershell
+.\src\java\mvnw.cmd -f src/java/pom.xml "-Dtest=SomaDeDoisTest" test
+```
+
+Com Docker, todos os desafios de Java: `docker compose run --build --rm java`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Kotlin
+
+Da raiz, com JDK 21. O Wrapper baixa Gradle e o compilador Kotlin. Linux/macOS:
+
+```sh
+./src/kotlin/gradlew --no-daemon -p src/kotlin test --tests "SomaDeDoisTest"
+```
+
+PowerShell:
+
+```powershell
+.\src\kotlin\gradlew.bat --no-daemon -p src/kotlin test --tests "SomaDeDoisTest"
+```
+
+Com Docker, todos os desafios de Kotlin: `docker compose run --build --rm kotlin`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+## Particularidades em Kotlin
+
+`IntArray` guarda inteiros; `IntArray?` permite devolver `null`. `mutableMapOf<Int, Int>()` liga cada valor ao primeiro índice. Uma consulta ausente devolve `null`, mas o índice zero é válido. `putIfAbsent` mantém a primeira ocorrência.
+
+## Exemplo de uso em Kotlin
+
+As funções são declaradas no topo do arquivo. Em um programa Kotlin que use este microprojeto:
+
+```kotlin
+import livecoding.soma_de_dois.somaDeDois
+
+fun main() {
+    println(somaDeDois(intArrayOf(2, 7, 11, 15), 9)?.contentToString()) // [0, 1]
+}
+```
+
+Veja [o guia de Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/linguagens/kotlin.md) para ferramentas, tipos, Unicode e comandos.

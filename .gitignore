@@ -2,5 +2,8 @@ node_modules/
 dist/
 coverage/
 target/
+build/
+.gradle/
+.kotlin/
 .DS_Store
 *.log

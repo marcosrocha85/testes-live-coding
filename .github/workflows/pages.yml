@@ -29,6 +29,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: ./src/java/mvnw -B -f src/java/pom.xml clean verify
+      - run: ./src/kotlin/gradlew --no-daemon --console=plain -p src/kotlin clean check jar
       - run: npm run docs:check
       - run: npm run build
       - uses: actions/configure-pages@v6

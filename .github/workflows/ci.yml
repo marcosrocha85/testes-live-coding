@@ -56,3 +56,13 @@ jobs:
           cache: maven
           cache-dependency-path: src/java/pom.xml
       - run: ./src/java/mvnw -B -f src/java/pom.xml clean verify
+  kotlin:
+    name: Kotlin JVM 21
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: ./src/kotlin/gradlew --no-daemon --console=plain -p src/kotlin clean check jar

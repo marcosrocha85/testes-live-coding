@@ -76,6 +76,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/subir_escadas/index.test.ts)
 - [Solução Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/subir_escadas/SubirEscadas.java)
 - [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/subir_escadas/SubirEscadasTest.java)
+- [Solução Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/subir_escadas/SubirEscadas.kt)
+- [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/subir_escadas/SubirEscadasTest.kt)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subir_escadas.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subir_escadas.javascript)
 
@@ -115,6 +117,22 @@ PowerShell:
 ```
 
 Com Docker, todos os desafios de Java: `docker compose run --build --rm java`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Kotlin
+
+Da raiz, com JDK 21. O Wrapper baixa Gradle e o compilador Kotlin. Linux/macOS:
+
+```sh
+./src/kotlin/gradlew --no-daemon -p src/kotlin test --tests "SubirEscadasTest"
+```
+
+PowerShell:
+
+```powershell
+.\src\kotlin\gradlew.bat --no-daemon -p src/kotlin test --tests "SubirEscadasTest"
+```
+
+Com Docker, todos os desafios de Kotlin: `docker compose run --build --rm kotlin`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Lendo os tipos desta solução
 
