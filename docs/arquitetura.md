@@ -24,7 +24,7 @@ O conteúdo publicado é obtido de arquivos reais, sem cópias manuais de códig
 
 ## GitHub Pages e Wiki
 
-A CI executa testes, verifica documentação e gera o site nas PRs. O workflow Pages publica `dist` após um push na `main`, com permissões restritas ao job de implantação. Habilite Pages com origem GitHub Actions nas configurações do repositório.
+A CI executa testes, verifica documentação e gera o site nas PRs. O workflow Pages publica `dist` após um push na `main`, com permissões declaradas por job. O job de build recebe `contents: read` e `pages: write` para configurar o site; o job de implantação recebe `pages: write` e `id-token: write` para publicar o artefato. Habilite Pages com origem GitHub Actions nas configurações do repositório.
 
 GitHub Wiki usa outro repositório Git, com sufixo `.wiki.git`. Antes de publicá-la pela primeira vez, crie a página Home na interface do GitHub. Depois execute `scripts/publish-wiki.ps1`, que gera os documentos, clona a Wiki em uma pasta temporária e atualiza somente as páginas geradas. O script não apaga páginas adicionais. O catálogo do Pages e `docs/tests` podem ser usados mesmo sem a Wiki inicializada.
 
