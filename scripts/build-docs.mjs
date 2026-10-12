@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { notasPascal, exemplosPascal, programaPascal } from './pascal-docs.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const catalogo = JSON.parse(await readFile(resolve(root, 'docs/catalogo.json'), 'utf8'));
@@ -143,6 +144,7 @@ async function salvar(caminho, conteudo) {
 }
 
 function comandoDesafio(linguagem, id) {
+  if (linguagem.id === 'pascal') return `docker compose run --build --rm pascal sh src/pascal/executar.sh testes ${id}`;
   if (linguagem.id === 'javascript') return `node --test src/javascript/${id}/index.test.js`;
   if (linguagem.id === 'typescript') return `npm run build --workspace src/typescript\nnode --test src/typescript/dist/${id}/index.test.js`;
   if (linguagem.exerciseTestCommand) {
@@ -167,6 +169,9 @@ for (const exercicio of catalogo.exercises) {
     if (!linguagem.dockerTestCommand) throw new Error(`Linguagem implementada sem comando Docker: ${linguagem.id}`);
     const comando = comandoDesafio(linguagem, exercicio.id);
     const docker = `\nCom Docker, todos os desafios de ${linguagem.name}: \`${linguagem.dockerTestCommand}\`. Veja [como executar sem SDK local](${baseGitHub}/blob/main/docs/docker.md).\n`;
+    if (linguagem.id === 'pascal') {
+      return `### Pascal\n\nDa raiz, sem instalar compilador no computador:\n\n\`\`\`sh\n${comando}\n\`\`\`\n` + docker;
+    }
     if (linguagem.id === 'java') {
       const windows = comando.replace('./src/java/mvnw', '.\\src\\java\\mvnw.cmd').replace(/-Dtest=([^ ]+)/, '"-Dtest=$1"');
       return `### Java\n\nDa raiz, com JDK 21 ou superior. Linux/macOS:\n\n\`\`\`sh\n${comando}\n\`\`\`\n\nPowerShell:\n\n\`\`\`powershell\n${windows}\n\`\`\`\n` + docker;
@@ -229,8 +234,15 @@ for (const exercicio of catalogo.exercises) {
     if (linguagem.id === 'swift') {
       notas = `\n## Particularidades em Swift\n\n${notasSwift[exercicio.id]}\n\n## Exemplo executável em Swift\n\nCom Swift local, execute da raiz:\n\n\`\`\`sh\nswift run --package-path src/swift --jobs 2 exemplo ${exercicio.id}\n\`\`\`\n\nOu no container:\n\n\`\`\`sh\ndocker compose run --build --rm swift swift run --package-path src/swift --jobs 2 exemplo ${exercicio.id}\n\`\`\`\n\nO trecho abaixo faz parte do executável de exemplos, compilado pelo Package Manager:\n\n\`\`\`swift\nimport LiveCoding\n\n${exemplosSwift[exercicio.id]}\n\`\`\`\n\nVeja [o guia Swift](${baseGitHub}/blob/main/docs/linguagens/swift.md) para ferramentas, tipos, Unicode e ARC.\n`;
     }
+    if (linguagem.id === 'pascal') {
+      notas = `\n## Particularidades em Pascal\n\n${notasPascal[exercicio.id]}\n\n## Exemplo executável em Pascal\n\nDa raiz, compile e execute no container:\n\n\`\`\`sh\ndocker compose run --build --rm pascal sh src/pascal/executar.sh exemplo ${exercicio.id}\n\`\`\`\n\nEste trecho pertence ao programa gerado \`_examples/exemplos.pas\`. \`Exigir\` lança uma exceção se o exemplo produzir um resultado inesperado. As variáveis e units usadas estão declaradas no programa completo:\n\n\`\`\`pascal\n${exemplosPascal[exercicio.id]}\n\`\`\`\n\nVeja [o guia Pascal](${baseGitHub}/blob/main/docs/linguagens/pascal.md) para compilação, tipos, Unicode e gerenciamento de memória.\n`;
+    }
     await salvar(`src/${linguagem.id}/${exercicio.id}/README.md`, aviso + corpo + notas);
   }
+}
+
+if (disponiveis.some(item => item.id === 'pascal')) {
+  await salvar('src/pascal/_examples/exemplos.pas', programaPascal(catalogo.exercises));
 }
 
 if (disponiveis.some(item => item.id === 'swift')) {

@@ -4,7 +4,7 @@
 
 Um guia de estudo para entender, implementar e explicar desafios comuns de entrevistas técnicas. Cada solução tem comentários simples, testes automatizados e uma explicação do raciocínio e da capacidade avaliada.
 
-Os **dez desafios estão implementados em JavaScript, TypeScript, Java, Kotlin, PHP e Swift**, com testes próprios para cada linguagem. As próximas etapas serão Pascal e C++, uma linguagem por vez, com revisão de Marcos Rocha.
+Os **dez desafios estão implementados em JavaScript, TypeScript, Java, Kotlin, PHP, Swift e Pascal**, com testes próprios para cada linguagem. A próxima etapa será C++, em uma sessão própria, com revisão de Marcos Rocha.
 
 - [Wiki do projeto](https://github.com/marcosrocha85/testes-live-coding/wiki)
 - [Explicações dos desafios](docs/tests/README.md)
@@ -16,6 +16,7 @@ Os **dez desafios estão implementados em JavaScript, TypeScript, Java, Kotlin, 
 - [Guia de Kotlin para iniciantes](docs/linguagens/kotlin.md)
 - [Guia de PHP para iniciantes](docs/linguagens/php.md)
 - [Guia de Swift para iniciantes](docs/linguagens/swift.md)
+- [Guia de Pascal para iniciantes](docs/linguagens/pascal.md)
 - [Roteiro e issues por linguagem](docs/roadmap.md)
 
 O site é atualizado após a integração de cada entrega à `main`. A Wiki tem explicações dos dez desafios; suas fontes estão versionadas em [docs/wiki](docs/wiki/Home.md).
@@ -24,7 +25,7 @@ O site é atualizado após a integração de cada entrega à `main`. A Wiki tem 
 
 ### Com Docker
 
-Instale Git e Docker com suporte a containers Linux. Cada linguagem tem seu próprio container de testes; você pode executar só a que estiver estudando, sem instalar Node.js, TypeScript, JDK, Maven, Gradle, Kotlin, PHP, Composer ou Swift no computador:
+Instale Git e Docker com suporte a containers Linux. Cada linguagem tem seu próprio container de testes; você pode executar só a que estiver estudando, sem instalar Node.js, TypeScript, JDK, Maven, Gradle, Kotlin, PHP, Composer, Swift ou Free Pascal no computador:
 
 ```sh
 git clone https://github.com/marcosrocha85/testes-live-coding.git
@@ -35,6 +36,7 @@ docker compose run --build --rm java
 docker compose run --build --rm kotlin
 docker compose run --build --rm php
 docker compose run --build --rm swift
+docker compose run --build --rm pascal
 ```
 
 O primeiro uso baixa a imagem e as dependências. `--build` inclui suas alterações e `--rm` remove o container após os testes. Os testes usam uma cópia dos fontes, e os arquivos de build ficam dentro do Docker. Veja [o guia Docker](docs/docker.md) para entender os comandos, caches e como adicionar uma linguagem.
@@ -80,7 +82,7 @@ No PowerShell:
 .\src\java\mvnw.cmd -f src/java/pom.xml clean verify
 ```
 
-Java tem testes JUnit independentes dos workspaces npm. As soluções usam a biblioteca padrão; JUnit e Gson são dependências somente dos testes. A CI e o workflow Pages conferem as seis linguagens antes da publicação.
+Java tem testes JUnit independentes dos workspaces npm. As soluções usam a biblioteca padrão; JUnit e Gson são dependências somente dos testes. A CI e o workflow Pages conferem as sete linguagens antes da publicação.
 
 Para Kotlin, prefira `docker compose run --build --rm kotlin`, que valida sem instalar SDK no computador. Se já tiver **JDK 21** local, use o Gradle Wrapper:
 
@@ -114,6 +116,14 @@ swift run --package-path src/swift --jobs 2 exemplo soma_de_dois
 ```
 
 O microprojeto tem testes Swift Testing, sem dependências externas. Veja [o guia Swift](docs/linguagens/swift.md) para entender Optional, Unicode, identidade e ARC.
+
+Para Pascal, use `docker compose run --build --rm pascal`. Free Pascal 3.2.2 compila os dez desafios, executa os 86 casos JSON e as referências independentes, e valida os dez exemplos. Não é necessário instalar compilador no computador:
+
+```sh
+docker compose run --build --rm pascal sh src/pascal/executar.sh exemplo soma_de_dois
+```
+
+O exemplo imprime `0 1`. As soluções usam `Int64`, pontos Unicode completos e nós reais com alocação e liberação explícitas. Veja [o guia Pascal](docs/linguagens/pascal.md). `npm test` não executa a suíte Pascal.
 
 ## Os dez desafios iniciais
 
@@ -149,7 +159,8 @@ src/
   kotlin/                 # Dez desafios, Gradle Wrapper e testes JUnit
   php/                    # Dez desafios, Composer, PHPUnit e exemplos executáveis
   swift/                  # Dez desafios, Swift Package Manager e Swift Testing
-  pascal/ cpp/            # Etapas planejadas
+  pascal/                 # Dez desafios, Free Pascal, testes e exemplos compilados
+  cpp/                    # Etapa planejada
 scripts/                  # Geradores, preview e publicação da Wiki
 .github/                  # CI, publicação e templates de issues
 ```
@@ -166,6 +177,7 @@ Cada linguagem será um microprojeto independente, com ferramentas e testes adeq
 | `docker compose run --build --rm kotlin` | Gradle, compilação e todos os testes Kotlin em um container temporário |
 | `docker compose run --build --rm php` | Lint e todos os testes PHP em um container temporário |
 | `docker compose run --build --rm swift` | Compilação e todos os testes Swift em um container temporário |
+| `docker compose run --build --rm pascal` | Compilação Pascal, todos os testes e os dez exemplos em um container temporário |
 | `swift test --package-path src/swift --jobs 2` | Compilar e testar Swift com SDK local |
 | `composer --working-dir=src/php check` | Lint e testes PHP com ferramentas locais |
 | `./src/kotlin/gradlew --no-daemon -p src/kotlin clean check jar` | Compilar e testar Kotlin com JDK 21 local |

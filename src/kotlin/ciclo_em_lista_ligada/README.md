@@ -80,6 +80,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/ciclo_em_lista_ligada/CicloEmListaLigadaTest.php)
 - [Solução Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/ciclo_em_lista_ligada/CicloEmListaLigada.swift)
 - [Testes Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/ciclo_em_lista_ligada/CicloEmListaLigadaTest.swift)
+- [Solução Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/ciclo_em_lista_ligada/ciclo.pas)
+- [Testes Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/ciclo_em_lista_ligada/ciclo_em_lista_ligada_test.pas)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/ciclo_em_lista_ligada.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#ciclo_em_lista_ligada.javascript)
 
@@ -156,6 +158,16 @@ swift test --package-path src/swift --jobs 2 --filter CicloEmListaLigadaTest
 ```
 
 Com Docker, todos os desafios de Swift: `docker compose run --build --rm swift`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Pascal
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm pascal sh src/pascal/executar.sh testes ciclo_em_lista_ligada
+```
+
+Com Docker, todos os desafios de Pascal: `docker compose run --build --rm pascal`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Kotlin
 

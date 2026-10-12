@@ -83,6 +83,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/anagrama_valido/AnagramaValidoTest.php)
 - [Solução Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/anagrama_valido/AnagramaValido.swift)
 - [Testes Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/anagrama_valido/AnagramaValidoTest.swift)
+- [Solução Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/anagrama_valido/anagrama.pas)
+- [Testes Pascal](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/pascal/anagrama_valido/anagrama_valido_test.pas)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/anagrama_valido.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#anagrama_valido.javascript)
 
@@ -159,6 +161,16 @@ swift test --package-path src/swift --jobs 2 --filter AnagramaValidoTest
 ```
 
 Com Docker, todos os desafios de Swift: `docker compose run --build --rm swift`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Pascal
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm pascal sh src/pascal/executar.sh testes anagrama_valido
+```
+
+Com Docker, todos os desafios de Pascal: `docker compose run --build --rm pascal`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Kotlin
 
