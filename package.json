@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24" },
-  "workspaces": ["src/javascript"],
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "src/javascript",
+    "src/typescript"
+  ],
   "scripts": {
-    "test": "npm run test --workspace src/javascript && node --test scripts/build-site.test.mjs",
-    "test:coverage": "npm run test:coverage --workspace src/javascript",
+    "test": "npm run test --workspaces && node --test scripts/build-site.test.mjs",
+    "test:coverage": "npm run test:coverage --workspaces",
     "build": "node scripts/build-site.mjs",
     "docs": "node scripts/build-docs.mjs",
     "docs:check": "node scripts/build-docs.mjs --check",
-    "preview": "node scripts/preview.mjs"
+    "preview": "node scripts/preview.mjs",
+    "typecheck": "npm run typecheck --workspace src/typescript"
   }
 }

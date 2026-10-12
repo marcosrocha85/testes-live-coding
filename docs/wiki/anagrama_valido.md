@@ -73,11 +73,24 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 
 - [Solução JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/anagrama_valido/index.js)
 - [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/anagrama_valido/index.test.js)
+- [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/anagrama_valido/index.ts)
+- [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/anagrama_valido/index.test.ts)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/anagrama_valido.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#anagrama_valido.javascript)
 
-Da raiz do repositório:
+### JavaScript
+
+Da raiz do repositório, após `npm ci`:
 
 ```sh
 node --test src/javascript/anagrama_valido/index.test.js
+```
+
+### TypeScript
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+npm run build --workspace src/typescript
+node --test src/typescript/dist/anagrama_valido/index.test.js
 ```

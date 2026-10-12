@@ -1,0 +1,17 @@
+{
+  "name": "@testes-live-coding/typescript",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test \"dist/**/*.test.js\" entrada-javascript.test.mjs",
+    "test:coverage": "npm run build && node --test --experimental-test-coverage \"dist/**/*.test.js\" entrada-javascript.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2"
+  }
+}

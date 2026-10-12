@@ -72,11 +72,24 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 
 - [Solução JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/busca_binaria/index.js)
 - [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/busca_binaria/index.test.js)
+- [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/busca_binaria/index.ts)
+- [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/busca_binaria/index.test.ts)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/busca_binaria.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#busca_binaria.javascript)
 
-Da raiz do repositório:
+### JavaScript
+
+Da raiz do repositório, após `npm ci`:
 
 ```sh
 node --test src/javascript/busca_binaria/index.test.js
+```
+
+### TypeScript
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+npm run build --workspace src/typescript
+node --test src/typescript/dist/busca_binaria/index.test.js
 ```

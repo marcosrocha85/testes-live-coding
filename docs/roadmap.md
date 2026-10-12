@@ -2,15 +2,15 @@
 
 # Roteiro de implementação
 
-Trabalhamos uma linguagem por vez, nesta ordem: JavaScript, TypeScript, Java, Kotlin, PHP, Swift, Pascal e C++. Cada etapa tem uma issue principal e dez sub-issues reais. JavaScript é a primeira entrega; as outras sete linguagens ainda estão planejadas.
+Trabalhamos uma linguagem por vez, nesta ordem: JavaScript, TypeScript, Java, Kotlin, PHP, Swift, Pascal e C++. Cada etapa tem uma issue principal e dez sub-issues reais. Implementações disponíveis na base: **JavaScript e TypeScript**. As outras linguagens estão planejadas.
 
-As issues de JavaScript permanecem abertas até a integração da PR inicial. Uma linguagem só está concluída quando seus dez desafios, testes, explicações e CI estiverem prontos e revisados.
+As issues são encerradas na integração da PR correspondente. Uma linguagem precisa de seus dez desafios, testes, explicações, CI e revisão de Marcos Rocha. O site recebe as implementações após a integração na main.
 
 Novos desafios são registrados pelo [template de issue](https://github.com/marcosrocha85/testes-live-coding/issues/new/choose). Eles recebem contrato e casos antes da implementação.
 
 ## JavaScript
 
-Estado da implementação: disponível na base inicial.
+Estado da implementação: disponível na base.
 
 [Issue principal #1](https://github.com/marcosrocha85/testes-live-coding/issues/1)
 
@@ -27,7 +27,7 @@ Estado da implementação: disponível na base inicial.
 
 ## TypeScript
 
-Estado da implementação: planejada.
+Estado da implementação: disponível na base.
 
 [Issue principal #12](https://github.com/marcosrocha85/testes-live-coding/issues/12)
 

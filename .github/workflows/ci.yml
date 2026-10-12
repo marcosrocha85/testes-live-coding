@@ -6,7 +6,8 @@ on:
 permissions:
   contents: read
 jobs:
-  javascript:
+  node:
+    name: JavaScript e TypeScript
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7

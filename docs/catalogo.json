@@ -1,7 +1,7 @@
 {
   "languages": [
     { "id": "javascript", "name": "JavaScript", "status": "implemented", "extension": "js", "runtime": "Node.js 24 ou superior", "testCommand": "npm run test --workspace src/javascript" },
-    { "id": "typescript", "name": "TypeScript", "status": "planned", "extension": "ts" },
+    { "id": "typescript", "name": "TypeScript", "status": "implemented", "extension": "ts", "runtime": "Node.js 24 ou superior; TypeScript 7.0.2", "testCommand": "npm run test --workspace src/typescript" },
     { "id": "java", "name": "Java", "status": "planned", "extension": "java" },
     { "id": "kotlin", "name": "Kotlin", "status": "planned", "extension": "kt" },
     { "id": "php", "name": "PHP", "status": "planned", "extension": "php" },

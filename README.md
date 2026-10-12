@@ -2,16 +2,17 @@
 
 Um guia de estudo para entender, implementar e explicar desafios comuns de entrevistas técnicas. Cada solução tem comentários simples, testes automatizados e uma explicação do raciocínio e da capacidade avaliada.
 
-Começamos com **dez desafios em JavaScript**. As próximas etapas serão TypeScript, Java, Kotlin, PHP, Swift, Pascal e C++, uma linguagem por vez, com revisão de Marcos Rocha.
+Os **dez desafios estão implementados em JavaScript e TypeScript**, com testes próprios para cada linguagem. As próximas etapas serão Java, Kotlin, PHP, Swift, Pascal e C++, uma linguagem por vez, com revisão de Marcos Rocha.
 
 - [Catálogo com abas por linguagem no GitHub Pages](https://marcosrocha85.github.io/testes-live-coding/)
 - [Wiki do projeto](https://github.com/marcosrocha85/testes-live-coding/wiki)
 - [Explicações dos desafios](docs/tests/README.md)
 - [Arquitetura](docs/arquitetura.md) e [contratos dos testes](docs/contratos.md)
 - [Guia de JavaScript para iniciantes](docs/linguagens/javascript.md)
+- [Guia de TypeScript para iniciantes](docs/linguagens/typescript.md)
 - [Roteiro e issues por linguagem](docs/roadmap.md)
 
-O site é publicado após a integração da base à `main`. A Wiki tem explicações dos dez desafios; suas fontes estão versionadas em [docs/wiki](docs/wiki/Home.md).
+O site é atualizado após a integração de cada entrega à `main`. A Wiki tem explicações dos dez desafios; suas fontes estão versionadas em [docs/wiki](docs/wiki/Home.md).
 
 ## Como começar
 
@@ -33,6 +34,14 @@ node --input-type=module -e "import { somaDeDois } from './src/javascript/soma_d
 ```
 
 A saída é `[0, 1]`: os números nos índices 0 e 1 somam 9. Índices começam em zero.
+
+Para estudar TypeScript, compile e execute os testes do microprojeto:
+
+```sh
+npm run test --workspace src/typescript
+```
+
+O comando verifica os tipos, compila as soluções e executa seus testes. Os arquivos `.ts` originais ficam disponíveis na aba TypeScript do site após a integração na `main`.
 
 ## Os dez desafios iniciais
 
@@ -62,8 +71,9 @@ docs/
   wiki/                   # Páginas geradas para a Wiki
   site/                   # Interface do catálogo no GitHub Pages
 src/
-  javascript/             # Microprojeto inicial, com os dez desafios e testes
-  typescript/ java/ kotlin/ php/ swift/ pascal/ cpp/  # Etapas planejadas
+  javascript/             # Dez desafios e testes executados pelo Node
+  typescript/             # Dez desafios, compilação estrita e testes próprios
+  java/ kotlin/ php/ swift/ pascal/ cpp/  # Etapas planejadas
 scripts/                  # Geradores, preview e publicação da Wiki
 .github/                  # CI, publicação e templates de issues
 ```
@@ -74,8 +84,9 @@ Cada linguagem será um microprojeto independente, com ferramentas e testes adeq
 
 | Comando | Finalidade |
 | --- | --- |
-| `npm test` | Testes JavaScript e verificações do gerador do site |
-| `npm run test:coverage` | Testes JavaScript com relatório de cobertura |
+| `npm test` | Testes JavaScript, TypeScript e verificações do gerador do site |
+| `npm run typecheck` | Checagem estrita de tipos do microprojeto TypeScript |
+| `npm run test:coverage` | Testes das duas linguagens com relatório de cobertura |
 | `node --test src/javascript/busca_binaria/index.test.js` | Testar apenas um desafio |
 | `npm run docs` | Atualizar explicações, READMEs dos desafios e fontes da Wiki |
 | `npm run docs:check` | Detectar documentação gerada desatualizada |
