@@ -75,6 +75,32 @@ const exemplosKotlin = {
   ciclo_em_lista_ligada: 'val primeiro = No(1)\nval segundo = No(2, primeiro)\nprimeiro.proximo = segundo\nprintln(temCiclo(primeiro)) // true'
 };
 
+const notasPHP = {
+  soma_de_dois: '`array` é usado como lista na entrada e como mapa em `$vistos`. A anotação `list<int>` documenta índices de zero a n - 1; PHP não verifica os tipos dos elementos. `isset` aceita o índice zero como valor existente. `?array` permite retornar `null`. Os arrays são passados por valor, sem `&`.',
+  parenteses_validos: '`$pilha[]` acrescenta uma abertura ao fim do array. `array_pop` remove dessa mesma ponta e devolve `null` se estiver vazia. Strings PHP são sequências de bytes; acessar um byte é adequado porque os seis símbolos aceitos são ASCII. A comparação `!==` evita conversões implícitas.',
+  inverter_lista_ligada: '`?No` aceita um objeto ou `null`. `->` acessa uma propriedade. Atribuir um objeto a outra variável conserva o mesmo objeto; não faz uma cópia. Por isso guardar `$seguinte` preserva o restante da lista e mudar `proximo` altera o nó original, mesmo sem usar `&`.',
+  busca_binaria: '`count` mede o array e `intdiv` divide dois inteiros sem produzir um float. A entrada é uma lista de inteiros com índices consecutivos, começando em zero. `===` compara também o tipo. A função não ordena a entrada; no array vazio, o fim vale -1 e não há leitura de posição.',
+  mesclar_listas_ordenadas: '`new No(0)` cria somente o sentinela, que fica fora da resposta. Os outros objetos vêm das listas originais. `<=` escolhe o nó da primeira lista em empate. `??` usa a primeira referência não nula. Alterar uma propriedade do objeto modifica o nó recebido.',
+  compra_e_venda_de_acoes: 'O array é uma lista de preços inteiros. `max` e `min` escolhem entre dois valores. O lucro é calculado antes de atualizar o menor preço, para manter a compra em um dia anterior. Zero representa a decisão de não negociar.',
+  subarray_maximo: '`?int` permite uma soma inteira ou `null` para a entrada vazia. O microprojeto exige PHP de 64 bits: a soma de dez bilhões não cabe em um inteiro de 32 bits. Começar no primeiro valor permite uma resposta negativa quando todos os números são negativos.',
+  subir_escadas: '`int|float` permite validar também valores fracionários dos casos externos. `is_finite` e `floor` rejeitam NaN, infinitos e frações; negativos e valores acima de 77 lançam `InvalidArgumentException`. Somente a validação usa float; as contagens usam inteiros de 64 bits. Em chamadas com `strict_types=1`, strings numéricas e booleanos causam `TypeError`.',
+  anagrama_valido: '`pontosDeCodigo` entrega strings UTF-8 completas por um Generator, sem criar um array de todos os caracteres. O prefixo `c:` impede que dígitos virem chaves inteiras no mapa. `?? 0` inicia uma contagem e `unset` remove uma chave já consumida. O auxiliar valida UTF-8 uma vez e usa o primeiro byte para determinar a largura do ponto. Espaços, maiúsculas e acentos continuam significativos.',
+  ciclo_em_lista_ligada: '`===` compara se os ponteiros apontam para o mesmo objeto. `==` poderia comparar propriedades e não serve para Floyd. O laço verifica a existência do rápido e do próximo nó antes de avançar duas posições. Os campos são apenas lidos.'
+};
+
+const exemplosPHP = {
+  soma_de_dois: 'echo json_encode(somaDeDois([2, 7, 11, 15], 9), JSON_THROW_ON_ERROR), PHP_EOL; // [0,1]',
+  parenteses_validos: 'var_export(parentesesValidos("{[()]}")); // true\necho PHP_EOL;',
+  inverter_lista_ligada: '$cabeca = new No(1, new No(2, new No(3)));\n$invertida = inverterListaLigada($cabeca);\necho $invertida->valor, PHP_EOL; // 3; as ligações são 3 → 2 → 1 → null',
+  busca_binaria: 'echo buscaBinaria([1, 3, 5, 7, 9], 7), PHP_EOL; // 3',
+  mesclar_listas_ordenadas: '$mesclada = mesclarListasOrdenadas(new No(1, new No(3)), new No(2, new No(4)));\necho $mesclada->valor, PHP_EOL; // 1; a sequência é 1 → 2 → 3 → 4 → null',
+  compra_e_venda_de_acoes: 'echo maiorLucro([7, 1, 5, 3, 6, 4]), PHP_EOL; // 5',
+  subarray_maximo: 'echo subarrayMaximo([-2, 1, -3, 4, -1, 2, 1, -5, 4]), PHP_EOL; // 6',
+  subir_escadas: 'echo subirEscadas(3), PHP_EOL; // 3',
+  anagrama_valido: 'var_export(anagramaValido("😀a😀", "😀😀a")); // true\necho PHP_EOL;',
+  ciclo_em_lista_ligada: '$primeiro = new No(1);\n$segundo = new No(2, $primeiro);\n$primeiro->proximo = $segundo;\nvar_export(temCiclo($primeiro)); // true\necho PHP_EOL;'
+};
+
 async function salvar(caminho, conteudo) {
   const destino = resolve(root, caminho);
   if (process.argv.includes('--check')) {
@@ -123,6 +149,9 @@ for (const exercicio of catalogo.exercises) {
       const windows = comando.replace('./src/kotlin/gradlew', '.\\src\\kotlin\\gradlew.bat');
       return `### Kotlin\n\nDa raiz, com JDK 21. O Wrapper baixa Gradle e o compilador Kotlin. Linux/macOS:\n\n\`\`\`sh\n${comando}\n\`\`\`\n\nPowerShell:\n\n\`\`\`powershell\n${windows}\n\`\`\`\n` + docker;
     }
+    if (linguagem.id === 'php') {
+      return `### PHP\n\nDa raiz, com PHP 8.4 ou 8.5 de 64 bits e Composer. O comando funciona também no PowerShell:\n\n\`\`\`sh\ncomposer --working-dir=src/php install\n${comando}\n\`\`\`\n` + docker;
+    }
     return `### ${linguagem.name}\n\nDa raiz do repositório, após \`npm ci\`:\n\n\`\`\`sh\n${comando}\n\`\`\`\n` + docker;
   }).join('\n');
   const corpo = [
@@ -163,6 +192,13 @@ for (const exercicio of catalogo.exercises) {
       const imports = `import livecoding.${exercicio.id}.${exercicio.functionName}\n` + (linguagem.supportFilesByExercise?.[exercicio.id] ? 'import livecoding._shared.No\n' : '');
       const exemplo = exemplosKotlin[exercicio.id].split('\n').map(linha => `    ${linha}`).join('\n');
       notas = `\n## Particularidades em Kotlin\n\n${notasKotlin[exercicio.id]}\n\n## Exemplo de uso em Kotlin\n\nAs funções são declaradas no topo do arquivo. Em um programa Kotlin que use este microprojeto:\n\n\`\`\`kotlin\n${imports}\nfun main() {\n${exemplo}\n}\n\`\`\`\n\nVeja [o guia de Kotlin](${baseGitHub}/blob/main/docs/linguagens/kotlin.md) para ferramentas, tipos, Unicode e comandos.\n`;
+    }
+    if (linguagem.id === 'php') {
+      const usaNo = ['inverter_lista_ligada', 'mesclar_listas_ordenadas', 'ciclo_em_lista_ligada'].includes(exercicio.id);
+      const imports = `use function LiveCoding\\${exercicio.id}\\${exercicio.functionName};\n` + (usaNo ? 'use LiveCoding\\Shared\\No;\n' : '');
+      const exemplo = `<?php\ndeclare(strict_types=1);\n\n// Gerado por npm run docs. Consulte o README deste desafio.\nrequire_once dirname(__DIR__) . '/bootstrap.php';\n\n${imports}\n${exemplosPHP[exercicio.id]}\n`;
+      await salvar(`src/php/${exercicio.id}/exemplo.php`, exemplo);
+      notas = `\n## Particularidades em PHP\n\n${notasPHP[exercicio.id]}\n\n## Exemplo executável em PHP\n\nCom PHP local, execute da raiz (sem instalar Composer para este exemplo):\n\n\`\`\`sh\nphp src/php/${exercicio.id}/exemplo.php\n\`\`\`\n\nOu dentro do container:\n\n\`\`\`sh\ndocker compose run --build --rm php php src/php/${exercicio.id}/exemplo.php\n\`\`\`\n\n\`\`\`php\n${exemplo}\`\`\`\n\nVeja [o guia de PHP](${baseGitHub}/blob/main/docs/linguagens/php.md) para ferramentas, tipos, Unicode e comandos.\n`;
     }
     await salvar(`src/${linguagem.id}/${exercicio.id}/README.md`, aviso + corpo + notas);
   }

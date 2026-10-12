@@ -78,6 +78,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/soma_de_dois/SomaDeDoisTest.java)
 - [Solução Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/soma_de_dois/SomaDeDois.kt)
 - [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/soma_de_dois/SomaDeDoisTest.kt)
+- [Solução PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/soma_de_dois/index.php)
+- [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/soma_de_dois/SomaDeDoisTest.php)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/soma_de_dois.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#soma_de_dois.javascript)
 
@@ -133,3 +135,14 @@ PowerShell:
 ```
 
 Com Docker, todos os desafios de Kotlin: `docker compose run --build --rm kotlin`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### PHP
+
+Da raiz, com PHP 8.4 ou 8.5 de 64 bits e Composer. O comando funciona também no PowerShell:
+
+```sh
+composer --working-dir=src/php install
+composer --working-dir=src/php test -- --filter SomaDeDoisTest
+```
+
+Com Docker, todos os desafios de PHP: `docker compose run --build --rm php`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).

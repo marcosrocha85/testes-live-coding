@@ -78,6 +78,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/subir_escadas/SubirEscadasTest.java)
 - [Solução Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/subir_escadas/SubirEscadas.kt)
 - [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/subir_escadas/SubirEscadasTest.kt)
+- [Solução PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/subir_escadas/index.php)
+- [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/subir_escadas/SubirEscadasTest.php)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subir_escadas.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subir_escadas.javascript)
 
@@ -133,3 +135,14 @@ PowerShell:
 ```
 
 Com Docker, todos os desafios de Kotlin: `docker compose run --build --rm kotlin`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### PHP
+
+Da raiz, com PHP 8.4 ou 8.5 de 64 bits e Composer. O comando funciona também no PowerShell:
+
+```sh
+composer --working-dir=src/php install
+composer --working-dir=src/php test -- --filter SubirEscadasTest
+```
+
+Com Docker, todos os desafios de PHP: `docker compose run --build --rm php`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).

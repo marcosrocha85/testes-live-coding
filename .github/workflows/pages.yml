@@ -27,9 +27,17 @@ jobs:
           cache: maven
           cache-dependency-path: src/java/pom.xml
       - run: npm ci
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: dom, json, mbstring, xml, xmlwriter
+          tools: composer:2.9.8
+          coverage: none
       - run: npm test
       - run: ./src/java/mvnw -B -f src/java/pom.xml clean verify
       - run: ./src/kotlin/gradlew --no-daemon --console=plain -p src/kotlin clean check jar
+      - run: composer --working-dir=src/php install --no-interaction --prefer-dist --no-progress --no-scripts
+      - run: composer --working-dir=src/php check
       - run: npm run docs:check
       - run: npm run build
       - uses: actions/configure-pages@v6

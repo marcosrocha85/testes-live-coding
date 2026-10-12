@@ -5,5 +5,7 @@ target/
 build/
 .gradle/
 .kotlin/
+vendor/
+.phpunit.cache/
 .DS_Store
 *.log

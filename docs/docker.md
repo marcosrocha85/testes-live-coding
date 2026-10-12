@@ -13,6 +13,7 @@ docker compose run --build --rm javascript
 docker compose run --build --rm typescript
 docker compose run --build --rm java
 docker compose run --build --rm kotlin
+docker compose run --build --rm php
 ```
 
 Os comandos funcionam em PowerShell, Linux e macOS:
@@ -22,7 +23,7 @@ Os comandos funcionam em PowerShell, Linux e macOS:
 - `--rm` remove o container quando ele termina, inclusive em caso de falha.
 - O resultado é zero quando os testes passam e diferente de zero quando falham.
 
-As imagens base estão fixadas por digest, que identifica seu conteúdo. TypeScript usa o lockfile npm; Java usa as versões do POM e Maven Wrapper; Kotlin usa Gradle Wrapper 9.7.0 com SHA-256, Kotlin 2.4.21 e dependências de teste versionadas no build. O container executa os mesmos testes da execução local e consome `docs/casos`. Nenhuma suíte é reduzida para Docker.
+As imagens base estão fixadas por digest, que identifica seu conteúdo. TypeScript usa o lockfile npm; Java usa as versões do POM e Maven Wrapper; Kotlin usa Gradle Wrapper 9.7.0 com SHA-256, Kotlin 2.4.21 e dependências de teste versionadas no build. O container executa os mesmos testes da execução local e consome `docs/casos`. Nenhuma suíte é reduzida para Docker. PHP usa PHP 8.4.26 de 64 bits e Composer 2.9.8 de imagens oficiais fixadas por digest; PHPUnit 12.5.34 e suas dependências são instalados pelo lockfile do microprojeto.
 
 | Serviço | Execução |
 | --- | --- |
@@ -30,6 +31,7 @@ As imagens base estão fixadas por digest, que identifica seu conteúdo. TypeScr
 | `typescript` | Node 24, instalação pelo lockfile, compilação estrita e todos os testes |
 | `java` | JDK 21, Maven Wrapper, compilação, testes JUnit e JAR |
 | `kotlin` | JDK 21, Gradle Wrapper, compilação Kotlin, 102 testes JUnit e JAR |
+| `php` | PHP de 64 bits, Composer, checagem de sintaxe e 106 testes PHPUnit |
 
 Os serviços têm perfis para evitar iniciar todos por acidente. Ao indicar o serviço em `run`, seu perfil é ativado automaticamente. Não use `docker compose up` para esse fluxo: os testes são execuções temporárias, sem portas nem processos permanentes.
 
@@ -43,6 +45,18 @@ Para executar só busca binária em Kotlin:
 
 ```sh
 docker compose run --build --rm kotlin ./src/kotlin/gradlew --no-daemon -p src/kotlin test --tests BuscaBinariaTest
+```
+
+Só busca binária em PHP:
+
+```sh
+docker compose run --build --rm php composer --working-dir=src/php test -- --filter BuscaBinariaTest
+```
+
+Um exemplo executável PHP:
+
+```sh
+docker compose run --build --rm php php src/php/soma_de_dois/exemplo.php
 ```
 
 ## Arquivos e caches
@@ -66,6 +80,8 @@ docker volume rm testes-live-coding_kotlin_gradle
 ```
 
 O próximo teste Kotlin baixa as ferramentas e dependências novamente.
+
+PHP instala suas dependências de desenvolvimento em uma camada da imagem usando `composer.lock`; essa camada é reutilizada enquanto os manifests não mudarem. Não há volume de cache PHP, nem diretório `vendor` escrito no computador. O cache do PHPUnit é criado no container temporário. `vendor` e `.phpunit.cache` ficam fora do contexto Docker.
 
 ## Adicionar uma linguagem
 

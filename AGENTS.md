@@ -30,6 +30,7 @@ Este repositório é um guia de estudo de live coding para iniciantes. A priorid
 - Para Java, use JDK 21 ou superior e execute `./src/java/mvnw -f src/java/pom.xml clean verify` (Linux/macOS) ou `.\src\java\mvnw.cmd -f src/java/pom.xml clean verify` (PowerShell). `npm test` não executa os testes Java.
 - Para Kotlin, prefira `docker compose run --build --rm kotlin`, sem instalar SDK no host. Com JDK 21 local, execute `./src/kotlin/gradlew --no-daemon -p src/kotlin clean check jar` ou `.\src\kotlin\gradlew.bat --no-daemon -p src/kotlin clean check jar` no PowerShell. O Wrapper fixa Gradle e verifica o SHA-256. `npm test` não executa os testes Kotlin.
 - `npm run test:coverage` ajuda a investigar cobertura; cobertura não substitui testes que detectem erros reais.
+- Para PHP, prefira `docker compose run --build --rm php`. Com PHP 8.4 ou 8.5 de 64 bits e Composer local, use `composer --working-dir=src/php install` e `composer --working-dir=src/php check`. Preserve `composer.lock`; PHPUnit é dependência apenas dos testes. `npm test` não executa PHP. O gerador mantém também os arquivos `exemplo.php` dos desafios; não os edite manualmente.
 - Atualize `docs/catalogo.json` e execute `npm run docs` quando mudar as explicações. Não edite manualmente os arquivos gerados indicados no cabeçalho.
 - Antes de concluir, registre na issue ou PR o que mudou e quais comandos passaram. Não afirme ter executado compiladores ou testes que não foram executados.
 
