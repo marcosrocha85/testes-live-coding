@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir, copyFile, realpath } from 'node:fs/promises';
 import { resolve, relative, isAbsolute } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { destacarCodigo } from './highlight-code.mjs';
 
 export const projectRoot = fileURLToPath(new URL('../', import.meta.url));
 
@@ -38,8 +39,11 @@ export async function buildSite({ root = projectRoot, output = resolve(root, 'di
       const usaLista = ['javascript', 'typescript'].includes(linguagem.id) && ['inverter_lista_ligada', 'mesclar_listas_ordenadas', 'ciclo_em_lista_ligada'].includes(exercicio.id);
       const auxiliares = linguagem.supportFiles ?? (usaLista ? [`src/${linguagem.id}/_shared/lista.${linguagem.extension}`] : []);
       const support = [];
-      for (const path of auxiliares) support.push({ path, code: await lerCodigo(root, linguagem, path) });
-      solutions.push({ language: linguagem.id, path, code, support });
+      for (const path of auxiliares) {
+        const code = await lerCodigo(root, linguagem, path);
+        support.push({ path, code, highlightedCode: destacarCodigo(code, linguagem.id) });
+      }
+      solutions.push({ language: linguagem.id, path, code, highlightedCode: destacarCodigo(code, linguagem.id), support });
     }
     exercises.push({ ...exercicio, cases, solutions });
   }

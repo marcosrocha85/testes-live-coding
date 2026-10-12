@@ -18,5 +18,8 @@
     "docs:check": "node scripts/build-docs.mjs --check",
     "preview": "node scripts/preview.mjs",
     "typecheck": "npm run typecheck --workspace src/typescript"
+  },
+  "devDependencies": {
+    "highlight.js": "11.12.0"
   }
 }

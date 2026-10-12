@@ -22,6 +22,8 @@ Os outros seis diretórios contêm somente a indicação da etapa planejada. Ao 
 
 `npm run build` lê o catálogo, os casos e os arquivos de implementação e gera um site estático em `dist`. A interface em `docs/site` permite selecionar o exercício, ler o raciocínio e trocar a aba da linguagem. O código é mostrado como texto; não é executado no navegador.
 
+O destaque de sintaxe usa [highlight.js](https://highlightjs.org/) 11.12.0 somente no build. `scripts/highlight-code.mjs` registra explicitamente as oito linguagens do roteiro, incluindo a gramática Delphi para Pascal. O catálogo publicado mantém o código original em `code`, usado pelo botão de copiar, e acrescenta `highlightedCode` com a marcação escapada de cores. Soluções e auxiliares usam o mesmo tema em `docs/site/style.css`. A página não precisa baixar um realçador ou consultar uma CDN; se a marcação não estiver disponível, mostra o texto original.
+
 Uma linguagem disponível precisa declarar `status: "implemented"` e pode informar `solutionFiles`, um mapa de ID do desafio para arquivo relativo à raiz, quando a organização da linguagem não seguir `src/<id>/<desafio>/index.<extensão>`. O gerador rejeita caminhos fora de `src/<id>/` e exige os dez arquivos. Linguagens planejadas mostram a issue e não anunciam código existente.
 
 O conteúdo publicado é obtido de arquivos reais, sem cópias manuais de código dentro de HTML. Para JavaScript e TypeScript, o site também oferece o código do auxiliar de listas ligadas usado por alguns desafios. A aba TypeScript mostra o `.ts` com suas anotações, não o JavaScript compilado. O resumo de linguagens disponíveis é calculado pelo catálogo. Acrescente uma lista `supportFiles` no catálogo para divulgar auxiliares de outras linguagens.
