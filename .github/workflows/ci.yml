@@ -84,6 +84,22 @@ jobs:
           coverage: none
       - run: composer --working-dir=src/php install --no-interaction --prefer-dist --no-progress --no-scripts
       - run: composer --working-dir=src/php check
+  pascal:
+    name: Pascal 3.2.2 Ubuntu 24.04
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - name: Instalar Free Pascal e bibliotecas da mesma versão no runner
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y \
+            fp-compiler-3.2.2=3.2.2+dfsg-32 \
+            fp-units-rtl-3.2.2=3.2.2+dfsg-32 \
+            fp-units-base-3.2.2=3.2.2+dfsg-32 \
+            fp-units-fcl-3.2.2=3.2.2+dfsg-32
+      - run: fpc -iV
+      - run: sh src/pascal/executar.sh check
   swift:
     name: Swift 6.3.3 ${{ matrix.os }}
     runs-on: ${{ matrix.os }}

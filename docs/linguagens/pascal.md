@@ -34,7 +34,7 @@ sh src/pascal/executar.sh exemplo subir_escadas
 
 O script exige a versão 3.2.2. `compilar.sh` configura os caminhos das units com `-Fu`, grava objetos e units compiladas com `-FU`, e executáveis com `-FE`. `-B` recompila os fontes, `-Sew` trata avisos como erros, `-Cr` verifica limites de arrays, `-Co` verifica overflow e `-gl` inclui linhas nas falhas. Os programas incluem `heaptrc` primeiro e ativam `HaltOnNotReleased`: vazamentos fazem a execução falhar. No PowerShell, os comandos Docker dispensam shell Unix e compilador local.
 
-As distribuições oficiais estão em [FreePascal.org](https://www.freepascal.org/download.html); a versão dos pacotes do container está no [Debian](https://packages.debian.org/bookworm/fp-compiler). Não é necessário instalar essas ferramentas para usar Docker. `npm test` não executa Pascal. A CI descobre Pascal pelo catálogo na matriz Docker; Pages executa o mesmo comando antes de publicar.
+As distribuições oficiais estão em [FreePascal.org](https://www.freepascal.org/download.html); a versão dos pacotes do container está no [Debian](https://packages.debian.org/bookworm/fp-compiler). Não é necessário instalar essas ferramentas para usar Docker. `npm test` não executa Pascal. A CI descobre Pascal pelo catálogo na matriz Docker e também executa a suíte nativa em Ubuntu 24.04, com compilador e units fixados no pacote [3.2.2+dfsg-32 do Ubuntu](https://packages.ubuntu.com/noble/fp-compiler-3.2.2). A instalação nativa acontece somente no runner descartável do GitHub. Pages executa Docker Pascal antes de publicar.
 
 ## Units, funções e arrays
 
