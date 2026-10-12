@@ -1,10 +1,11 @@
 # Testes de live coding
 
+**[Acesse o site: problemas, explicações e código por linguagem](https://marcosrocha85.github.io/testes-live-coding/)**
+
 Um guia de estudo para entender, implementar e explicar desafios comuns de entrevistas técnicas. Cada solução tem comentários simples, testes automatizados e uma explicação do raciocínio e da capacidade avaliada.
 
 Os **dez desafios estão implementados em JavaScript, TypeScript e Java**, com testes próprios para cada linguagem. As próximas etapas serão Kotlin, PHP, Swift, Pascal e C++, uma linguagem por vez, com revisão de Marcos Rocha.
 
-- [Catálogo com abas por linguagem no GitHub Pages](https://marcosrocha85.github.io/testes-live-coding/)
 - [Wiki do projeto](https://github.com/marcosrocha85/testes-live-coding/wiki)
 - [Explicações dos desafios](docs/tests/README.md)
 - [Arquitetura](docs/arquitetura.md) e [contratos dos testes](docs/contratos.md)

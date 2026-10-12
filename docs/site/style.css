@@ -10,7 +10,7 @@ button, select { cursor: pointer; }
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
 .skip { position: absolute; top: -100px; left: 20px; background: var(--green); color: var(--bg); padding: 10px; z-index: 10; }
 .skip:focus { top: 8px; }
-.topbar { max-width: 1360px; margin: auto; padding: 26px 52px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.topbar { max-width: 1360px; margin: auto; padding: 26px 52px; display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
 .brand { text-decoration: none; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 700; display: flex; align-items: center; gap: 12px; }
 .brand-mark { background: var(--green); color: #17231c; padding: 0 8px; border-radius: 6px; font-family: var(--mono); font-weight: 700; }
 .brand-context { font: 13px 'DM Sans', sans-serif; color: var(--muted); font-weight: 400; margin-left: 4px; }

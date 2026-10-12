@@ -44,3 +44,5 @@ Este repositório é um guia de estudo de live coding para iniciantes. A priorid
 ## Preferências de nomenclatura
 
 Em português, referir-se sempre à Gideon no feminino: a Gideon, da Gideon, à Gideon, ela e dela. Use Tinker e `tinkertecnologia.com` nas referências à empresa. Preserve caminhos e nomes públicos reais de ferramentas ao executar comandos.
+
+Na apresentação pública deste projeto, use **MarcosRochaGPM** como marca do site e do material de apresentação.
