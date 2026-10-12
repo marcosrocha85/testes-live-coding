@@ -44,6 +44,8 @@ jobs:
         run: docker compose run --build --rm -T pascal
       - name: Compilar e testar C++ e seus dez exemplos com sanitizadores
         run: docker compose run --build --rm -T cpp
+      - name: Verificar Go 1.27.2, testar em 64 e 32 bits e executar os dez exemplos
+        run: docker compose run --build --rm -T go
       - run: npm run docs:check
       - run: npm run build
       - uses: actions/configure-pages@v6

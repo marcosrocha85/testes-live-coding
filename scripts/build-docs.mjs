@@ -3,6 +3,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { notasPascal, exemplosPascal, programaPascal } from './pascal-docs.mjs';
 import { notasCpp, exemplosCpp, programaCpp } from './cpp-docs.mjs';
+import { notasGo, exemplosGo, programaGo } from './go-docs.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const catalogo = JSON.parse(await readFile(resolve(root, 'docs/catalogo.json'), 'utf8'));
@@ -145,6 +146,7 @@ async function salvar(caminho, conteudo) {
 }
 
 function comandoDesafio(linguagem, id) {
+  if (linguagem.id === 'go') return `docker compose run --build --rm go sh executar.sh testes ${id}`;
   if (linguagem.id === 'cpp') return `docker compose run --build --rm cpp sh src/cpp/executar.sh testes ${id}`;
   if (linguagem.id === 'pascal') return `docker compose run --build --rm pascal sh src/pascal/executar.sh testes ${id}`;
   if (linguagem.id === 'javascript') return `node --test src/javascript/${id}/index.test.js`;
@@ -171,7 +173,7 @@ for (const exercicio of catalogo.exercises) {
     if (!linguagem.dockerTestCommand) throw new Error(`Linguagem implementada sem comando Docker: ${linguagem.id}`);
     const comando = comandoDesafio(linguagem, exercicio.id);
     const docker = `\nCom Docker, todos os desafios de ${linguagem.name}: \`${linguagem.dockerTestCommand}\`. Veja [como executar sem SDK local](${baseGitHub}/blob/main/docs/docker.md).\n`;
-    if (linguagem.id === 'pascal' || linguagem.id === 'cpp') {
+    if (['pascal', 'cpp', 'go'].includes(linguagem.id)) {
       return `### ${linguagem.name}\n\nDa raiz, sem instalar compilador no computador:\n\n\`\`\`sh\n${comando}\n\`\`\`\n` + docker;
     }
     if (linguagem.id === 'java') {
@@ -242,6 +244,9 @@ for (const exercicio of catalogo.exercises) {
     if (linguagem.id === 'cpp') {
       notas = `\n## Particularidades em C++\n\n${notasCpp[exercicio.id]}\n\n## Exemplo executável em C++\n\nDa raiz, compile e execute no container:\n\n\`\`\`sh\ndocker compose run --build --rm cpp sh src/cpp/executar.sh exemplo ${exercicio.id}\n\`\`\`\n\nEste trecho faz parte de \`_examples/main.cpp\`, gerado com os headers de cada desafio. Os nomes estão no namespace \`desafios\`; \`exigir\` lança uma exceção se a resposta estiver incorreta:\n\n\`\`\`cpp\n${exemplosCpp[exercicio.id]}\n\`\`\`\n\nVeja [o guia C++](${baseGitHub}/blob/main/docs/linguagens/cpp.md) para compilação, tipos, Unicode e propriedade da memória.\n`;
     }
+    if (linguagem.id === 'go') {
+      notas = `\n## Particularidades em Go\n\n${notasGo[exercicio.id]}\n\n## Exemplo executável em Go\n\nDa raiz, compile e execute no container:\n\n\`\`\`sh\ndocker compose run --build --rm go sh executar.sh exemplo ${exercicio.id}\n\`\`\`\n\nEste trecho faz parte de \`cmd/exemplos/main.go\`, gerado junto com os imports e a função main. \`exigir\` encerra o programa se o resultado for inesperado:\n\n\`\`\`go\n${exemplosGo[exercicio.id]}\n\`\`\`\n\nVeja [o guia Go](${baseGitHub}/blob/main/docs/linguagens/go.md) para módulos, slices, mapas, nil, ponteiros, Unicode e erros.\n`;
+    }
     await salvar(`src/${linguagem.id}/${exercicio.id}/README.md`, aviso + corpo + notas);
   }
 }
@@ -252,6 +257,11 @@ if (disponiveis.some(item => item.id === 'pascal')) {
 
 if (disponiveis.some(item => item.id === 'cpp')) {
   await salvar('src/cpp/_examples/main.cpp', programaCpp(catalogo.exercises));
+}
+
+// Permite validar o executável antes de anunciar a linguagem como implementada.
+if (catalogo.languages.some(item => item.id === 'go')) {
+  await salvar('src/go/cmd/exemplos/main.go', programaGo(catalogo.exercises));
 }
 
 if (disponiveis.some(item => item.id === 'swift')) {

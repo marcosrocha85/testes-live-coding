@@ -282,6 +282,50 @@
           "src/cpp/_shared/no.hpp"
         ]
       }
+    },
+    {
+      "id": "go",
+      "name": "Go",
+      "status": "implemented",
+      "extension": "go",
+      "runtime": "Go 1.27.2; biblioteca padrão; int64 nas somas e contagens",
+      "testCommand": "sh src/go/executar.sh check",
+      "dockerTestCommand": "docker compose run --build --rm go",
+      "solutionFiles": {
+        "soma_de_dois": "src/go/soma_de_dois/soma_de_dois.go",
+        "parenteses_validos": "src/go/parenteses_validos/parenteses_validos.go",
+        "inverter_lista_ligada": "src/go/inverter_lista_ligada/inverter_lista_ligada.go",
+        "busca_binaria": "src/go/busca_binaria/busca_binaria.go",
+        "mesclar_listas_ordenadas": "src/go/mesclar_listas_ordenadas/mesclar_listas_ordenadas.go",
+        "compra_e_venda_de_acoes": "src/go/compra_e_venda_de_acoes/compra_e_venda_de_acoes.go",
+        "subarray_maximo": "src/go/subarray_maximo/subarray_maximo.go",
+        "subir_escadas": "src/go/subir_escadas/subir_escadas.go",
+        "anagrama_valido": "src/go/anagrama_valido/anagrama_valido.go",
+        "ciclo_em_lista_ligada": "src/go/ciclo_em_lista_ligada/ciclo_em_lista_ligada.go"
+      },
+      "testFiles": {
+        "soma_de_dois": "src/go/soma_de_dois/soma_de_dois_test.go",
+        "parenteses_validos": "src/go/parenteses_validos/parenteses_validos_test.go",
+        "inverter_lista_ligada": "src/go/inverter_lista_ligada/inverter_lista_ligada_test.go",
+        "busca_binaria": "src/go/busca_binaria/busca_binaria_test.go",
+        "mesclar_listas_ordenadas": "src/go/mesclar_listas_ordenadas/mesclar_listas_ordenadas_test.go",
+        "compra_e_venda_de_acoes": "src/go/compra_e_venda_de_acoes/compra_e_venda_de_acoes_test.go",
+        "subarray_maximo": "src/go/subarray_maximo/subarray_maximo_test.go",
+        "subir_escadas": "src/go/subir_escadas/subir_escadas_test.go",
+        "anagrama_valido": "src/go/anagrama_valido/anagrama_valido_test.go",
+        "ciclo_em_lista_ligada": "src/go/ciclo_em_lista_ligada/ciclo_em_lista_ligada_test.go"
+      },
+      "supportFilesByExercise": {
+        "inverter_lista_ligada": [
+          "src/go/lista/no.go"
+        ],
+        "mesclar_listas_ordenadas": [
+          "src/go/lista/no.go"
+        ],
+        "ciclo_em_lista_ligada": [
+          "src/go/lista/no.go"
+        ]
+      }
     }
   ],
   "exercises": [

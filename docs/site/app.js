@@ -89,6 +89,7 @@ try {
   const resposta = await fetch('./catalogo.json');
   if (!resposta.ok) throw new Error('Catálogo indisponível.');
   catalogo = await resposta.json();
+  $('language-count').textContent = String(catalogo.languages.length);
   const nomesDisponiveis = catalogo.languages.filter((linguagem) => linguagem.status === 'implemented').map((linguagem) => linguagem.name);
   const destaque = document.createElement('b');
   destaque.textContent = new Intl.ListFormat('pt-BR', { type: 'conjunction' }).format(nomesDisponiveis);
