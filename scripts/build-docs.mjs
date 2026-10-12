@@ -101,6 +101,32 @@ const exemplosPHP = {
   ciclo_em_lista_ligada: '$primeiro = new No(1);\n$segundo = new No(2, $primeiro);\n$primeiro->proximo = $segundo;\nvar_export(temCiclo($primeiro)); // true\necho PHP_EOL;'
 };
 
+const notasSwift = {
+  "soma_de_dois": "`[Int]` é um array de inteiros e `[Int]?` permite devolver `nil`. O parâmetro `_` permite chamar a função sem escrever rótulos. `Dictionary` associa valores a índices; `if let` distingue um índice existente, inclusive zero, de `nil`. Arrays têm semântica de valor e não são recebidos como `inout`.",
+  "parenteses_validos": "`unicodeScalars` percorre pontos de código. A pilha guarda seus códigos `UInt32`: 40 e 41 são os parênteses, 91 e 93 são os colchetes, 123 e 125 são as chaves. `append` e `popLast` usam a mesma ponta do array. `popLast()` pode devolver `nil`, o que invalida um fechamento sem abertura. Outros símbolos são rejeitados.",
+  "inverter_lista_ligada": "`No?` é uma referência opcional. `while let` extrai um nó enquanto a referência existe. A classe preserva identidade: `let seguinte` conserva o mesmo objeto, sem copiá-lo. `let` impede trocar uma variável, mas a propriedade `var proximo` do objeto ainda pode mudar.",
+  "busca_binaria": "`Int` representa índices e valores. A divisão inteira calcula o meio. `fim` começa em -1 se o array está vazio, então nenhuma posição é lida. O array é um valor recebido sem `inout`; a função não modifica nem ordena sua entrada.",
+  "mesclar_listas_ordenadas": "`if` com `<=` preserva a preferência pela primeira lista em empate. `while let` exige que ambas tenham um nó. `a ?? b` escolhe a referência não nula restante. A classe permite reutilizar os objetos originais e alterar suas ligações; o único nó novo é o sentinela, fora da resposta.",
+  "compra_e_venda_de_acoes": "`first` é opcional: `guard` retorna zero se não há preços. `dropFirst()` percorre os dias após o primeiro sem copiar todo o array. O menor preço só é atualizado depois de avaliar a venda atual. `max` e `min` escolhem entre dois inteiros.",
+  "subarray_maximo": "`Int?` distingue uma soma de `nil` para o array vazio. O microprojeto exige plataforma de 64 bits: a soma pode chegar a dez bilhões. Iniciar no primeiro número preserva respostas negativas. Não use operações com overflow modular, como `&+`, para calcular a soma.",
+  "subir_escadas": "`Double` permite receber frações e rejeitá-las antes de converter para `Int`. `isFinite` elimina NaN e infinitos; `Int(exactly:)` só converte valores inteiros representáveis, devolvendo nil para frações. `throws` sinaliza que a função pode lançar `ErroDeEntrada.degrausForaDoDominio`; chame com `try`. Somente a entrada usa Double: as contagens usam inteiros exatos de 64 bits. O limite permanece 77, como nas outras linguagens.",
+  "anagrama_valido": "`String` percorre grafemas quando usado diretamente em um `for`, e sua igualdade considera equivalência canônica. Isso não atende este contrato. `unicodeScalars` percorre pontos de código e `.value` fornece um `UInt32` para cada um. As chaves numéricas do mapa preservam acentos compostos, maiúsculas e espaços sem normalizar o texto. Os pontos são lidos sem criar arrays das strings.",
+  "ciclo_em_lista_ligada": "`?.` acessa uma propriedade somente quando a referência existe. `===` compara a identidade dos objetos, não seus valores. As ligações são apenas lidas. Swift usa ARC; ciclos de referências fortes continuam na memória até serem desfeitos. Os testes e o exemplo quebram o ciclo após verificar o resultado. Usar `weak` em todo campo proximo faria uma lista normal perder seus nós quando só a cabeça fosse mantida."
+};
+
+const exemplosSwift = {
+  "soma_de_dois": "print(somaDeDois([2, 7, 11, 15], 9) ?? []) // [0, 1]",
+  "parenteses_validos": "print(parentesesValidos(\"{[()]}\")) // true",
+  "inverter_lista_ligada": "let cabeca = No(1, No(2, No(3)))\nlet invertida = inverterListaLigada(cabeca)\nprint(invertida?.valor ?? 0) // 3; as ligações são 3 → 2 → 1 → nil",
+  "busca_binaria": "print(buscaBinaria([1, 3, 5, 7, 9], 7)) // 3",
+  "mesclar_listas_ordenadas": "let mesclada = mesclarListasOrdenadas(No(1, No(3)), No(2, No(4)))\nprint(mesclada?.valor ?? 0) // 1; a sequência é 1 → 2 → 3 → 4 → nil",
+  "compra_e_venda_de_acoes": "print(maiorLucro([7, 1, 5, 3, 6, 4])) // 5",
+  "subarray_maximo": "print(subarrayMaximo([-2, 1, -3, 4, -1, 2, 1, -5, 4]) ?? 0) // 6",
+  "subir_escadas": "print(try subirEscadas(3)) // 3",
+  "anagrama_valido": "print(anagramaValido(\"😀a😀\", \"😀😀a\")) // true",
+  "ciclo_em_lista_ligada": "let primeiro = No(1)\nlet segundo = No(2, primeiro)\nprimeiro.proximo = segundo\ndefer { primeiro.proximo = nil; segundo.proximo = nil } // Libera o ciclo em ARC.\nprint(temCiclo(primeiro)) // true"
+};
+
 async function salvar(caminho, conteudo) {
   const destino = resolve(root, caminho);
   if (process.argv.includes('--check')) {
@@ -200,8 +226,16 @@ for (const exercicio of catalogo.exercises) {
       await salvar(`src/php/${exercicio.id}/exemplo.php`, exemplo);
       notas = `\n## Particularidades em PHP\n\n${notasPHP[exercicio.id]}\n\n## Exemplo executável em PHP\n\nCom PHP local, execute da raiz (sem instalar Composer para este exemplo):\n\n\`\`\`sh\nphp src/php/${exercicio.id}/exemplo.php\n\`\`\`\n\nOu dentro do container:\n\n\`\`\`sh\ndocker compose run --build --rm php php src/php/${exercicio.id}/exemplo.php\n\`\`\`\n\n\`\`\`php\n${exemplo}\`\`\`\n\nVeja [o guia de PHP](${baseGitHub}/blob/main/docs/linguagens/php.md) para ferramentas, tipos, Unicode e comandos.\n`;
     }
+    if (linguagem.id === 'swift') {
+      notas = `\n## Particularidades em Swift\n\n${notasSwift[exercicio.id]}\n\n## Exemplo executável em Swift\n\nCom Swift local, execute da raiz:\n\n\`\`\`sh\nswift run --package-path src/swift --jobs 2 exemplo ${exercicio.id}\n\`\`\`\n\nOu no container:\n\n\`\`\`sh\ndocker compose run --build --rm swift swift run --package-path src/swift --jobs 2 exemplo ${exercicio.id}\n\`\`\`\n\nO trecho abaixo faz parte do executável de exemplos, compilado pelo Package Manager:\n\n\`\`\`swift\nimport LiveCoding\n\n${exemplosSwift[exercicio.id]}\n\`\`\`\n\nVeja [o guia Swift](${baseGitHub}/blob/main/docs/linguagens/swift.md) para ferramentas, tipos, Unicode e ARC.\n`;
+    }
     await salvar(`src/${linguagem.id}/${exercicio.id}/README.md`, aviso + corpo + notas);
   }
+}
+
+if (disponiveis.some(item => item.id === 'swift')) {
+  const blocos = catalogo.exercises.map(item => `case "${item.id}":\n${exemplosSwift[item.id].split('\n').map(linha => '    ' + linha).join('\n')}`).join('\n');
+  await salvar('src/swift/_examples/main.swift', '// Gerado por npm run docs. Consulte os READMEs dos desafios.\nimport LiveCoding\n\nguard let desafio = CommandLine.arguments.dropFirst().first else {\n    fatalError("Informe o ID do desafio, como soma_de_dois.")\n}\nswitch desafio {\n' + blocos + '\ndefault:\n    fatalError("Desafio desconhecido: " + desafio)\n}\n');
 }
 
 await salvar('docs/tests/README.md', aviso + '# Desafios de live coding\n\nCada página explica o problema, a ideia, o contrato, os casos de borda e o que o exercício avalia.\n\n' + catalogo.exercises.map((exercicio) => `- [${exercicio.name}](${exercicio.id}.md) — ${exercicio.problemName}`).join('\n') + '\n');

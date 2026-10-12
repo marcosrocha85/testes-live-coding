@@ -78,6 +78,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/parenteses_validos/ParentesesValidosTest.kt)
 - [Solução PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/parenteses_validos/index.php)
 - [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/parenteses_validos/ParentesesValidosTest.php)
+- [Solução Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/parenteses_validos/ParentesesValidos.swift)
+- [Testes Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/parenteses_validos/ParentesesValidosTest.swift)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/parenteses_validos.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#parenteses_validos.javascript)
 
@@ -144,6 +146,16 @@ composer --working-dir=src/php test -- --filter ParentesesValidosTest
 ```
 
 Com Docker, todos os desafios de PHP: `docker compose run --build --rm php`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Swift
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+swift test --package-path src/swift --jobs 2 --filter ParentesesValidosTest
+```
+
+Com Docker, todos os desafios de Swift: `docker compose run --build --rm swift`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Java
 

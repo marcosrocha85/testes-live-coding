@@ -14,6 +14,7 @@ docker compose run --build --rm typescript
 docker compose run --build --rm java
 docker compose run --build --rm kotlin
 docker compose run --build --rm php
+docker compose run --build --rm swift
 ```
 
 Os comandos funcionam em PowerShell, Linux e macOS:
@@ -32,6 +33,7 @@ As imagens base estão fixadas por digest, que identifica seu conteúdo. TypeScr
 | `java` | JDK 21, Maven Wrapper, compilação, testes JUnit e JAR |
 | `kotlin` | JDK 21, Gradle Wrapper, compilação Kotlin, 102 testes JUnit e JAR |
 | `php` | PHP de 64 bits, Composer, checagem de sintaxe e 106 testes PHPUnit |
+| `swift` | Swift 6.3.3 de 64 bits, SwiftPM, 86 casos compartilhados e 21 testes adicionais |
 
 Os serviços têm perfis para evitar iniciar todos por acidente. Ao indicar o serviço em `run`, seu perfil é ativado automaticamente. Não use `docker compose up` para esse fluxo: os testes são execuções temporárias, sem portas nem processos permanentes.
 
@@ -59,6 +61,13 @@ Um exemplo executável PHP:
 docker compose run --build --rm php php src/php/soma_de_dois/exemplo.php
 ```
 
+Só busca binária em Swift e um exemplo compilado:
+
+```sh
+docker compose run --build --rm swift swift test --package-path src/swift --jobs 2 --filter BuscaBinariaTest
+docker compose run --build --rm swift swift run --package-path src/swift --jobs 2 exemplo soma_de_dois
+```
+
 ## Arquivos e caches
 
 O Docker copia os fontes para a imagem. Não há montagem do checkout; compilações não escrevem `node_modules`, `dist` ou `target` no computador. Para testar uma edição, rode novamente com `--build`. `.dockerignore` exclui esses artefatos do contexto para evitar aproveitar um build local por engano.
@@ -82,6 +91,8 @@ docker volume rm testes-live-coding_kotlin_gradle
 O próximo teste Kotlin baixa as ferramentas e dependências novamente.
 
 PHP instala suas dependências de desenvolvimento em uma camada da imagem usando `composer.lock`; essa camada é reutilizada enquanto os manifests não mudarem. Não há volume de cache PHP, nem diretório `vendor` escrito no computador. O cache do PHPUnit é criado no container temporário. `vendor` e `.phpunit.cache` ficam fora do contexto Docker.
+
+Swift usa uma imagem oficial 6.3.3 Ubuntu 24.04 fixada por digest. Swift Package Manager e Swift Testing vêm no SDK; não há pacotes externos para baixar. Não usa volume de cache: `.build`, `.swiftpm` e caches da toolchain ficam dentro do container temporário, como usuário sem privilégios. Esses diretórios ficam fora do Git e do contexto Docker. Nenhum SDK Swift é instalado no host.
 
 ## Adicionar uma linguagem
 

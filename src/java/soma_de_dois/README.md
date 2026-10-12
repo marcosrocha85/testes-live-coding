@@ -80,6 +80,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/soma_de_dois/SomaDeDoisTest.kt)
 - [Solução PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/soma_de_dois/index.php)
 - [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/soma_de_dois/SomaDeDoisTest.php)
+- [Solução Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/soma_de_dois/SomaDeDois.swift)
+- [Testes Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/soma_de_dois/SomaDeDoisTest.swift)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/soma_de_dois.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#soma_de_dois.javascript)
 
@@ -146,6 +148,16 @@ composer --working-dir=src/php test -- --filter SomaDeDoisTest
 ```
 
 Com Docker, todos os desafios de PHP: `docker compose run --build --rm php`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Swift
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+swift test --package-path src/swift --jobs 2 --filter SomaDeDoisTest
+```
+
+Com Docker, todos os desafios de Swift: `docker compose run --build --rm swift`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Java
 
