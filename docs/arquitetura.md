@@ -10,7 +10,11 @@ TypeScript tem dez soluções e testes próprios, compilados pelo TypeScript 7.0
 
 `npm test` executa os dois workspaces e os testes do gerador do site. A CI e o workflow Pages usam esse comando, portanto erros de tipos ou testes TypeScript impedem a publicação. `npm run typecheck` verifica os tipos sem gerar arquivos. As soluções TypeScript não importam as soluções JavaScript.
 
-Os outros seis diretórios contêm somente a indicação da etapa planejada. Ao implementar um deles, escolha o runner adequado, declare a versão da ferramenta, adicione a execução na CI e mantenha a solução independente das outras linguagens.
+Java tem um microprojeto Maven independente dos workspaces npm. As soluções e os testes ficam juntos nas pastas dos desafios; o plugin de compilação separa `*Test.java` e `_tests` do código de produção. O JDK compila para Java 21. JUnit 6.0.3 e Gson 2.14.0 são dependências somente de teste. O Maven copia os JSON canônicos como recursos, e os testes também verificam referências, Unicode e precisão em `long` e `BigInteger`. O Maven Wrapper fixa a versão 3.9.16 e confere o SHA-256 da distribuição.
+
+A CI testa Java em JDK 21 e 25, além do job Node. O workflow Pages executa a suíte Java com JDK 21 antes de publicar. Os arquivos gerados ficam em `src/java/target` e não são versionados. As implementações Java não dependem de JavaScript ou TypeScript.
+
+Os outros cinco diretórios contêm somente a indicação da etapa planejada. Ao implementar um deles, escolha o runner adequado, declare a versão da ferramenta, adicione a execução na CI e mantenha a solução independente das outras linguagens.
 
 ## Uma fonte para as explicações
 
@@ -26,7 +30,9 @@ O destaque de sintaxe usa [highlight.js](https://highlightjs.org/) 11.12.0 somen
 
 Uma linguagem disponível precisa declarar `status: "implemented"` e pode informar `solutionFiles`, um mapa de ID do desafio para arquivo relativo à raiz, quando a organização da linguagem não seguir `src/<id>/<desafio>/index.<extensão>`. O gerador rejeita caminhos fora de `src/<id>/` e exige os dez arquivos. Linguagens planejadas mostram a issue e não anunciam código existente.
 
-O conteúdo publicado é obtido de arquivos reais, sem cópias manuais de código dentro de HTML. Para JavaScript e TypeScript, o site também oferece o código do auxiliar de listas ligadas usado por alguns desafios. A aba TypeScript mostra o `.ts` com suas anotações, não o JavaScript compilado. O resumo de linguagens disponíveis é calculado pelo catálogo. Acrescente uma lista `supportFiles` no catálogo para divulgar auxiliares de outras linguagens.
+O conteúdo publicado é obtido de arquivos reais, sem cópias manuais de código dentro de HTML. Para JavaScript, TypeScript e Java, o site também oferece o código do auxiliar de listas ligadas usado por alguns desafios. A aba TypeScript mostra o `.ts` com suas anotações; a aba Java mostra a classe `.java` original. O resumo de linguagens disponíveis é calculado pelo catálogo. `testFiles` indica caminhos dos testes quando o nome não segue `index.test.<extensão>`. `exerciseTestCommand` permite indicar o comando de um desafio usando `{testClass}` como marcador.
+
+Acrescente uma lista `supportFiles` no catálogo para auxiliares usados em todos os desafios, ou um mapa `supportFilesByExercise` para arquivos específicos de cada desafio. Java usa esse mapa para mostrar `No.java` apenas nos três desafios de listas ligadas. O gerador verifica que cada auxiliar pertence ao microprojeto da linguagem.
 
 ## GitHub Pages e Wiki
 

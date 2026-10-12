@@ -13,7 +13,7 @@ function textoDoDestaque(html) {
   return semSpans.replace(/&(?:amp|lt|gt|quot|#x27);/g, (entidade) => entidades[entidade]);
 }
 
-test('site contém as soluções JavaScript e TypeScript e distingue linguagens planejadas', async (t) => {
+test('site contém as soluções JavaScript, TypeScript e Java e distingue linguagens planejadas', async (t) => {
   const output = await mkdtemp(resolve(tmpdir(), 'live-coding-site-'));
   t.after(() => rm(output, { recursive: true, force: true }));
   const resultado = await buildSite({ output });
@@ -21,7 +21,7 @@ test('site contém as soluções JavaScript e TypeScript e distingue linguagens 
   assert.equal(resultado.languages, 8);
   const dados = JSON.parse(await readFile(resolve(output, 'catalogo.json'), 'utf8'));
   const disponiveis = dados.languages.filter((linguagem) => linguagem.status === 'implemented');
-  assert.deepEqual(disponiveis.map((linguagem) => linguagem.id), ['javascript', 'typescript']);
+  assert.deepEqual(disponiveis.map((linguagem) => linguagem.id), ['javascript', 'typescript', 'java']);
   for (const exercicio of dados.exercises) {
     assert.ok(exercicio.cases.length > 0);
     assert.ok(exercicio.why.length > 0);
@@ -40,7 +40,7 @@ test('site contém as soluções JavaScript e TypeScript e distingue linguagens 
         assert.ok(auxiliar.path.startsWith(`src/${linguagem.id}/`));
       }
     }
-    assert.equal(exercicio.solutions.filter((solucao) => solucao.code === null).length, 6);
+    assert.equal(exercicio.solutions.filter((solucao) => solucao.code === null).length, 5);
   }
   assert.match(await readFile(resolve(output, 'index.html'), 'utf8'), /lang="pt-BR"/);
   assert.ok((await readFile(resolve(output, 'app.js'), 'utf8')).includes('textContent'));

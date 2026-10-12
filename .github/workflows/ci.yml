@@ -19,3 +19,18 @@ jobs:
       - run: npm test
       - run: npm run docs:check
       - run: npm run build
+  java:
+    name: Java ${{ matrix.java }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: ['21', '25']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+          cache-dependency-path: src/java/pom.xml
+      - run: ./src/java/mvnw -B -f src/java/pom.xml clean verify

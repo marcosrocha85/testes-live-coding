@@ -74,6 +74,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/subir_escadas/index.test.js)
 - [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/subir_escadas/index.ts)
 - [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/subir_escadas/index.test.ts)
+- [Solução Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/subir_escadas/SubirEscadas.java)
+- [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/subir_escadas/SubirEscadasTest.java)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subir_escadas.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subir_escadas.javascript)
 
@@ -92,6 +94,20 @@ Da raiz do repositório, após `npm ci`:
 ```sh
 npm run build --workspace src/typescript
 node --test src/typescript/dist/subir_escadas/index.test.js
+```
+
+### Java
+
+Da raiz, com JDK 21 ou superior. Linux/macOS:
+
+```sh
+./src/java/mvnw -f src/java/pom.xml -Dtest=SubirEscadasTest test
+```
+
+PowerShell:
+
+```powershell
+.\src\java\mvnw.cmd -f src/java/pom.xml "-Dtest=SubirEscadasTest" test
 ```
 
 ## Lendo os tipos desta solução

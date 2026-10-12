@@ -2,7 +2,50 @@
   "languages": [
     { "id": "javascript", "name": "JavaScript", "status": "implemented", "extension": "js", "runtime": "Node.js 24 ou superior", "testCommand": "npm run test --workspace src/javascript" },
     { "id": "typescript", "name": "TypeScript", "status": "implemented", "extension": "ts", "runtime": "Node.js 24 ou superior; TypeScript 7.0.2", "testCommand": "npm run test --workspace src/typescript" },
-    { "id": "java", "name": "Java", "status": "planned", "extension": "java" },
+    {
+      "id": "java",
+      "name": "Java",
+      "status": "implemented",
+      "extension": "java",
+      "runtime": "JDK 21 ou superior; Maven Wrapper 3.9.16",
+      "testCommand": "./src/java/mvnw -f src/java/pom.xml test",
+      "solutionFiles": {
+        "soma_de_dois": "src/java/soma_de_dois/SomaDeDois.java",
+        "parenteses_validos": "src/java/parenteses_validos/ParentesesValidos.java",
+        "inverter_lista_ligada": "src/java/inverter_lista_ligada/InverterListaLigada.java",
+        "busca_binaria": "src/java/busca_binaria/BuscaBinaria.java",
+        "mesclar_listas_ordenadas": "src/java/mesclar_listas_ordenadas/MesclarListasOrdenadas.java",
+        "compra_e_venda_de_acoes": "src/java/compra_e_venda_de_acoes/CompraEVendaDeAcoes.java",
+        "subarray_maximo": "src/java/subarray_maximo/SubarrayMaximo.java",
+        "subir_escadas": "src/java/subir_escadas/SubirEscadas.java",
+        "anagrama_valido": "src/java/anagrama_valido/AnagramaValido.java",
+        "ciclo_em_lista_ligada": "src/java/ciclo_em_lista_ligada/CicloEmListaLigada.java"
+      },
+      "testFiles": {
+        "soma_de_dois": "src/java/soma_de_dois/SomaDeDoisTest.java",
+        "parenteses_validos": "src/java/parenteses_validos/ParentesesValidosTest.java",
+        "inverter_lista_ligada": "src/java/inverter_lista_ligada/InverterListaLigadaTest.java",
+        "busca_binaria": "src/java/busca_binaria/BuscaBinariaTest.java",
+        "mesclar_listas_ordenadas": "src/java/mesclar_listas_ordenadas/MesclarListasOrdenadasTest.java",
+        "compra_e_venda_de_acoes": "src/java/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.java",
+        "subarray_maximo": "src/java/subarray_maximo/SubarrayMaximoTest.java",
+        "subir_escadas": "src/java/subir_escadas/SubirEscadasTest.java",
+        "anagrama_valido": "src/java/anagrama_valido/AnagramaValidoTest.java",
+        "ciclo_em_lista_ligada": "src/java/ciclo_em_lista_ligada/CicloEmListaLigadaTest.java"
+      },
+      "exerciseTestCommand": "./src/java/mvnw -f src/java/pom.xml -Dtest={testClass} test",
+      "supportFilesByExercise": {
+        "inverter_lista_ligada": [
+          "src/java/_shared/No.java"
+        ],
+        "mesclar_listas_ordenadas": [
+          "src/java/_shared/No.java"
+        ],
+        "ciclo_em_lista_ligada": [
+          "src/java/_shared/No.java"
+        ]
+      }
+    },
     { "id": "kotlin", "name": "Kotlin", "status": "planned", "extension": "kt" },
     { "id": "php", "name": "PHP", "status": "planned", "extension": "php" },
     { "id": "swift", "name": "Swift", "status": "planned", "extension": "swift" },

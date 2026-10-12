@@ -26,6 +26,7 @@ Este repositório é um guia de estudo de live coding para iniciantes. A priorid
 - Consuma os casos compartilhados e acrescente verificações específicas da linguagem. Não copie a lógica da solução para calcular o resultado esperado.
 - Confira identidade de nós e mutação dos ponteiros nos exercícios de listas ligadas.
 - Para a base atual, use Node.js 24 ou superior: `npm ci`, `npm test`, `npm run docs:check`, `npm run build`.
+- Para Java, use JDK 21 ou superior e execute `./src/java/mvnw -f src/java/pom.xml clean verify` (Linux/macOS) ou `.\src\java\mvnw.cmd -f src/java/pom.xml clean verify` (PowerShell). `npm test` não executa os testes Java.
 - `npm run test:coverage` ajuda a investigar cobertura; cobertura não substitui testes que detectem erros reais.
 - Atualize `docs/catalogo.json` e execute `npm run docs` quando mudar as explicações. Não edite manualmente os arquivos gerados indicados no cabeçalho.
 - Antes de concluir, registre na issue ou PR o que mudou e quais comandos passaram. Não afirme ter executado compiladores ou testes que não foram executados.

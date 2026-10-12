@@ -23,6 +23,32 @@ const notasTypeScript = {
   ciclo_em_lista_ligada: 'Os ponteiros têm tipo `No | null`. As verificações no laço permitem acessar seus campos com segurança. `lento === rapido` compara referências aos próprios objetos. O tipo do valor do nó não determina se existe um ciclo.'
 };
 
+const notasJava = {
+  soma_de_dois: '`int[]` é um array de inteiros. A resposta é um novo array com dois índices, ou `null`. `HashMap<Integer, Integer>` usa as versões objeto dos números como chaves e valores. `putIfAbsent` conserva o primeiro índice. O `Integer` retornado por `get` pode ser `null`.',
+  parenteses_validos: '`Deque<Character>` representa a pilha e `ArrayDeque` é sua implementação. `push` coloca no topo e `pop` remove do topo. O teste de pilha vazia acontece antes de remover. `charAt` é adequado aqui porque todos os símbolos aceitos são ASCII; qualquer outro caractere é rejeitado.',
+  inverter_lista_ligada: '`No` é a classe dos nós. Uma variável `No` guarda uma referência ao objeto e também pode ser `null`. Guardar `seguinte` preserva a ligação antiga enquanto `atual.proximo` é mudado. O resultado aponta para um dos objetos originais.',
+  busca_binaria: 'Índices e valores usam `int`. A divisão de inteiros calcula a posição central. O laço só acessa posições entre os limites do array; por isso uma entrada vazia retorna `-1` sem tentar ler o índice zero. A função não ordena nem modifica os valores.',
+  mesclar_listas_ordenadas: 'O nó sentinela simplifica a primeira ligação e não aparece no resultado. Os nós reais são reaproveitados. `<=` preserva a preferência pela primeira lista quando os valores são iguais. O operador `?:` escolhe o restante da lista que ainda não terminou.',
+  compra_e_venda_de_acoes: '`Integer.MAX_VALUE` é um preço inicial maior que qualquer preço permitido pelo contrato. As diferenças de preço cabem em `int` porque os preços estão entre zero e um milhão. O lucro começa em zero e só aumenta quando a venda acontece depois da compra.',
+  subarray_maximo: 'Cada elemento cabe em `int`, mas a soma pode chegar a dez bilhões. Por isso os acumuladores usam `long`. A saída usa `Long`, a versão objeto que também pode ser `null` para um array vazio. Um valor negativo continua sendo uma resposta válida.',
+  subir_escadas: 'A entrada `double` permite verificar e rejeitar valores fracionários, como nos casos JSON. Após conferir que ela é finita, inteira e está entre 0 e 77, a conversão para `int` é segura. Os resultados usam `long`, com 64 bits. `IllegalArgumentException` equivale à rejeição de domínio indicada por `RangeError` nos casos compartilhados.',
+  anagrama_valido: '`String` usa UTF-16, mas `codePoints()` percorre pontos de código inteiros. `PrimitiveIterator.OfInt` permite ler cada ponto sem copiar toda a string para um array. O mapa liga cada ponto à sua frequência. Não há normalização, comparação de grafemas ou remoção de espaços.',
+  ciclo_em_lista_ligada: '`==` compara referências aos próprios objetos `No`. A comparação não usa os valores numéricos dos nós. Enquanto o ponteiro rápido consegue avançar duas posições, o lento consegue avançar uma. Nenhum campo `proximo` é alterado.'
+};
+
+const exemplosJava = {
+  soma_de_dois: 'System.out.println(java.util.Arrays.toString(SomaDeDois.somaDeDois(new int[] {2, 7, 11, 15}, 9))); // [0, 1]',
+  parenteses_validos: 'System.out.println(ParentesesValidos.parentesesValidos("{[()]}")); // true',
+  inverter_lista_ligada: 'No cabeca = new No(1, new No(2, new No(3)));\nNo invertida = InverterListaLigada.inverterListaLigada(cabeca);\nSystem.out.println(invertida.valor); // 3; as ligações agora são 3 → 2 → 1 → null',
+  busca_binaria: 'System.out.println(BuscaBinaria.buscaBinaria(new int[] {1, 3, 5, 7, 9}, 7)); // 3',
+  mesclar_listas_ordenadas: 'No primeira = new No(1, new No(3));\nNo segunda = new No(2, new No(4));\nNo mesclada = MesclarListasOrdenadas.mesclarListasOrdenadas(primeira, segunda);\nSystem.out.println(mesclada.valor); // 1; a sequência é 1 → 2 → 3 → 4 → null',
+  compra_e_venda_de_acoes: 'System.out.println(CompraEVendaDeAcoes.maiorLucro(new int[] {7, 1, 5, 3, 6, 4})); // 5',
+  subarray_maximo: 'System.out.println(SubarrayMaximo.subarrayMaximo(new int[] {-2, 1, -3, 4, -1, 2, 1, -5, 4})); // 6',
+  subir_escadas: 'System.out.println(SubirEscadas.subirEscadas(5)); // 8',
+  anagrama_valido: 'System.out.println(AnagramaValido.anagramaValido("😀a😀", "😀😀a")); // true',
+  ciclo_em_lista_ligada: 'No primeiro = new No(1);\nNo segundo = new No(2);\nprimeiro.proximo = segundo;\nsegundo.proximo = primeiro;\nSystem.out.println(CicloEmListaLigada.temCiclo(primeiro)); // true'
+};
+
 async function salvar(caminho, conteudo) {
   const destino = resolve(root, caminho);
   if (process.argv.includes('--check')) {
@@ -41,6 +67,10 @@ async function salvar(caminho, conteudo) {
 function comandoDesafio(linguagem, id) {
   if (linguagem.id === 'javascript') return `node --test src/javascript/${id}/index.test.js`;
   if (linguagem.id === 'typescript') return `npm run build --workspace src/typescript\nnode --test src/typescript/dist/${id}/index.test.js`;
+  if (linguagem.exerciseTestCommand) {
+    const testClass = linguagem.testFiles[id].split('/').at(-1).replace(/\.[^.]+$/, '');
+    return linguagem.exerciseTestCommand.replace('{testClass}', testClass);
+  }
   return linguagem.testCommand;
 }
 
@@ -55,7 +85,14 @@ for (const exercicio of catalogo.exercises) {
     const testes = linguagem.testFiles?.[exercicio.id] ?? `src/${linguagem.id}/${exercicio.id}/index.test.${linguagem.extension}`;
     return `- [Solução ${linguagem.name}](${baseGitHub}/blob/main/${solucao})\n- [Testes ${linguagem.name}](${baseGitHub}/blob/main/${testes})`;
   }).join('\n');
-  const comandos = disponiveis.map((linguagem) => `### ${linguagem.name}\n\nDa raiz do repositório, após \`npm ci\`:\n\n\`\`\`sh\n${comandoDesafio(linguagem, exercicio.id)}\n\`\`\`\n`).join('\n');
+  const comandos = disponiveis.map((linguagem) => {
+    const comando = comandoDesafio(linguagem, exercicio.id);
+    if (linguagem.id === 'java') {
+      const windows = comando.replace('./src/java/mvnw', '.\\src\\java\\mvnw.cmd').replace(/-Dtest=([^ ]+)/, '"-Dtest=$1"');
+      return `### Java\n\nDa raiz, com JDK 21 ou superior. Linux/macOS:\n\n\`\`\`sh\n${comando}\n\`\`\`\n\nPowerShell:\n\n\`\`\`powershell\n${windows}\n\`\`\`\n`;
+    }
+    return `### ${linguagem.name}\n\nDa raiz do repositório, após \`npm ci\`:\n\n\`\`\`sh\n${comando}\n\`\`\`\n`;
+  }).join('\n');
   const corpo = [
     `# ${exercicio.name}`,
     `Nome na entrevista: **${exercicio.problemName}**. Pasta: \`${exercicio.id}\`.`,
@@ -81,9 +118,15 @@ for (const exercicio of catalogo.exercises) {
   await salvar(`docs/tests/${exercicio.id}.md`, aviso + corpo);
   await salvar(`docs/wiki/${exercicio.id}.md`, aviso + corpo);
   for (const linguagem of disponiveis) {
-    const notas = linguagem.id === 'typescript'
+    let notas = linguagem.id === 'typescript'
       ? `\n## Lendo os tipos desta solução\n\n${notasTypeScript[exercicio.id]}\n\nVeja [o guia de TypeScript](${baseGitHub}/blob/main/docs/linguagens/typescript.md) para instalação, compilação e conceitos.\n`
       : '';
+    if (linguagem.id === 'java') {
+      const classe = linguagem.solutionFiles[exercicio.id].split('/').at(-1).replace('.java', '');
+      const importaNo = ['inverter_lista_ligada', 'mesclar_listas_ordenadas', 'ciclo_em_lista_ligada'].includes(exercicio.id);
+      const imports = `import tinker.livecoding.${exercicio.id}.${classe};\n` + (importaNo ? 'import tinker.livecoding._shared.No;\n' : '');
+      notas = `\n## Particularidades em Java\n\n${notasJava[exercicio.id]}\n\n## Exemplo em Java\n\nCompile com Maven e abra \`jshell --class-path src/java/target/classes\` da raiz. No JShell, execute:\n\n\`\`\`java\n${imports}\n${exemplosJava[exercicio.id]}\n\`\`\`\n\nVeja [o guia de Java](${baseGitHub}/blob/main/docs/linguagens/java.md) para instalação, ferramentas, tipos e comandos.\n`;
+    }
     await salvar(`src/${linguagem.id}/${exercicio.id}/README.md`, aviso + corpo + notas);
   }
 }

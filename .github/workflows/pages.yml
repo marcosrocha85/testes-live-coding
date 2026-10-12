@@ -20,8 +20,15 @@ jobs:
         with:
           node-version: '24'
           cache: npm
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: src/java/pom.xml
       - run: npm ci
       - run: npm test
+      - run: ./src/java/mvnw -B -f src/java/pom.xml clean verify
       - run: npm run docs:check
       - run: npm run build
       - uses: actions/configure-pages@v6

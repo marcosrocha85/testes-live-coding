@@ -2,7 +2,7 @@
 
 Um guia de estudo para entender, implementar e explicar desafios comuns de entrevistas técnicas. Cada solução tem comentários simples, testes automatizados e uma explicação do raciocínio e da capacidade avaliada.
 
-Os **dez desafios estão implementados em JavaScript e TypeScript**, com testes próprios para cada linguagem. As próximas etapas serão Java, Kotlin, PHP, Swift, Pascal e C++, uma linguagem por vez, com revisão de Marcos Rocha.
+Os **dez desafios estão implementados em JavaScript, TypeScript e Java**, com testes próprios para cada linguagem. As próximas etapas serão Kotlin, PHP, Swift, Pascal e C++, uma linguagem por vez, com revisão de Marcos Rocha.
 
 - [Catálogo com abas por linguagem no GitHub Pages](https://marcosrocha85.github.io/testes-live-coding/)
 - [Wiki do projeto](https://github.com/marcosrocha85/testes-live-coding/wiki)
@@ -10,6 +10,7 @@ Os **dez desafios estão implementados em JavaScript e TypeScript**, com testes 
 - [Arquitetura](docs/arquitetura.md) e [contratos dos testes](docs/contratos.md)
 - [Guia de JavaScript para iniciantes](docs/linguagens/javascript.md)
 - [Guia de TypeScript para iniciantes](docs/linguagens/typescript.md)
+- [Guia de Java para iniciantes](docs/linguagens/java.md)
 - [Roteiro e issues por linguagem](docs/roadmap.md)
 
 O site é atualizado após a integração de cada entrega à `main`. A Wiki tem explicações dos dez desafios; suas fontes estão versionadas em [docs/wiki](docs/wiki/Home.md).
@@ -43,6 +44,20 @@ npm run test --workspace src/typescript
 
 O comando verifica os tipos, compila as soluções e executa seus testes. Os arquivos `.ts` originais ficam disponíveis na aba TypeScript do site após a integração na `main`.
 
+Para Java, use **JDK 21 ou superior**. O Maven Wrapper incluído instala Maven 3.9.16 no primeiro uso. Em Linux/macOS:
+
+```sh
+./src/java/mvnw -f src/java/pom.xml clean verify
+```
+
+No PowerShell:
+
+```powershell
+.\src\java\mvnw.cmd -f src/java/pom.xml clean verify
+```
+
+Java tem testes JUnit independentes dos workspaces npm. As soluções usam a biblioteca padrão; JUnit e Gson são dependências somente dos testes. A CI confere as três linguagens antes da publicação da aba Java.
+
 ## Os dez desafios iniciais
 
 | Pasta | Problema | Ideia | Capacidade avaliada |
@@ -73,7 +88,8 @@ docs/
 src/
   javascript/             # Dez desafios e testes executados pelo Node
   typescript/             # Dez desafios, compilação estrita e testes próprios
-  java/ kotlin/ php/ swift/ pascal/ cpp/  # Etapas planejadas
+  java/                   # Dez desafios, Maven Wrapper e testes JUnit
+  kotlin/ php/ swift/ pascal/ cpp/  # Etapas planejadas
 scripts/                  # Geradores, preview e publicação da Wiki
 .github/                  # CI, publicação e templates de issues
 ```
@@ -86,6 +102,8 @@ Cada linguagem será um microprojeto independente, com ferramentas e testes adeq
 | --- | --- |
 | `npm test` | Testes JavaScript, TypeScript e verificações do gerador do site |
 | `npm run typecheck` | Checagem estrita de tipos do microprojeto TypeScript |
+| `./src/java/mvnw -f src/java/pom.xml clean verify` | Compilar e testar os dez desafios Java em Linux/macOS |
+| `.\src\java\mvnw.cmd -f src/java/pom.xml clean verify` | Compilar e testar Java no PowerShell |
 | `npm run test:coverage` | Testes das duas linguagens com relatório de cobertura |
 | `node --test src/javascript/busca_binaria/index.test.js` | Testar apenas um desafio |
 | `npm run docs` | Atualizar explicações, READMEs dos desafios e fontes da Wiki |
