@@ -83,3 +83,22 @@ jobs:
           coverage: none
       - run: composer --working-dir=src/php install --no-interaction --prefer-dist --no-progress --no-scripts
       - run: composer --working-dir=src/php check
+  swift:
+    name: Swift 6.3.3 ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    steps:
+      - uses: actions/checkout@v7
+      - name: Importar chaves oficiais para verificar a distribuição Swift
+        if: runner.os == 'Linux'
+        run: curl --fail --silent --show-error --location --compressed --retry 3 https://www.swift.org/keys/all-keys.asc | gpg --import -
+      - uses: swift-actions/setup-swift@d8e84bc3a450686a95474d7d6fa4a3301498debc # v3
+        with:
+          swift-version: '6.3.3'
+      - run: swift --version
+      - run: swift test --package-path src/swift --jobs 2 -Xswiftc -warnings-as-errors
+      - run: swift run --package-path src/swift --jobs 2 exemplo soma_de_dois

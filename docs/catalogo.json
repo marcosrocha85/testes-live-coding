@@ -128,7 +128,51 @@
         ]
       }
     },
-    { "id": "swift", "name": "Swift", "status": "planned", "extension": "swift" },
+    {
+      "id": "swift",
+      "name": "Swift",
+      "status": "implemented",
+      "extension": "swift",
+      "runtime": "Swift 6.3.3 de 64 bits; Swift Package Manager e Swift Testing",
+      "testCommand": "swift test --package-path src/swift --jobs 2 -Xswiftc -warnings-as-errors",
+      "dockerTestCommand": "docker compose run --build --rm swift",
+      "testFiles": {
+        "soma_de_dois": "src/swift/soma_de_dois/SomaDeDoisTest.swift",
+        "parenteses_validos": "src/swift/parenteses_validos/ParentesesValidosTest.swift",
+        "inverter_lista_ligada": "src/swift/inverter_lista_ligada/InverterListaLigadaTest.swift",
+        "busca_binaria": "src/swift/busca_binaria/BuscaBinariaTest.swift",
+        "mesclar_listas_ordenadas": "src/swift/mesclar_listas_ordenadas/MesclarListasOrdenadasTest.swift",
+        "compra_e_venda_de_acoes": "src/swift/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.swift",
+        "subarray_maximo": "src/swift/subarray_maximo/SubarrayMaximoTest.swift",
+        "subir_escadas": "src/swift/subir_escadas/SubirEscadasTest.swift",
+        "anagrama_valido": "src/swift/anagrama_valido/AnagramaValidoTest.swift",
+        "ciclo_em_lista_ligada": "src/swift/ciclo_em_lista_ligada/CicloEmListaLigadaTest.swift"
+      },
+      "exerciseTestCommand": "swift test --package-path src/swift --jobs 2 --filter {testClass}",
+      "supportFilesByExercise": {
+        "inverter_lista_ligada": [
+          "src/swift/_shared/No.swift"
+        ],
+        "mesclar_listas_ordenadas": [
+          "src/swift/_shared/No.swift"
+        ],
+        "ciclo_em_lista_ligada": [
+          "src/swift/_shared/No.swift"
+        ]
+      },
+      "solutionFiles": {
+        "soma_de_dois": "src/swift/soma_de_dois/SomaDeDois.swift",
+        "parenteses_validos": "src/swift/parenteses_validos/ParentesesValidos.swift",
+        "inverter_lista_ligada": "src/swift/inverter_lista_ligada/InverterListaLigada.swift",
+        "busca_binaria": "src/swift/busca_binaria/BuscaBinaria.swift",
+        "mesclar_listas_ordenadas": "src/swift/mesclar_listas_ordenadas/MesclarListasOrdenadas.swift",
+        "compra_e_venda_de_acoes": "src/swift/compra_e_venda_de_acoes/CompraEVendaDeAcoes.swift",
+        "subarray_maximo": "src/swift/subarray_maximo/SubarrayMaximo.swift",
+        "subir_escadas": "src/swift/subir_escadas/SubirEscadas.swift",
+        "anagrama_valido": "src/swift/anagrama_valido/AnagramaValido.swift",
+        "ciclo_em_lista_ligada": "src/swift/ciclo_em_lista_ligada/CicloEmListaLigada.swift"
+      }
+    },
     { "id": "pascal", "name": "Pascal", "status": "planned", "extension": "pas" },
     { "id": "cpp", "name": "C++", "status": "planned", "extension": "cpp" }
   ],

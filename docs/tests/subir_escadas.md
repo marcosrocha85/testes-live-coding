@@ -80,6 +80,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/subir_escadas/SubirEscadasTest.kt)
 - [Solução PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/subir_escadas/index.php)
 - [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/subir_escadas/SubirEscadasTest.php)
+- [Solução Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/subir_escadas/SubirEscadas.swift)
+- [Testes Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/subir_escadas/SubirEscadasTest.swift)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subir_escadas.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subir_escadas.javascript)
 
@@ -146,3 +148,13 @@ composer --working-dir=src/php test -- --filter SubirEscadasTest
 ```
 
 Com Docker, todos os desafios de PHP: `docker compose run --build --rm php`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Swift
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+swift test --package-path src/swift --jobs 2 --filter SubirEscadasTest
+```
+
+Com Docker, todos os desafios de Swift: `docker compose run --build --rm swift`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).

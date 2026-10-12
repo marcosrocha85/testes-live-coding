@@ -78,6 +78,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/ciclo_em_lista_ligada/CicloEmListaLigadaTest.kt)
 - [Solução PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/ciclo_em_lista_ligada/index.php)
 - [Testes PHP](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/php/ciclo_em_lista_ligada/CicloEmListaLigadaTest.php)
+- [Solução Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/ciclo_em_lista_ligada/CicloEmListaLigada.swift)
+- [Testes Swift](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/swift/ciclo_em_lista_ligada/CicloEmListaLigadaTest.swift)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/ciclo_em_lista_ligada.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#ciclo_em_lista_ligada.javascript)
 
@@ -144,6 +146,16 @@ composer --working-dir=src/php test -- --filter CicloEmListaLigadaTest
 ```
 
 Com Docker, todos os desafios de PHP: `docker compose run --build --rm php`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Swift
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+swift test --package-path src/swift --jobs 2 --filter CicloEmListaLigadaTest
+```
+
+Com Docker, todos os desafios de Swift: `docker compose run --build --rm swift`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em PHP
 

@@ -1,7 +1,18 @@
-# Microprojeto Swift
+# Swift — dez desafios de live coding
 
-**Estado: planejado.** Os dez desafios ainda não foram implementados nesta linguagem.
+Os dez desafios têm soluções independentes, testes dos casos compartilhados e explicações locais. Comece pelo [guia Swift](../../docs/linguagens/swift.md).
 
-Nós como classes, referências opcionais e testes adequados ao Swift Package Manager.
+Sem instalar SDK no computador, execute da raiz:
 
-Acompanhe [a issue principal e as dez sub-issues](../../docs/roadmap.md) e leia [o guia da linguagem](../../docs/linguagens/swift.md). Cada implementação precisa dos casos compartilhados, testes específicos, explicação para iniciantes e integração na CI.
+```sh
+docker compose run --build --rm swift
+```
+
+Com Swift 6.3.3 de 64 bits local:
+
+```sh
+swift test --package-path src/swift --jobs 2 -Xswiftc -warnings-as-errors
+swift run --package-path src/swift --jobs 2 exemplo soma_de_dois
+```
+
+O Package Manager separa a biblioteca LiveCoding, os testes Swift Testing e o executável de exemplos. Não há dependências externas nem SDK instalado no host pelo Docker. Os testes leem docs/casos; clone o repositório completo. Os exemplos são gerados por npm run docs. Consulte os READMEs das dez pastas.
