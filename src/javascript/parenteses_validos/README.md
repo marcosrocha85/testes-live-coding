@@ -72,6 +72,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/parenteses_validos/index.test.js)
 - [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/parenteses_validos/index.ts)
 - [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/parenteses_validos/index.test.ts)
+- [Solução Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/parenteses_validos/ParentesesValidos.java)
+- [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/parenteses_validos/ParentesesValidosTest.java)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/parenteses_validos.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#parenteses_validos.javascript)
 
@@ -90,4 +92,18 @@ Da raiz do repositório, após `npm ci`:
 ```sh
 npm run build --workspace src/typescript
 node --test src/typescript/dist/parenteses_validos/index.test.js
+```
+
+### Java
+
+Da raiz, com JDK 21 ou superior. Linux/macOS:
+
+```sh
+./src/java/mvnw -f src/java/pom.xml -Dtest=ParentesesValidosTest test
+```
+
+PowerShell:
+
+```powershell
+.\src\java\mvnw.cmd -f src/java/pom.xml "-Dtest=ParentesesValidosTest" test
 ```

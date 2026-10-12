@@ -36,7 +36,7 @@ export async function buildSite({ root = projectRoot, output = resolve(root, 'di
       const path = linguagem.solutionFiles?.[exercicio.id] ?? `src/${linguagem.id}/${exercicio.id}/index.${linguagem.extension}`;
       const code = await lerCodigo(root, linguagem, path);
       const usaLista = ['javascript', 'typescript'].includes(linguagem.id) && ['inverter_lista_ligada', 'mesclar_listas_ordenadas', 'ciclo_em_lista_ligada'].includes(exercicio.id);
-      const auxiliares = linguagem.supportFiles ?? (usaLista ? [`src/${linguagem.id}/_shared/lista.${linguagem.extension}`] : []);
+      const auxiliares = linguagem.supportFilesByExercise?.[exercicio.id] ?? linguagem.supportFiles ?? (usaLista ? [`src/${linguagem.id}/_shared/lista.${linguagem.extension}`] : []);
       const support = [];
       for (const path of auxiliares) support.push({ path, code: await lerCodigo(root, linguagem, path) });
       solutions.push({ language: linguagem.id, path, code, support });

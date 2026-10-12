@@ -72,6 +72,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/subarray_maximo/index.test.js)
 - [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/subarray_maximo/index.ts)
 - [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/subarray_maximo/index.test.ts)
+- [Solução Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/subarray_maximo/SubarrayMaximo.java)
+- [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/subarray_maximo/SubarrayMaximoTest.java)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subarray_maximo.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subarray_maximo.javascript)
 
@@ -90,4 +92,18 @@ Da raiz do repositório, após `npm ci`:
 ```sh
 npm run build --workspace src/typescript
 node --test src/typescript/dist/subarray_maximo/index.test.js
+```
+
+### Java
+
+Da raiz, com JDK 21 ou superior. Linux/macOS:
+
+```sh
+./src/java/mvnw -f src/java/pom.xml -Dtest=SubarrayMaximoTest test
+```
+
+PowerShell:
+
+```powershell
+.\src\java\mvnw.cmd -f src/java/pom.xml "-Dtest=SubarrayMaximoTest" test
 ```

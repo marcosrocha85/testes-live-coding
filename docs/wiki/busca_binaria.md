@@ -74,6 +74,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/busca_binaria/index.test.js)
 - [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/busca_binaria/index.ts)
 - [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/busca_binaria/index.test.ts)
+- [Solução Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/busca_binaria/BuscaBinaria.java)
+- [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/busca_binaria/BuscaBinariaTest.java)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/busca_binaria.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#busca_binaria.javascript)
 
@@ -92,4 +94,18 @@ Da raiz do repositório, após `npm ci`:
 ```sh
 npm run build --workspace src/typescript
 node --test src/typescript/dist/busca_binaria/index.test.js
+```
+
+### Java
+
+Da raiz, com JDK 21 ou superior. Linux/macOS:
+
+```sh
+./src/java/mvnw -f src/java/pom.xml -Dtest=BuscaBinariaTest test
+```
+
+PowerShell:
+
+```powershell
+.\src\java\mvnw.cmd -f src/java/pom.xml "-Dtest=BuscaBinariaTest" test
 ```
