@@ -49,6 +49,32 @@ const exemplosJava = {
   ciclo_em_lista_ligada: 'No primeiro = new No(1);\nNo segundo = new No(2);\nprimeiro.proximo = segundo;\nsegundo.proximo = primeiro;\nSystem.out.println(CicloEmListaLigada.temCiclo(primeiro)); // true'
 };
 
+const notasKotlin = {
+  soma_de_dois: '`IntArray` guarda inteiros; `IntArray?` permite devolver `null`. `mutableMapOf<Int, Int>()` liga cada valor ao primeiro índice. Uma consulta ausente devolve `null`, mas o índice zero é válido. `putIfAbsent` mantém a primeira ocorrência.',
+  parenteses_validos: '`ArrayDeque<Char>` é a pilha. `addLast` e `removeLastOrNull` usam a mesma ponta. A remoção devolve `null` quando falta uma abertura. `when` distingue os símbolos aceitos; qualquer outro torna a sequência inválida.',
+  inverter_lista_ligada: '`No?` indica uma referência que pode ser `null`. Dentro do laço, o compilador reconhece que `atual` não é nulo. `val seguinte` preserva uma referência; o objeto continua o mesmo. `var proximo` permite alterar a ligação.',
+  busca_binaria: '`lastIndex` vale `-1` em um array vazio. Assim o laço termina antes de ler uma posição. A divisão de dois `Int` também produz um inteiro. `when` escolhe qual limite mudar; a entrada precisa estar ordenada.',
+  mesclar_listas_ordenadas: '`a ?: b` usa `a` se ele não for nulo; caso contrário, usa `b`. O sentinela facilita a primeira ligação e não faz parte da saída. `<=` mantém os nós da primeira lista antes dos da segunda em empate. Os nós são reutilizados.',
+  compra_e_venda_de_acoes: '`1..precos.lastIndex` percorre dias depois do primeiro; a faixa `1..0` é vazia para um único preço. `maxOf` e `minOf` escolhem entre dois valores. A comparação do lucro ocorre antes de atualizar o menor preço, preservando a ordem dos dias.',
+  subarray_maximo: '`Long?` representa uma soma de 64 bits ou ausência de elementos. `toLong()` amplia cada número antes da adição: somar em `Int` e converter depois poderia perder a resposta. O primeiro valor inicializa as somas para aceitar trechos só negativos.',
+  subir_escadas: '`Double` permite receber e rejeitar frações vindas dos dados externos. Kotlin não converte `Int` em `Double` implicitamente: use `3.0` ou `n.toDouble()`. `require` lança `IllegalArgumentException` para NaN, infinitos, frações e valores fora de 0 a 77. Depois da validação, `toInt()` é seguro. `1L` é um literal `Long`; as contagens são exatas.',
+  anagrama_valido: '`Char` representa uma unidade UTF-16, enquanto `codePoints().iterator()` percorre pontos de código completos sem copiar a string. A chave do mapa é o código inteiro do símbolo. `?: 0` começa a contagem; `?: return false` rejeita um símbolo ausente. Maiúsculas, espaços e acentos continuam significativos.',
+  ciclo_em_lista_ligada: '`?.` só acessa o campo se a referência existir. `===` compara identidade: os dois ponteiros precisam chegar ao mesmo objeto. A classe `No` é uma classe comum, sem igualdade recursiva de `data class`. Nenhum ponteiro é modificado.'
+};
+
+const exemplosKotlin = {
+  soma_de_dois: 'println(somaDeDois(intArrayOf(2, 7, 11, 15), 9)?.contentToString()) // [0, 1]',
+  parenteses_validos: 'println(parentesesValidos("{[()]}")) // true',
+  inverter_lista_ligada: 'val cabeca = No(1, No(2, No(3)))\nval invertida = inverterListaLigada(cabeca)\nprintln(invertida?.valor) // 3; as ligações são 3 → 2 → 1 → null',
+  busca_binaria: 'println(buscaBinaria(intArrayOf(1, 3, 5, 7, 9), 7)) // 3',
+  mesclar_listas_ordenadas: 'val mesclada = mesclarListasOrdenadas(No(1, No(3)), No(2, No(4)))\nprintln(mesclada?.valor) // 1; a sequência é 1 → 2 → 3 → 4 → null',
+  compra_e_venda_de_acoes: 'println(maiorLucro(intArrayOf(7, 1, 5, 3, 6, 4))) // 5',
+  subarray_maximo: 'println(subarrayMaximo(intArrayOf(-2, 1, -3, 4, -1, 2, 1, -5, 4))) // 6',
+  subir_escadas: 'println(subirEscadas(3.0)) // 3',
+  anagrama_valido: 'println(anagramaValido("😀a😀", "😀😀a")) // true',
+  ciclo_em_lista_ligada: 'val primeiro = No(1)\nval segundo = No(2, primeiro)\nprimeiro.proximo = segundo\nprintln(temCiclo(primeiro)) // true'
+};
+
 async function salvar(caminho, conteudo) {
   const destino = resolve(root, caminho);
   if (process.argv.includes('--check')) {
@@ -93,6 +119,10 @@ for (const exercicio of catalogo.exercises) {
       const windows = comando.replace('./src/java/mvnw', '.\\src\\java\\mvnw.cmd').replace(/-Dtest=([^ ]+)/, '"-Dtest=$1"');
       return `### Java\n\nDa raiz, com JDK 21 ou superior. Linux/macOS:\n\n\`\`\`sh\n${comando}\n\`\`\`\n\nPowerShell:\n\n\`\`\`powershell\n${windows}\n\`\`\`\n` + docker;
     }
+    if (linguagem.id === 'kotlin') {
+      const windows = comando.replace('./src/kotlin/gradlew', '.\\src\\kotlin\\gradlew.bat');
+      return `### Kotlin\n\nDa raiz, com JDK 21. O Wrapper baixa Gradle e o compilador Kotlin. Linux/macOS:\n\n\`\`\`sh\n${comando}\n\`\`\`\n\nPowerShell:\n\n\`\`\`powershell\n${windows}\n\`\`\`\n` + docker;
+    }
     return `### ${linguagem.name}\n\nDa raiz do repositório, após \`npm ci\`:\n\n\`\`\`sh\n${comando}\n\`\`\`\n` + docker;
   }).join('\n');
   const corpo = [
@@ -128,6 +158,11 @@ for (const exercicio of catalogo.exercises) {
       const importaNo = ['inverter_lista_ligada', 'mesclar_listas_ordenadas', 'ciclo_em_lista_ligada'].includes(exercicio.id);
       const imports = `import tinker.livecoding.${exercicio.id}.${classe};\n` + (importaNo ? 'import tinker.livecoding._shared.No;\n' : '');
       notas = `\n## Particularidades em Java\n\n${notasJava[exercicio.id]}\n\n## Exemplo em Java\n\nCompile com Maven e abra \`jshell --class-path src/java/target/classes\` da raiz. No JShell, execute:\n\n\`\`\`java\n${imports}\n${exemplosJava[exercicio.id]}\n\`\`\`\n\nVeja [o guia de Java](${baseGitHub}/blob/main/docs/linguagens/java.md) para instalação, ferramentas, tipos e comandos.\n`;
+    }
+    if (linguagem.id === 'kotlin') {
+      const imports = `import livecoding.${exercicio.id}.${exercicio.functionName}\n` + (linguagem.supportFilesByExercise?.[exercicio.id] ? 'import livecoding._shared.No\n' : '');
+      const exemplo = exemplosKotlin[exercicio.id].split('\n').map(linha => `    ${linha}`).join('\n');
+      notas = `\n## Particularidades em Kotlin\n\n${notasKotlin[exercicio.id]}\n\n## Exemplo de uso em Kotlin\n\nAs funções são declaradas no topo do arquivo. Em um programa Kotlin que use este microprojeto:\n\n\`\`\`kotlin\n${imports}\nfun main() {\n${exemplo}\n}\n\`\`\`\n\nVeja [o guia de Kotlin](${baseGitHub}/blob/main/docs/linguagens/kotlin.md) para ferramentas, tipos, Unicode e comandos.\n`;
     }
     await salvar(`src/${linguagem.id}/${exercicio.id}/README.md`, aviso + corpo + notas);
   }

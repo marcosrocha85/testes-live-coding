@@ -77,6 +77,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/anagrama_valido/index.test.ts)
 - [Solução Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/anagrama_valido/AnagramaValido.java)
 - [Testes Java](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/java/anagrama_valido/AnagramaValidoTest.java)
+- [Solução Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/anagrama_valido/AnagramaValido.kt)
+- [Testes Kotlin](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/kotlin/anagrama_valido/AnagramaValidoTest.kt)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/anagrama_valido.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#anagrama_valido.javascript)
 
@@ -116,3 +118,19 @@ PowerShell:
 ```
 
 Com Docker, todos os desafios de Java: `docker compose run --build --rm java`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### Kotlin
+
+Da raiz, com JDK 21. O Wrapper baixa Gradle e o compilador Kotlin. Linux/macOS:
+
+```sh
+./src/kotlin/gradlew --no-daemon -p src/kotlin test --tests "AnagramaValidoTest"
+```
+
+PowerShell:
+
+```powershell
+.\src\kotlin\gradlew.bat --no-daemon -p src/kotlin test --tests "AnagramaValidoTest"
+```
+
+Com Docker, todos os desafios de Kotlin: `docker compose run --build --rm kotlin`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).

@@ -4,7 +4,7 @@
 
 Um guia de estudo para entender, implementar e explicar desafios comuns de entrevistas técnicas. Cada solução tem comentários simples, testes automatizados e uma explicação do raciocínio e da capacidade avaliada.
 
-Os **dez desafios estão implementados em JavaScript, TypeScript e Java**, com testes próprios para cada linguagem. As próximas etapas serão Kotlin, PHP, Swift, Pascal e C++, uma linguagem por vez, com revisão de Marcos Rocha.
+Os **dez desafios estão implementados em JavaScript, TypeScript, Java e Kotlin**, com testes próprios para cada linguagem. As próximas etapas serão PHP, Swift, Pascal e C++, uma linguagem por vez, com revisão de Marcos Rocha.
 
 - [Wiki do projeto](https://github.com/marcosrocha85/testes-live-coding/wiki)
 - [Explicações dos desafios](docs/tests/README.md)
@@ -13,6 +13,7 @@ Os **dez desafios estão implementados em JavaScript, TypeScript e Java**, com t
 - [Guia de JavaScript para iniciantes](docs/linguagens/javascript.md)
 - [Guia de TypeScript para iniciantes](docs/linguagens/typescript.md)
 - [Guia de Java para iniciantes](docs/linguagens/java.md)
+- [Guia de Kotlin para iniciantes](docs/linguagens/kotlin.md)
 - [Roteiro e issues por linguagem](docs/roadmap.md)
 
 O site é atualizado após a integração de cada entrega à `main`. A Wiki tem explicações dos dez desafios; suas fontes estão versionadas em [docs/wiki](docs/wiki/Home.md).
@@ -21,7 +22,7 @@ O site é atualizado após a integração de cada entrega à `main`. A Wiki tem 
 
 ### Com Docker
 
-Instale Git e Docker com suporte a containers Linux. Cada linguagem tem seu próprio container de testes; você pode executar só a que estiver estudando, sem instalar Node.js, TypeScript, JDK ou Maven no computador:
+Instale Git e Docker com suporte a containers Linux. Cada linguagem tem seu próprio container de testes; você pode executar só a que estiver estudando, sem instalar Node.js, TypeScript, JDK, Maven, Gradle ou Kotlin no computador:
 
 ```sh
 git clone https://github.com/marcosrocha85/testes-live-coding.git
@@ -29,6 +30,7 @@ cd testes-live-coding
 docker compose run --build --rm javascript
 docker compose run --build --rm typescript
 docker compose run --build --rm java
+docker compose run --build --rm kotlin
 ```
 
 O primeiro uso baixa a imagem e as dependências. `--build` inclui suas alterações e `--rm` remove o container após os testes. Os testes usam uma cópia dos fontes, e os arquivos de build ficam dentro do Docker. Veja [o guia Docker](docs/docker.md) para entender os comandos, caches e como adicionar uma linguagem.
@@ -74,7 +76,21 @@ No PowerShell:
 .\src\java\mvnw.cmd -f src/java/pom.xml clean verify
 ```
 
-Java tem testes JUnit independentes dos workspaces npm. As soluções usam a biblioteca padrão; JUnit e Gson são dependências somente dos testes. A CI confere as três linguagens antes da publicação da aba Java.
+Java tem testes JUnit independentes dos workspaces npm. As soluções usam a biblioteca padrão; JUnit e Gson são dependências somente dos testes. A CI e o workflow Pages conferem as quatro linguagens antes da publicação.
+
+Para Kotlin, prefira `docker compose run --build --rm kotlin`, que valida sem instalar SDK no computador. Se já tiver **JDK 21** local, use o Gradle Wrapper:
+
+```sh
+./src/kotlin/gradlew --no-daemon -p src/kotlin clean check jar
+```
+
+No PowerShell:
+
+```powershell
+.\src\kotlin\gradlew.bat --no-daemon -p src/kotlin clean check jar
+```
+
+Kotlin tem 102 testes JUnit próprios e usa Gradle 9.7.0 e Kotlin 2.4.21. As soluções não dependem das outras linguagens.
 
 ## Os dez desafios iniciais
 
@@ -107,7 +123,8 @@ src/
   javascript/             # Dez desafios e testes executados pelo Node
   typescript/             # Dez desafios, compilação estrita e testes próprios
   java/                   # Dez desafios, Maven Wrapper e testes JUnit
-  kotlin/ php/ swift/ pascal/ cpp/  # Etapas planejadas
+  kotlin/                 # Dez desafios, Gradle Wrapper e testes JUnit
+  php/ swift/ pascal/ cpp/ # Etapas planejadas
 scripts/                  # Geradores, preview e publicação da Wiki
 .github/                  # CI, publicação e templates de issues
 ```
@@ -121,6 +138,8 @@ Cada linguagem será um microprojeto independente, com ferramentas e testes adeq
 | `docker compose run --build --rm javascript` | Todos os testes JavaScript em um container temporário |
 | `docker compose run --build --rm typescript` | Compilação e todos os testes TypeScript em um container temporário |
 | `docker compose run --build --rm java` | Maven e todos os testes Java em um container temporário |
+| `docker compose run --build --rm kotlin` | Gradle, compilação e todos os testes Kotlin em um container temporário |
+| `./src/kotlin/gradlew --no-daemon -p src/kotlin clean check jar` | Compilar e testar Kotlin com JDK 21 local |
 | `npm test` | Testes JavaScript, TypeScript e verificações do gerador do site |
 | `npm run typecheck` | Checagem estrita de tipos do microprojeto TypeScript |
 | `./src/java/mvnw -f src/java/pom.xml clean verify` | Compilar e testar os dez desafios Java em Linux/macOS |

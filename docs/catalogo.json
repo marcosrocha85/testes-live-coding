@@ -47,7 +47,51 @@
         ]
       }
     },
-    { "id": "kotlin", "name": "Kotlin", "status": "planned", "extension": "kt" },
+    {
+      "id": "kotlin",
+      "name": "Kotlin",
+      "status": "implemented",
+      "extension": "kt",
+      "runtime": "JDK 21; Kotlin 2.4.21; Gradle Wrapper 9.7.0",
+      "testCommand": "./src/kotlin/gradlew --no-daemon -p src/kotlin check",
+      "dockerTestCommand": "docker compose run --build --rm kotlin",
+      "solutionFiles": {
+        "soma_de_dois": "src/kotlin/soma_de_dois/SomaDeDois.kt",
+        "parenteses_validos": "src/kotlin/parenteses_validos/ParentesesValidos.kt",
+        "inverter_lista_ligada": "src/kotlin/inverter_lista_ligada/InverterListaLigada.kt",
+        "busca_binaria": "src/kotlin/busca_binaria/BuscaBinaria.kt",
+        "mesclar_listas_ordenadas": "src/kotlin/mesclar_listas_ordenadas/MesclarListasOrdenadas.kt",
+        "compra_e_venda_de_acoes": "src/kotlin/compra_e_venda_de_acoes/CompraEVendaDeAcoes.kt",
+        "subarray_maximo": "src/kotlin/subarray_maximo/SubarrayMaximo.kt",
+        "subir_escadas": "src/kotlin/subir_escadas/SubirEscadas.kt",
+        "anagrama_valido": "src/kotlin/anagrama_valido/AnagramaValido.kt",
+        "ciclo_em_lista_ligada": "src/kotlin/ciclo_em_lista_ligada/CicloEmListaLigada.kt"
+      },
+      "testFiles": {
+        "soma_de_dois": "src/kotlin/soma_de_dois/SomaDeDoisTest.kt",
+        "parenteses_validos": "src/kotlin/parenteses_validos/ParentesesValidosTest.kt",
+        "inverter_lista_ligada": "src/kotlin/inverter_lista_ligada/InverterListaLigadaTest.kt",
+        "busca_binaria": "src/kotlin/busca_binaria/BuscaBinariaTest.kt",
+        "mesclar_listas_ordenadas": "src/kotlin/mesclar_listas_ordenadas/MesclarListasOrdenadasTest.kt",
+        "compra_e_venda_de_acoes": "src/kotlin/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.kt",
+        "subarray_maximo": "src/kotlin/subarray_maximo/SubarrayMaximoTest.kt",
+        "subir_escadas": "src/kotlin/subir_escadas/SubirEscadasTest.kt",
+        "anagrama_valido": "src/kotlin/anagrama_valido/AnagramaValidoTest.kt",
+        "ciclo_em_lista_ligada": "src/kotlin/ciclo_em_lista_ligada/CicloEmListaLigadaTest.kt"
+      },
+      "exerciseTestCommand": "./src/kotlin/gradlew --no-daemon -p src/kotlin test --tests \"{testClass}\"",
+      "supportFilesByExercise": {
+        "inverter_lista_ligada": [
+          "src/kotlin/_shared/No.kt"
+        ],
+        "mesclar_listas_ordenadas": [
+          "src/kotlin/_shared/No.kt"
+        ],
+        "ciclo_em_lista_ligada": [
+          "src/kotlin/_shared/No.kt"
+        ]
+      }
+    },
     { "id": "php", "name": "PHP", "status": "planned", "extension": "php" },
     { "id": "swift", "name": "Swift", "status": "planned", "extension": "swift" },
     { "id": "pascal", "name": "Pascal", "status": "planned", "extension": "pas" },

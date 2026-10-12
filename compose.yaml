@@ -24,5 +24,15 @@ services:
     volumes:
       - java_maven:/home/runner/.m2
 
+  kotlin:
+    profiles: [kotlin]
+    image: testes-live-coding-kotlin:local
+    build:
+      context: .
+      dockerfile: src/kotlin/Dockerfile
+    volumes:
+      - kotlin_gradle:/home/runner/.gradle
+
 volumes:
   java_maven:
+  kotlin_gradle:
