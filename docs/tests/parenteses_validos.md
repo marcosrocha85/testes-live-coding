@@ -70,11 +70,24 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 
 - [Solução JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/parenteses_validos/index.js)
 - [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/parenteses_validos/index.test.js)
+- [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/parenteses_validos/index.ts)
+- [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/parenteses_validos/index.test.ts)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/parenteses_validos.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#parenteses_validos.javascript)
 
-Da raiz do repositório:
+### JavaScript
+
+Da raiz do repositório, após `npm ci`:
 
 ```sh
 node --test src/javascript/parenteses_validos/index.test.js
+```
+
+### TypeScript
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+npm run build --workspace src/typescript
+node --test src/typescript/dist/parenteses_validos/index.test.js
 ```

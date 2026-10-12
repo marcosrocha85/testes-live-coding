@@ -82,6 +82,10 @@ try {
   const resposta = await fetch('./catalogo.json');
   if (!resposta.ok) throw new Error('Catálogo indisponível.');
   catalogo = await resposta.json();
+  const nomesDisponiveis = catalogo.languages.filter((linguagem) => linguagem.status === 'implemented').map((linguagem) => linguagem.name);
+  const destaque = document.createElement('b');
+  destaque.textContent = new Intl.ListFormat('pt-BR', { type: 'conjunction' }).format(nomesDisponiveis);
+  $('available-languages').replaceChildren(destaque, document.createTextNode(nomesDisponiveis.length === 1 ? ' disponível' : ' disponíveis'));
   catalogo.exercises.forEach((exercicio, indice) => {
     const botao = document.createElement('button');
     botao.type = 'button';

@@ -68,11 +68,24 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 
 - [Solução JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/mesclar_listas_ordenadas/index.js)
 - [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/mesclar_listas_ordenadas/index.test.js)
+- [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/mesclar_listas_ordenadas/index.ts)
+- [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/mesclar_listas_ordenadas/index.test.ts)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/mesclar_listas_ordenadas.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#mesclar_listas_ordenadas.javascript)
 
-Da raiz do repositório:
+### JavaScript
+
+Da raiz do repositório, após `npm ci`:
 
 ```sh
 node --test src/javascript/mesclar_listas_ordenadas/index.test.js
+```
+
+### TypeScript
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+npm run build --workspace src/typescript
+node --test src/typescript/dist/mesclar_listas_ordenadas/index.test.js
 ```

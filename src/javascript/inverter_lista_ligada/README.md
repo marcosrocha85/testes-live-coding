@@ -68,11 +68,24 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 
 - [Solução JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/inverter_lista_ligada/index.js)
 - [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/inverter_lista_ligada/index.test.js)
+- [Solução TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/inverter_lista_ligada/index.ts)
+- [Testes TypeScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/typescript/inverter_lista_ligada/index.test.ts)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/inverter_lista_ligada.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#inverter_lista_ligada.javascript)
 
-Da raiz do repositório:
+### JavaScript
+
+Da raiz do repositório, após `npm ci`:
 
 ```sh
 node --test src/javascript/inverter_lista_ligada/index.test.js
+```
+
+### TypeScript
+
+Da raiz do repositório, após `npm ci`:
+
+```sh
+npm run build --workspace src/typescript
+node --test src/typescript/dist/inverter_lista_ligada/index.test.js
 ```

@@ -38,6 +38,7 @@ Este repositório é um guia de estudo de live coding para iniciantes. A priorid
 - O site é gerado a partir do catálogo e dos arquivos reais das soluções. Abas de linguagens planejadas devem mostrar o status pendente e a issue correspondente.
 - `docs/wiki/` contém a projeção para a Wiki; publique com `scripts/publish-wiki.ps1` quando a primeira página da Wiki já existir. Não duplique alterações manualmente.
 - Ao corrigir revisão do GitHub Copilot, responda na própria thread com a correção, o commit e a validação realizada. Depois de confirmar a correção, resolva a conversa.
+- Não solicite revisão do Copilot nas issues ou PRs. Use testes e revisão local; a revisão humana fica com Marcos Rocha.
 
 ## Preferências de nomenclatura
 
