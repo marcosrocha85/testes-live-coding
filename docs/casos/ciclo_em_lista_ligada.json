@@ -1,0 +1,10 @@
+[
+  { "name": "cauda aponta para o meio", "input": { "valores": [3, 2, 0, -4], "indiceCiclo": 1 }, "expected": true },
+  { "name": "sem ciclo", "input": { "valores": [1, 2, 3], "indiceCiclo": -1 }, "expected": false },
+  { "name": "lista vazia", "input": { "valores": [], "indiceCiclo": -1 }, "expected": false },
+  { "name": "nó único sem ciclo", "input": { "valores": [1], "indiceCiclo": -1 }, "expected": false },
+  { "name": "nó aponta para si mesmo", "input": { "valores": [1], "indiceCiclo": 0 }, "expected": true },
+  { "name": "dois nós em ciclo", "input": { "valores": [1, 2], "indiceCiclo": 0 }, "expected": true },
+  { "name": "valores repetidos não são ciclo", "input": { "valores": [1, 1, 1], "indiceCiclo": -1 }, "expected": false },
+  { "name": "ciclo só na cauda", "input": { "valores": [1, 2, 3], "indiceCiclo": 2 }, "expected": true }
+]

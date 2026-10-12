@@ -1,0 +1,21 @@
+name: Correção ou melhoria
+description: Reporte um erro no código, teste ou explicação.
+title: '[Melhoria] '
+body:
+  - type: input
+    id: local
+    attributes:
+      label: Linguagem e desafio ou documento
+    validations:
+      required: true
+  - type: textarea
+    id: comportamento
+    attributes:
+      label: Problema observado e resultado esperado
+    validations:
+      required: true
+  - type: textarea
+    id: reproducao
+    attributes:
+      label: Como reproduzir
+      description: Inclua entrada, comando e saída, ou o trecho da explicação que precisa melhorar.

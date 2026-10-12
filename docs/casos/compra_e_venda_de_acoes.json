@@ -1,0 +1,11 @@
+[
+  { "name": "exemplo clássico", "input": { "precos": [7, 1, 5, 3, 6, 4] }, "expected": 5 },
+  { "name": "preços decrescentes", "input": { "precos": [7, 6, 4, 3, 1] }, "expected": 0 },
+  { "name": "preços crescentes", "input": { "precos": [1, 2, 3, 4] }, "expected": 3 },
+  { "name": "não vende antes de comprar", "input": { "precos": [10, 1, 2] }, "expected": 1 },
+  { "name": "somente uma operação", "input": { "precos": [1, 5, 2, 8] }, "expected": 7 },
+  { "name": "preços iguais", "input": { "precos": [3, 3, 3] }, "expected": 0 },
+  { "name": "preço zero", "input": { "precos": [0, 5] }, "expected": 5 },
+  { "name": "um dia", "input": { "precos": [5] }, "expected": 0 },
+  { "name": "vazio", "input": { "precos": [] }, "expected": 0 }
+]

@@ -1,0 +1,10 @@
+[
+  { "name": "pares simples", "input": { "texto": "()[]{}" }, "expected": true },
+  { "name": "aninhados", "input": { "texto": "{[()]}" }, "expected": true },
+  { "name": "fechamento incorreto", "input": { "texto": "(]" }, "expected": false },
+  { "name": "ordem cruzada", "input": { "texto": "([)]" }, "expected": false },
+  { "name": "abertura restante", "input": { "texto": "((" }, "expected": false },
+  { "name": "fechamento sem abertura", "input": { "texto": "]" }, "expected": false },
+  { "name": "vazio", "input": { "texto": "" }, "expected": true },
+  { "name": "caractere fora do domínio", "input": { "texto": "(a)" }, "expected": false }
+]

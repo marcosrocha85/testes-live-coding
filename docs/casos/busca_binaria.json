@@ -1,0 +1,12 @@
+[
+  { "name": "alvo no meio", "input": { "numeros": [-1, 0, 3, 5, 9, 12], "alvo": 9 }, "expected": 4 },
+  { "name": "ausente no intervalo", "input": { "numeros": [-1, 0, 3, 5, 9, 12], "alvo": 2 }, "expected": -1 },
+  { "name": "primeira posição", "input": { "numeros": [1, 3, 5], "alvo": 1 }, "expected": 0 },
+  { "name": "última posição", "input": { "numeros": [1, 3, 5, 7], "alvo": 7 }, "expected": 3 },
+  { "name": "alvo abaixo", "input": { "numeros": [1, 3], "alvo": 0 }, "expected": -1 },
+  { "name": "alvo acima", "input": { "numeros": [1, 3], "alvo": 4 }, "expected": -1 },
+  { "name": "um elemento", "input": { "numeros": [5], "alvo": 5 }, "expected": 0 },
+  { "name": "um elemento ausente", "input": { "numeros": [5], "alvo": 4 }, "expected": -1 },
+  { "name": "vazio", "input": { "numeros": [], "alvo": 1 }, "expected": -1 },
+  { "name": "duplicatas aceitam qualquer índice do alvo", "input": { "numeros": [1, 2, 2, 2, 3], "alvo": 2 }, "expectedIndices": [1, 2, 3] }
+]

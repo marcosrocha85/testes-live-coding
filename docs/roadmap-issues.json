@@ -1,0 +1,554 @@
+[
+  {
+    "language": "javascript",
+    "name": "JavaScript",
+    "number": 1,
+    "id": 5815834117,
+    "url": "https://github.com/marcosrocha85/testes-live-coding/issues/1",
+    "exercises": [
+      {
+        "exercise": "soma_de_dois",
+        "number": 2,
+        "id": 5815834386,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/2"
+      },
+      {
+        "exercise": "parenteses_validos",
+        "number": 3,
+        "id": 5815834750,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/3"
+      },
+      {
+        "exercise": "inverter_lista_ligada",
+        "number": 4,
+        "id": 5815835036,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/4"
+      },
+      {
+        "exercise": "busca_binaria",
+        "number": 5,
+        "id": 5815835386,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/5"
+      },
+      {
+        "exercise": "mesclar_listas_ordenadas",
+        "number": 6,
+        "id": 5815835781,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/6"
+      },
+      {
+        "exercise": "compra_e_venda_de_acoes",
+        "number": 7,
+        "id": 5815836158,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/7"
+      },
+      {
+        "exercise": "subarray_maximo",
+        "number": 8,
+        "id": 5815836526,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/8"
+      },
+      {
+        "exercise": "subir_escadas",
+        "number": 9,
+        "id": 5815836863,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/9"
+      },
+      {
+        "exercise": "anagrama_valido",
+        "number": 10,
+        "id": 5815837178,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/10"
+      },
+      {
+        "exercise": "ciclo_em_lista_ligada",
+        "number": 11,
+        "id": 5815837421,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/11"
+      }
+    ]
+  },
+  {
+    "language": "typescript",
+    "name": "TypeScript",
+    "number": 12,
+    "id": 5815837912,
+    "url": "https://github.com/marcosrocha85/testes-live-coding/issues/12",
+    "exercises": [
+      {
+        "exercise": "soma_de_dois",
+        "number": 13,
+        "id": 5815838149,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/13"
+      },
+      {
+        "exercise": "parenteses_validos",
+        "number": 14,
+        "id": 5815838444,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/14"
+      },
+      {
+        "exercise": "inverter_lista_ligada",
+        "number": 15,
+        "id": 5815838764,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/15"
+      },
+      {
+        "exercise": "busca_binaria",
+        "number": 16,
+        "id": 5815839107,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/16"
+      },
+      {
+        "exercise": "mesclar_listas_ordenadas",
+        "number": 17,
+        "id": 5815839402,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/17"
+      },
+      {
+        "exercise": "compra_e_venda_de_acoes",
+        "number": 18,
+        "id": 5815839674,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/18"
+      },
+      {
+        "exercise": "subarray_maximo",
+        "number": 19,
+        "id": 5815839984,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/19"
+      },
+      {
+        "exercise": "subir_escadas",
+        "number": 20,
+        "id": 5815840288,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/20"
+      },
+      {
+        "exercise": "anagrama_valido",
+        "number": 21,
+        "id": 5815840749,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/21"
+      },
+      {
+        "exercise": "ciclo_em_lista_ligada",
+        "number": 22,
+        "id": 5815841059,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/22"
+      }
+    ]
+  },
+  {
+    "language": "java",
+    "name": "Java",
+    "number": 23,
+    "id": 5815841543,
+    "url": "https://github.com/marcosrocha85/testes-live-coding/issues/23",
+    "exercises": [
+      {
+        "exercise": "soma_de_dois",
+        "number": 24,
+        "id": 5815841794,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/24"
+      },
+      {
+        "exercise": "parenteses_validos",
+        "number": 25,
+        "id": 5815842115,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/25"
+      },
+      {
+        "exercise": "inverter_lista_ligada",
+        "number": 26,
+        "id": 5815842611,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/26"
+      },
+      {
+        "exercise": "busca_binaria",
+        "number": 27,
+        "id": 5815842956,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/27"
+      },
+      {
+        "exercise": "mesclar_listas_ordenadas",
+        "number": 28,
+        "id": 5815843256,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/28"
+      },
+      {
+        "exercise": "compra_e_venda_de_acoes",
+        "number": 29,
+        "id": 5815843620,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/29"
+      },
+      {
+        "exercise": "subarray_maximo",
+        "number": 30,
+        "id": 5815844008,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/30"
+      },
+      {
+        "exercise": "subir_escadas",
+        "number": 31,
+        "id": 5815844339,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/31"
+      },
+      {
+        "exercise": "anagrama_valido",
+        "number": 32,
+        "id": 5815844692,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/32"
+      },
+      {
+        "exercise": "ciclo_em_lista_ligada",
+        "number": 33,
+        "id": 5815844991,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/33"
+      }
+    ]
+  },
+  {
+    "language": "kotlin",
+    "name": "Kotlin",
+    "number": 34,
+    "id": 5815845530,
+    "url": "https://github.com/marcosrocha85/testes-live-coding/issues/34",
+    "exercises": [
+      {
+        "exercise": "soma_de_dois",
+        "number": 35,
+        "id": 5815845797,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/35"
+      },
+      {
+        "exercise": "parenteses_validos",
+        "number": 36,
+        "id": 5815846077,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/36"
+      },
+      {
+        "exercise": "inverter_lista_ligada",
+        "number": 37,
+        "id": 5815846373,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/37"
+      },
+      {
+        "exercise": "busca_binaria",
+        "number": 38,
+        "id": 5815846651,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/38"
+      },
+      {
+        "exercise": "mesclar_listas_ordenadas",
+        "number": 39,
+        "id": 5815847026,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/39"
+      },
+      {
+        "exercise": "compra_e_venda_de_acoes",
+        "number": 40,
+        "id": 5815847354,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/40"
+      },
+      {
+        "exercise": "subarray_maximo",
+        "number": 41,
+        "id": 5815847681,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/41"
+      },
+      {
+        "exercise": "subir_escadas",
+        "number": 42,
+        "id": 5815848034,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/42"
+      },
+      {
+        "exercise": "anagrama_valido",
+        "number": 43,
+        "id": 5815848330,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/43"
+      },
+      {
+        "exercise": "ciclo_em_lista_ligada",
+        "number": 44,
+        "id": 5815848745,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/44"
+      }
+    ]
+  },
+  {
+    "language": "php",
+    "name": "PHP",
+    "number": 45,
+    "id": 5815849300,
+    "url": "https://github.com/marcosrocha85/testes-live-coding/issues/45",
+    "exercises": [
+      {
+        "exercise": "soma_de_dois",
+        "number": 46,
+        "id": 5815849497,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/46"
+      },
+      {
+        "exercise": "parenteses_validos",
+        "number": 47,
+        "id": 5815849856,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/47"
+      },
+      {
+        "exercise": "inverter_lista_ligada",
+        "number": 48,
+        "id": 5815850222,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/48"
+      },
+      {
+        "exercise": "busca_binaria",
+        "number": 49,
+        "id": 5815850490,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/49"
+      },
+      {
+        "exercise": "mesclar_listas_ordenadas",
+        "number": 50,
+        "id": 5815850778,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/50"
+      },
+      {
+        "exercise": "compra_e_venda_de_acoes",
+        "number": 51,
+        "id": 5815851094,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/51"
+      },
+      {
+        "exercise": "subarray_maximo",
+        "number": 52,
+        "id": 5815851408,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/52"
+      },
+      {
+        "exercise": "subir_escadas",
+        "number": 53,
+        "id": 5815851713,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/53"
+      },
+      {
+        "exercise": "anagrama_valido",
+        "number": 54,
+        "id": 5815851994,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/54"
+      },
+      {
+        "exercise": "ciclo_em_lista_ligada",
+        "number": 55,
+        "id": 5815852285,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/55"
+      }
+    ]
+  },
+  {
+    "language": "swift",
+    "name": "Swift",
+    "number": 56,
+    "id": 5815852781,
+    "url": "https://github.com/marcosrocha85/testes-live-coding/issues/56",
+    "exercises": [
+      {
+        "exercise": "soma_de_dois",
+        "number": 57,
+        "id": 5815853022,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/57"
+      },
+      {
+        "exercise": "parenteses_validos",
+        "number": 58,
+        "id": 5815853281,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/58"
+      },
+      {
+        "exercise": "inverter_lista_ligada",
+        "number": 59,
+        "id": 5815853577,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/59"
+      },
+      {
+        "exercise": "busca_binaria",
+        "number": 60,
+        "id": 5815853860,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/60"
+      },
+      {
+        "exercise": "mesclar_listas_ordenadas",
+        "number": 61,
+        "id": 5815854177,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/61"
+      },
+      {
+        "exercise": "compra_e_venda_de_acoes",
+        "number": 62,
+        "id": 5815854555,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/62"
+      },
+      {
+        "exercise": "subarray_maximo",
+        "number": 63,
+        "id": 5815854887,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/63"
+      },
+      {
+        "exercise": "subir_escadas",
+        "number": 64,
+        "id": 5815855227,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/64"
+      },
+      {
+        "exercise": "anagrama_valido",
+        "number": 65,
+        "id": 5815855627,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/65"
+      },
+      {
+        "exercise": "ciclo_em_lista_ligada",
+        "number": 66,
+        "id": 5815856028,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/66"
+      }
+    ]
+  },
+  {
+    "language": "pascal",
+    "name": "Pascal",
+    "number": 67,
+    "id": 5815856597,
+    "url": "https://github.com/marcosrocha85/testes-live-coding/issues/67",
+    "exercises": [
+      {
+        "exercise": "soma_de_dois",
+        "number": 68,
+        "id": 5815856865,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/68"
+      },
+      {
+        "exercise": "parenteses_validos",
+        "number": 69,
+        "id": 5815857241,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/69"
+      },
+      {
+        "exercise": "inverter_lista_ligada",
+        "number": 70,
+        "id": 5815857618,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/70"
+      },
+      {
+        "exercise": "busca_binaria",
+        "number": 71,
+        "id": 5815857978,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/71"
+      },
+      {
+        "exercise": "mesclar_listas_ordenadas",
+        "number": 72,
+        "id": 5815858256,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/72"
+      },
+      {
+        "exercise": "compra_e_venda_de_acoes",
+        "number": 73,
+        "id": 5815858552,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/73"
+      },
+      {
+        "exercise": "subarray_maximo",
+        "number": 74,
+        "id": 5815858899,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/74"
+      },
+      {
+        "exercise": "subir_escadas",
+        "number": 75,
+        "id": 5815859261,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/75"
+      },
+      {
+        "exercise": "anagrama_valido",
+        "number": 76,
+        "id": 5815859640,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/76"
+      },
+      {
+        "exercise": "ciclo_em_lista_ligada",
+        "number": 77,
+        "id": 5815859979,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/77"
+      }
+    ]
+  },
+  {
+    "language": "cpp",
+    "name": "C++",
+    "number": 78,
+    "id": 5815860516,
+    "url": "https://github.com/marcosrocha85/testes-live-coding/issues/78",
+    "exercises": [
+      {
+        "exercise": "soma_de_dois",
+        "number": 79,
+        "id": 5815860754,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/79"
+      },
+      {
+        "exercise": "parenteses_validos",
+        "number": 80,
+        "id": 5815861037,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/80"
+      },
+      {
+        "exercise": "inverter_lista_ligada",
+        "number": 81,
+        "id": 5815861357,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/81"
+      },
+      {
+        "exercise": "busca_binaria",
+        "number": 82,
+        "id": 5815861659,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/82"
+      },
+      {
+        "exercise": "mesclar_listas_ordenadas",
+        "number": 83,
+        "id": 5815861963,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/83"
+      },
+      {
+        "exercise": "compra_e_venda_de_acoes",
+        "number": 84,
+        "id": 5815862280,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/84"
+      },
+      {
+        "exercise": "subarray_maximo",
+        "number": 85,
+        "id": 5815862573,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/85"
+      },
+      {
+        "exercise": "subir_escadas",
+        "number": 86,
+        "id": 5815862883,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/86"
+      },
+      {
+        "exercise": "anagrama_valido",
+        "number": 87,
+        "id": 5815863194,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/87"
+      },
+      {
+        "exercise": "ciclo_em_lista_ligada",
+        "number": 88,
+        "id": 5815863559,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/88"
+      }
+    ]
+  }
+]

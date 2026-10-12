@@ -1,0 +1,8 @@
+[
+  { "name": "intercaladas", "input": { "primeira": [1, 2, 4], "segunda": [1, 3, 4] }, "expected": [1, 1, 2, 3, 4, 4] },
+  { "name": "ambas vazias", "input": { "primeira": [], "segunda": [] }, "expected": [] },
+  { "name": "primeira vazia", "input": { "primeira": [], "segunda": [0] }, "expected": [0] },
+  { "name": "segunda vazia", "input": { "primeira": [1, 2], "segunda": [] }, "expected": [1, 2] },
+  { "name": "restante da primeira", "input": { "primeira": [2, 3], "segunda": [1] }, "expected": [1, 2, 3] },
+  { "name": "negativos e repetidos", "input": { "primeira": [-3, -1, -1], "segunda": [-2, 0] }, "expected": [-3, -2, -1, -1, 0] }
+]

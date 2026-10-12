@@ -1,0 +1,52 @@
+name: Novo desafio de live coding
+description: Proponha um exercício com problema, ideia, capacidades avaliadas e casos de teste.
+title: '[Desafio] '
+body:
+  - type: input
+    id: nome
+    attributes:
+      label: Nome do teste e nome da pasta
+      placeholder: 'Ex.: Palíndromo — palindromo'
+    validations:
+      required: true
+  - type: textarea
+    id: problema
+    attributes:
+      label: Problema
+      description: O que a pessoa candidata precisa resolver? Use linguagem simples.
+    validations:
+      required: true
+  - type: textarea
+    id: ideia
+    attributes:
+      label: Ideia e lógica da solução
+      description: Explique uma abordagem possível e alternativas, sem exigir apenas código memorizado.
+    validations:
+      required: true
+  - type: textarea
+    id: capacidades
+    attributes:
+      label: Por que pedir esse teste? Quais capacidades ele avalia?
+    validations:
+      required: true
+  - type: textarea
+    id: contrato
+    attributes:
+      label: Contrato
+      description: Entradas, saídas, limites, mutação permitida e comportamento sem solução.
+    validations:
+      required: true
+  - type: textarea
+    id: exemplos
+    attributes:
+      label: Exemplos e casos de borda
+      description: Inclua resultados esperados, entrada vazia, repetições e casos difíceis quando se aplicarem.
+    validations:
+      required: true
+  - type: checkboxes
+    id: entrega
+    attributes:
+      label: Entrega esperada
+      options:
+        - label: Contrato e casos compartilhados, implementação inicial em JavaScript, testes e explicação para iniciantes.
+          required: true
