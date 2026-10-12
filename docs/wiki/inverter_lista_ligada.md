@@ -1,0 +1,78 @@
+<!-- Gerado por npm run docs a partir de docs/catalogo.json e docs/casos. -->
+
+# Inverter lista ligada
+
+Nome na entrevista: **Reverse Linked List**. Pasta: `inverter_lista_ligada`.
+
+## Problema
+
+Inverta a direção dos ponteiros de uma lista ligada e retorne sua nova cabeça.
+
+## Ideia
+
+Inverte os ponteiros no lugar.
+
+1. Comece com anterior igual a null e atual na cabeça.
+2. Salve o próximo nó antes de apontar atual para anterior.
+3. Avance os dois ponteiros. O último nó visitado vira a nova cabeça.
+
+## Exemplo explicado
+
+Em 1 → 2 → 3 → null, salve 2 e faça 1 → null; depois 2 → 1; por fim 3 → 2. A nova cabeça é o nó 3.
+
+```js
+valoresDaLista(inverterListaLigada(criarLista([1, 2, 3]))) // [3, 2, 1]
+```
+
+## Por que pedir este teste?
+
+A solução exige controlar referências sem perder o restante da lista. O teste distingue manipulação de nós de uma simples cópia dos valores para outro array.
+
+Capacidades avaliadas:
+
+- Referências e ponteiros
+- Mutação cuidadosa
+- Invariante de um laço e memória constante
+
+O exercício fornece evidência dessas habilidades. A avaliação deve considerar também como a pessoa explica, testa e discute alternativas; uma resposta memorizada sozinha não comprova domínio.
+
+## Contrato
+
+Recebe cabeca, um nó com valor e proximo ou null. A lista não pode ter ciclo. Retorna a nova cabeça, reutiliza todos os nós e altera seus ponteiros. Uma lista vazia retorna null.
+
+## Complexidade
+
+- Tempo: O(n).
+- Espaço adicional: O(1) na solução; o adaptador de teste usa memória adicional.
+
+Consulte as definições de complexidade e o domínio das entradas em [Contratos](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/contratos.md).
+
+## Erros comuns
+
+- Alterar a seta antes de salvar o próximo nó
+- Criar nós novos em vez de reutilizar os existentes
+- Esquecer que a cabeça muda
+
+## Casos compartilhados
+
+- **lista com três nós**: entrada `{"valores":[1,2,3]}`; saída `[3,2,1]`.
+- **lista vazia**: entrada `{"valores":[]}`; saída `[]`.
+- **nó único**: entrada `{"valores":[7]}`; saída `[7]`.
+- **dois nós**: entrada `{"valores":[1,2]}`; saída `[2,1]`.
+- **valores repetidos**: entrada `{"valores":[1,1,2]}`; saída `[2,1,1]`.
+- **negativos**: entrada `{"valores":[-1,0,-2]}`; saída `[-2,0,-1]`.
+
+Os portes devem executar esses exemplos e acrescentar testes próprios da linguagem. Os exercícios de listas também precisam verificar identidade dos nós e efeitos nos ponteiros.
+
+## Implementação e testes
+
+- [Solução JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/inverter_lista_ligada/index.js)
+- [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/inverter_lista_ligada/index.test.js)
+- [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/inverter_lista_ligada.json)
+- [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#inverter_lista_ligada.javascript)
+
+Da raiz do repositório:
+
+```sh
+node --test src/javascript/inverter_lista_ligada/index.test.js
+```

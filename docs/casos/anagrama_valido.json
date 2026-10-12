@@ -1,0 +1,13 @@
+[
+  { "name": "anagrama", "input": { "primeiro": "anagram", "segundo": "nagaram" }, "expected": true },
+  { "name": "letras diferentes", "input": { "primeiro": "rat", "segundo": "car" }, "expected": false },
+  { "name": "contagens diferentes", "input": { "primeiro": "aab", "segundo": "abb" }, "expected": false },
+  { "name": "sobra da primeira string", "input": { "primeiro": "aa", "segundo": "a" }, "expected": false },
+  { "name": "sobra da segunda string", "input": { "primeiro": "a", "segundo": "aa" }, "expected": false },
+  { "name": "vazias", "input": { "primeiro": "", "segundo": "" }, "expected": true },
+  { "name": "maiúsculas importam", "input": { "primeiro": "Amor", "segundo": "roma" }, "expected": false },
+  { "name": "acentos", "input": { "primeiro": "ação", "segundo": "oãça" }, "expected": true },
+  { "name": "emojis", "input": { "primeiro": "😀a😀", "segundo": "😀😀a" }, "expected": true },
+  { "name": "espaços importam", "input": { "primeiro": "a b", "segundo": "ab" }, "expected": false },
+  { "name": "sem normalização Unicode", "input": { "primeiro": "é", "segundo": "é" }, "expected": false }
+]

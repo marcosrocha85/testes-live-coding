@@ -1,0 +1,12 @@
+[
+  { "name": "zero degraus", "input": { "degraus": 0 }, "expected": 1 },
+  { "name": "um degrau", "input": { "degraus": 1 }, "expected": 1 },
+  { "name": "dois degraus", "input": { "degraus": 2 }, "expected": 2 },
+  { "name": "três degraus", "input": { "degraus": 3 }, "expected": 3 },
+  { "name": "cinco degraus", "input": { "degraus": 5 }, "expected": 8 },
+  { "name": "45 degraus", "input": { "degraus": 45 }, "expected": 1836311903 },
+  { "name": "maior entrada exata", "input": { "degraus": 77 }, "expected": 8944394323791464 },
+  { "name": "negativo inválido", "input": { "degraus": -1 }, "error": "RangeError" },
+  { "name": "fracionário inválido", "input": { "degraus": 1.5 }, "error": "RangeError" },
+  { "name": "limite excedido", "input": { "degraus": 78 }, "error": "RangeError" }
+]

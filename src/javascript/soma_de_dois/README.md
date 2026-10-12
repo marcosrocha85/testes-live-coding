@@ -1,0 +1,82 @@
+<!-- Gerado por npm run docs a partir de docs/catalogo.json e docs/casos. -->
+
+# Soma de dois
+
+Nome na entrevista: **Two Sum**. Pasta: `soma_de_dois`.
+
+## Problema
+
+Dado um array de números e um alvo, encontre dois índices diferentes cujos valores somem o alvo.
+
+## Ideia
+
+Mapa de complemento, uma passagem.
+
+1. Leia um número e calcule quanto falta para chegar ao alvo.
+2. Procure esse complemento entre os números já vistos.
+3. Se encontrar, devolva os dois índices. Caso contrário, guarde o número e continue.
+
+## Exemplo explicado
+
+Em [2, 7, 11, 15], com alvo 9: guarde 2 no índice 0. Ao ler 7, falta 2. Como 2 já foi visto, a resposta é [0, 1].
+
+```js
+somaDeDois([2, 7, 11, 15], 9) // [0, 1]
+```
+
+## Por que pedir este teste?
+
+Um par de laços resolve o problema, mas repete muitas comparações. O teste revela se o candidato sabe trocar memória por velocidade e escolher uma estrutura de busca adequada.
+
+Capacidades avaliadas:
+
+- Mapas e busca por chave
+- Índices diferentes e duplicatas
+- Comparação entre O(n²) e O(n)
+
+O exercício fornece evidência dessas habilidades. A avaliação deve considerar também como a pessoa explica, testa e discute alternativas; uma resposta memorizada sozinha não comprova domínio.
+
+## Contrato
+
+Recebe numeros e alvo. Retorna [indiceAnterior, indiceAtual] ou null. Se houver várias soluções, retorna a primeira encontrada ao percorrer da esquerda para a direita, preservando o primeiro índice de cada valor. Não modifica o array.
+
+## Complexidade
+
+- Tempo: O(n) em média, considerando operações de mapa com custo médio constante.
+- Espaço adicional: O(n).
+
+Consulte as definições de complexidade e o domínio das entradas em [Contratos](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/contratos.md).
+
+## Erros comuns
+
+- Usar duas vezes a mesma posição
+- Retornar valores em vez de índices
+- Perder a primeira ocorrência de um número repetido
+
+## Casos compartilhados
+
+- **exemplo clássico**: entrada `{"numeros":[2,7,11,15],"alvo":9}`; saída `[0,1]`.
+- **complemento no meio**: entrada `{"numeros":[3,2,4],"alvo":6}`; saída `[1,2]`.
+- **valores iguais em índices distintos**: entrada `{"numeros":[3,3],"alvo":6}`; saída `[0,1]`.
+- **negativos**: entrada `{"numeros":[-3,4,3,90],"alvo":0}`; saída `[0,2]`.
+- **zeros**: entrada `{"numeros":[0,0],"alvo":0}`; saída `[0,1]`.
+- **sem solução**: entrada `{"numeros":[1,2,3],"alvo":10}`; saída `null`.
+- **não reutiliza uma posição**: entrada `{"numeros":[3],"alvo":6}`; saída `null`.
+- **vazio**: entrada `{"numeros":[],"alvo":1}`; saída `null`.
+- **preserva primeiro índice**: entrada `{"numeros":[1,1,4],"alvo":5}`; saída `[0,2]`.
+- **primeira solução encontrada**: entrada `{"numeros":[1,2,3,4],"alvo":5}`; saída `[1,2]`.
+
+Os portes devem executar esses exemplos e acrescentar testes próprios da linguagem. Os exercícios de listas também precisam verificar identidade dos nós e efeitos nos ponteiros.
+
+## Implementação e testes
+
+- [Solução JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/soma_de_dois/index.js)
+- [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/soma_de_dois/index.test.js)
+- [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/soma_de_dois.json)
+- [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#soma_de_dois.javascript)
+
+Da raiz do repositório:
+
+```sh
+node --test src/javascript/soma_de_dois/index.test.js
+```

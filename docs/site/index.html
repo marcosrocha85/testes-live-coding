@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dez desafios de live coding com explicações simples, testes e implementações por linguagem.">
+  <meta name="color-scheme" content="dark">
+  <title>Testes de live coding · Tinker</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#exercise-title">Ir para o desafio</a>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">{ }</span> Tinker <span class="brand-context">/ laboratório de código</span></a>
+    <a class="github-link" href="https://github.com/marcosrocha85/testes-live-coding">Ver no GitHub <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="intro-title">
+      <p class="eyebrow"><span class="dot"></span> Aprender fazendo</p>
+      <h1 id="intro-title">Entenda a ideia.<br><span>Depois escreva o código.</span></h1>
+      <p class="intro-copy">Dez desafios de entrevistas, explicados passo a passo. Explore o raciocínio, veja o que cada teste avalia e compare as implementações por linguagem.</p>
+      <div class="facts"><span><b>10</b> desafios</span><span><b>8</b> linguagens no roteiro</span><span><b>JavaScript</b> disponível</span></div>
+    </section>
+    <p id="load-error" class="error" role="alert" hidden></p>
+    <div class="workspace" id="workspace" hidden>
+      <aside class="catalog" aria-label="Catálogo de desafios">
+        <div class="catalog-heading"><h2>Os desafios</h2><span>01 — 10</span></div>
+        <label class="search-label" for="search">Encontrar um desafio</label>
+        <input id="search" type="search" placeholder="Buscar por nome ou habilidade…" autocomplete="off">
+        <nav id="exercise-list" aria-label="Escolher desafio"></nav>
+        <p id="no-results" hidden>Nenhum desafio corresponde à busca.</p>
+        <a class="new-exercise" href="https://github.com/marcosrocha85/testes-live-coding/issues/new/choose"><span aria-hidden="true">＋</span> Propor um novo desafio</a>
+        <p class="catalog-note">Leia o problema e tente primeiro. A explicação está aqui quando você precisar.</p>
+      </aside>
+      <article class="exercise">
+        <div class="exercise-heading"><p class="eyebrow" id="exercise-number"></p><span class="badge">Guia de estudo</span></div>
+        <h2 id="exercise-title" tabindex="-1"></h2>
+        <p class="original-name" id="original-name"></p>
+        <section class="problem-section" aria-labelledby="problem-label"><h3 id="problem-label">O problema</h3><p id="problem"></p></section>
+        <section class="idea-card" aria-labelledby="idea-label"><span class="idea-symbol" aria-hidden="true">↳</span><div><h3 id="idea-label">A ideia</h3><p id="idea"></p><ol id="steps"></ol></div></section>
+        <div class="reason-grid">
+          <section aria-labelledby="why-label"><h3 id="why-label">Por que esse teste?</h3><p id="why"></p></section>
+          <section aria-labelledby="skills-label"><h3 id="skills-label">O que ele avalia</h3><ul id="skills" class="skills"></ul></section>
+        </div>
+        <details class="explanation" open><summary>Um exemplo, passo a passo</summary><p id="walkthrough"></p></details>
+        <section class="implementation" aria-labelledby="code-label">
+          <div class="section-title"><h3 id="code-label">A implementação</h3><span>Compare por linguagem</span></div>
+          <div id="language-tabs" class="tabs" role="tablist" aria-label="Linguagem da implementação"></div>
+          <div id="solution-panel" role="tabpanel" tabindex="0">
+            <div class="code-header"><span id="file-name"></span><button id="copy-code" type="button">Copiar código</button></div>
+            <pre id="code-block"><code id="code"></code></pre>
+            <div id="planned" class="planned" hidden><p class="eyebrow">Próxima implementação</p><h4 id="planned-title"></h4><p>Esta linguagem está no roteiro. A implementação será publicada com testes automatizados e explicações próprias.</p><a id="issue-link" href="https://github.com/marcosrocha85/testes-live-coding/issues">Acompanhar a issue <span aria-hidden="true">↗</span></a></div>
+            <div id="support-files"></div>
+            <p id="copy-status" role="status" class="copy-status"></p>
+          </div>
+        </section>
+        <div class="complexity"><p><span>Tempo</span><b id="time"></b></p><p><span>Espaço adicional</span><b id="space"></b></p></div>
+        <details class="explanation"><summary>Contrato e erros comuns</summary><p id="contract"></p><ul id="pitfalls"></ul><a href="https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/contratos.md">Entender os contratos e a complexidade ↗</a></details>
+        <section class="cases" aria-labelledby="cases-label"><div class="section-title"><h3 id="cases-label">Casos de teste</h3><span>Entradas e saídas esperadas</span></div><label for="case-select">Escolha um caso</label><select id="case-select"></select><div class="case-grid"><div><h4>Entrada</h4><pre id="case-input"></pre></div><div><h4>Resultado esperado</h4><pre id="case-output"></pre></div></div><p class="case-note">Os casos são compartilhados entre linguagens. Os testes automatizados são executados no repositório.</p></section>
+        <a id="docs-link" class="docs-link" href="https://github.com/marcosrocha85/testes-live-coding">Ler a documentação completa <span aria-hidden="true">↗</span></a>
+      </article>
+    </div>
+    <noscript><p class="error">Ative JavaScript para trocar entre os desafios. Você também pode ler <a href="https://github.com/marcosrocha85/testes-live-coding/tree/main/docs/tests">as explicações em Markdown</a>.</p></noscript>
+  </main>
+  <footer><span>Tinker · Testes de live coding</span><p>Estudo, prática e raciocínio. Um exercício é uma parte da avaliação de uma pessoa.</p><a href="https://github.com/marcosrocha85/testes-live-coding/issues">Sugestões e melhorias ↗</a></footer>
+</body>
+</html>

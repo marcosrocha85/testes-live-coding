@@ -1,0 +1,12 @@
+[
+  { "name": "exemplo clássico", "input": { "numeros": [2, 7, 11, 15], "alvo": 9 }, "expected": [0, 1] },
+  { "name": "complemento no meio", "input": { "numeros": [3, 2, 4], "alvo": 6 }, "expected": [1, 2] },
+  { "name": "valores iguais em índices distintos", "input": { "numeros": [3, 3], "alvo": 6 }, "expected": [0, 1] },
+  { "name": "negativos", "input": { "numeros": [-3, 4, 3, 90], "alvo": 0 }, "expected": [0, 2] },
+  { "name": "zeros", "input": { "numeros": [0, 0], "alvo": 0 }, "expected": [0, 1] },
+  { "name": "sem solução", "input": { "numeros": [1, 2, 3], "alvo": 10 }, "expected": null },
+  { "name": "não reutiliza uma posição", "input": { "numeros": [3], "alvo": 6 }, "expected": null },
+  { "name": "vazio", "input": { "numeros": [], "alvo": 1 }, "expected": null },
+  { "name": "preserva primeiro índice", "input": { "numeros": [1, 1, 4], "alvo": 5 }, "expected": [0, 2] },
+  { "name": "primeira solução encontrada", "input": { "numeros": [1, 2, 3, 4], "alvo": 5 }, "expected": [1, 2] }
+]

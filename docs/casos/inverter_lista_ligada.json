@@ -1,0 +1,8 @@
+[
+  { "name": "lista com três nós", "input": { "valores": [1, 2, 3] }, "expected": [3, 2, 1] },
+  { "name": "lista vazia", "input": { "valores": [] }, "expected": [] },
+  { "name": "nó único", "input": { "valores": [7] }, "expected": [7] },
+  { "name": "dois nós", "input": { "valores": [1, 2] }, "expected": [2, 1] },
+  { "name": "valores repetidos", "input": { "valores": [1, 1, 2] }, "expected": [2, 1, 1] },
+  { "name": "negativos", "input": { "valores": [-1, 0, -2] }, "expected": [-2, 0, -1] }
+]

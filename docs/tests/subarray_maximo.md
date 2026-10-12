@@ -1,0 +1,80 @@
+<!-- Gerado por npm run docs a partir de docs/catalogo.json e docs/casos. -->
+
+# Subarray máximo
+
+Nome na entrevista: **Maximum Subarray (Kadane)**. Pasta: `subarray_maximo`.
+
+## Problema
+
+Encontre a maior soma de um trecho contíguo não vazio de um array.
+
+## Ideia
+
+Estende o trecho ou recomeça.
+
+1. Comece com a soma do primeiro elemento.
+2. Para cada novo número, compare começar nele com estender o trecho anterior.
+3. Guarde a maior soma vista em qualquer passo.
+
+## Exemplo explicado
+
+Em [-2, 1, -3, 4, -1, 2, 1, -5, 4], o trecho [4, -1, 2, 1] soma 6. Uma soma ruim é abandonada ao iniciar um trecho melhor.
+
+```js
+subarrayMaximo([-2, 1, -3, 4, -1, 2, 1, -5, 4]) // 6
+```
+
+## Por que pedir este teste?
+
+O teste introduz programação dinâmica com estado pequeno. Ele mostra se o candidato entende contiguidade e percebe que uma entrada só de negativos ainda tem uma resposta não vazia.
+
+Capacidades avaliadas:
+
+- Programação dinâmica
+- Decisão local e resultado global
+- Casos com números negativos
+
+O exercício fornece evidência dessas habilidades. A avaliação deve considerar também como a pessoa explica, testa e discute alternativas; uma resposta memorizada sozinha não comprova domínio.
+
+## Contrato
+
+Recebe numeros. Retorna a maior soma de um trecho contíguo não vazio. Array vazio retorna null. Retorna a soma, não os índices nem o trecho. Não modifica o array.
+
+## Complexidade
+
+- Tempo: O(n).
+- Espaço adicional: O(1).
+
+Consulte as definições de complexidade e o domínio das entradas em [Contratos](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/contratos.md).
+
+## Erros comuns
+
+- Começar a melhor soma em zero e errar arrays só negativos
+- Escolher números não contíguos
+- Confundir maior soma atual com maior soma global
+
+## Casos compartilhados
+
+- **trecho interno**: entrada `{"numeros":[-2,1,-3,4,-1,2,1,-5,4]}`; saída `6`.
+- **todos negativos**: entrada `{"numeros":[-8,-3,-6,-2,-5]}`; saída `-2`.
+- **todos positivos**: entrada `{"numeros":[1,2,3]}`; saída `6`.
+- **nó único**: entrada `{"numeros":[-4]}`; saída `-4`.
+- **zeros**: entrada `{"numeros":[0,0]}`; saída `0`.
+- **precisa recomeçar**: entrada `{"numeros":[2,-10,4,3]}`; saída `7`.
+- **não pode pular número**: entrada `{"numeros":[5,-10,5]}`; saída `5`.
+- **vazio**: entrada `{"numeros":[]}`; saída `null`.
+
+Os portes devem executar esses exemplos e acrescentar testes próprios da linguagem. Os exercícios de listas também precisam verificar identidade dos nós e efeitos nos ponteiros.
+
+## Implementação e testes
+
+- [Solução JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/subarray_maximo/index.js)
+- [Testes JavaScript](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/javascript/subarray_maximo/index.test.js)
+- [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subarray_maximo.json)
+- [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subarray_maximo.javascript)
+
+Da raiz do repositório:
+
+```sh
+node --test src/javascript/subarray_maximo/index.test.js
+```
