@@ -87,6 +87,8 @@ Da raiz do repositório, após `npm ci`:
 node --test src/javascript/soma_de_dois/index.test.js
 ```
 
+Com Docker, todos os desafios de JavaScript: `docker compose run --build --rm javascript`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
 ### TypeScript
 
 Da raiz do repositório, após `npm ci`:
@@ -95,6 +97,8 @@ Da raiz do repositório, após `npm ci`:
 npm run build --workspace src/typescript
 node --test src/typescript/dist/soma_de_dois/index.test.js
 ```
+
+Com Docker, todos os desafios de TypeScript: `docker compose run --build --rm typescript`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ### Java
 
@@ -109,6 +113,8 @@ PowerShell:
 ```powershell
 .\src\java\mvnw.cmd -f src/java/pom.xml "-Dtest=SomaDeDoisTest" test
 ```
+
+Com Docker, todos os desafios de Java: `docker compose run --build --rm java`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Java
 

@@ -2,6 +2,18 @@
 
 Os dez desafios têm soluções TypeScript, testes dos casos compartilhados e explicações dos tipos em cada README. As soluções usam a biblioteca padrão e preservam os contratos do JavaScript.
 
+## Testes com Docker
+
+Da raiz, sem instalar Node.js ou TypeScript no computador:
+
+```sh
+docker compose run --build --rm typescript
+```
+
+O container instala as versões do lockfile, compila e executa todos os testes. Os arquivos compilados ficam dentro do Docker. Leia [o guia Docker](../../docs/docker.md).
+
+## Execução local
+
 Use Node.js 24 ou superior. TypeScript 7.0.2 e os tipos de Node 24.19.2 são instalados pelo lockfile, sem instalação global.
 
 Da raiz do repositório:

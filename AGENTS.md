@@ -8,6 +8,7 @@ Este repositório é um guia de estudo de live coding para iniciantes. A priorid
 - `docs/`: arquitetura, contratos, casos compartilhados, conceitos das linguagens e fontes da Wiki e do site.
 - `scripts/`: geração de documentação e GitHub Pages.
 - Não marque uma linguagem como implementada antes de concluir seus dez desafios, testes, instruções e CI.
+- Toda linguagem implementada deve ter seu próprio `src/<linguagem>/Dockerfile`, um serviço de mesmo ID no `compose.yaml` e um comando de teste Docker documentado. Essa entrega é obrigatória para cada novo microprojeto, inclusive Kotlin e as próximas linguagens.
 - Trabalhe uma linguagem por vez, na ordem do roteiro em `docs/roadmap.md`. C++ é a linguagem escolhida para a família C.
 - Os diretórios planejados podem conter apenas README. Não publique soluções fictícias ou testes sem implementação como concluídos.
 
@@ -30,6 +31,15 @@ Este repositório é um guia de estudo de live coding para iniciantes. A priorid
 - `npm run test:coverage` ajuda a investigar cobertura; cobertura não substitui testes que detectem erros reais.
 - Atualize `docs/catalogo.json` e execute `npm run docs` quando mudar as explicações. Não edite manualmente os arquivos gerados indicados no cabeçalho.
 - Antes de concluir, registre na issue ou PR o que mudou e quais comandos passaram. Não afirme ter executado compiladores ou testes que não foram executados.
+
+## Containers de teste
+
+- Para validar sem instalar SDKs no computador, use `docker compose run --build --rm <linguagem>` da raiz. Execute os mesmos casos e testes da execução nativa; não mantenha uma suíte reduzida só para Docker.
+- Use imagens oficiais com digest fixado, ferramentas e dependências versionadas. O contexto de build é a raiz para incluir `docs/casos` e lockfiles; mantenha `.dockerignore` atualizado para excluir artefatos locais.
+- Copie os fontes para a imagem e compile dentro do container, como usuário sem privilégios. Não monte o checkout com escrita nem exija um compilador instalado no host.
+- Containers devem terminar com o resultado dos testes e ser removidos com `--rm`. Não crie serviços permanentes, portas ou dependências de outras linguagens para executar os testes de um microprojeto.
+- Caches podem persistir em volumes Docker exclusivos do projeto; documente sua finalidade e limpeza. Não remova caches ou containers de outros projetos.
+- Ao adicionar uma linguagem, registre `dockerTestCommand` no catálogo, documente no README do microprojeto e em `docs/docker.md`, e valide o comando real antes de marcar `status: "implemented"`. A CI descobre os IDs implementados no catálogo e exige que seus serviços Docker passem.
 
 ## GitHub e publicação
 

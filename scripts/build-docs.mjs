@@ -86,12 +86,14 @@ for (const exercicio of catalogo.exercises) {
     return `- [Solução ${linguagem.name}](${baseGitHub}/blob/main/${solucao})\n- [Testes ${linguagem.name}](${baseGitHub}/blob/main/${testes})`;
   }).join('\n');
   const comandos = disponiveis.map((linguagem) => {
+    if (!linguagem.dockerTestCommand) throw new Error(`Linguagem implementada sem comando Docker: ${linguagem.id}`);
     const comando = comandoDesafio(linguagem, exercicio.id);
+    const docker = `\nCom Docker, todos os desafios de ${linguagem.name}: \`${linguagem.dockerTestCommand}\`. Veja [como executar sem SDK local](${baseGitHub}/blob/main/docs/docker.md).\n`;
     if (linguagem.id === 'java') {
       const windows = comando.replace('./src/java/mvnw', '.\\src\\java\\mvnw.cmd').replace(/-Dtest=([^ ]+)/, '"-Dtest=$1"');
-      return `### Java\n\nDa raiz, com JDK 21 ou superior. Linux/macOS:\n\n\`\`\`sh\n${comando}\n\`\`\`\n\nPowerShell:\n\n\`\`\`powershell\n${windows}\n\`\`\`\n`;
+      return `### Java\n\nDa raiz, com JDK 21 ou superior. Linux/macOS:\n\n\`\`\`sh\n${comando}\n\`\`\`\n\nPowerShell:\n\n\`\`\`powershell\n${windows}\n\`\`\`\n` + docker;
     }
-    return `### ${linguagem.name}\n\nDa raiz do repositório, após \`npm ci\`:\n\n\`\`\`sh\n${comando}\n\`\`\`\n`;
+    return `### ${linguagem.name}\n\nDa raiz do repositório, após \`npm ci\`:\n\n\`\`\`sh\n${comando}\n\`\`\`\n` + docker;
   }).join('\n');
   const corpo = [
     `# ${exercicio.name}`,

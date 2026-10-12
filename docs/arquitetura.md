@@ -34,6 +34,14 @@ O conteúdo publicado é obtido de arquivos reais, sem cópias manuais de códig
 
 Acrescente uma lista `supportFiles` no catálogo para auxiliares usados em todos os desafios, ou um mapa `supportFilesByExercise` para arquivos específicos de cada desafio. Java usa esse mapa para mostrar `No.java` apenas nos três desafios de listas ligadas. O gerador verifica que cada auxiliar pertence ao microprojeto da linguagem.
 
+## Testes por microprojeto em Docker
+
+Cada linguagem implementada possui `src/<id>/Dockerfile` e um serviço de mesmo ID no `compose.yaml`. Todos usam a raiz como contexto de build para acessar os casos canônicos e, quando necessário, o lockfile compartilhado. `.dockerignore` limita o contexto aos fontes, manifests e casos, excluindo builds e dependências locais.
+
+JavaScript e TypeScript reutilizam a mesma imagem Node, com comandos e imagens de teste separados. TypeScript instala apenas as dependências do seu workspace. Java usa uma imagem JDK e seu próprio Maven Wrapper. Os fontes são copiados para a imagem e os testes rodam sem privilégios de administrador; não há checkout montado com escrita. Arquivos compilados são descartados junto com o container. Somente o cache Maven persiste em um volume do projeto.
+
+`dockerTestCommand` documenta a execução de cada linguagem no catálogo e nas explicações geradas. A CI calcula a matriz Docker pelos IDs com `status: "implemented"` e executa cada serviço com `--build --rm`. Um novo microprojeto não pode ser anunciado como pronto sem Dockerfile, serviço, documentação e testes em container. A execução nativa continua disponível. Veja [o guia Docker](docker.md).
+
 ## GitHub Pages e Wiki
 
 A CI executa testes, verifica documentação e gera o site nas PRs. O workflow Pages publica `dist` após um push na `main`, com permissões declaradas por job. O job de build recebe `contents: read` e `pages: write` para configurar o site; o job de implantação recebe `pages: write` e `id-token: write` para publicar o artefato. Habilite Pages com origem GitHub Actions nas configurações do repositório.

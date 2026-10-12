@@ -1,0 +1,16 @@
+# O contexto contém apenas fontes, manifests e os casos compartilhados.
+*
+!package.json
+!package-lock.json
+!src/
+!src/**
+!docs/
+!docs/casos/
+!docs/casos/**
+
+**/node_modules
+**/dist
+**/target
+**/build
+**/.gradle
+**/*.log

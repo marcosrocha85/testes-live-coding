@@ -5,8 +5,9 @@
 3. Leia o contrato em `docs/tests/<desafio>.md` e os casos em `docs/casos/<desafio>.json`.
 4. Implemente a solução no microprojeto da linguagem. Inclua testes dos casos compartilhados e verificações de identidade, precisão, Unicode e mutação quando se aplicarem.
 5. Escreva comentários e um README que um iniciante consiga acompanhar. Documente ferramentas, versões e comando de teste da linguagem.
-6. Adicione os testes à CI. Quando todos os dez desafios da linguagem estiverem prontos, registre seus arquivos reais em `docs/catalogo.json` conforme [a arquitetura](docs/arquitetura.md).
-7. Rode os testes afetados, `npm run docs:check` e `npm run build`. Descreva os resultados na PR e use `Closes #numero` para cada sub-issue concluída.
+6. Crie `src/<linguagem>/Dockerfile` e o serviço de mesmo nome em `compose.yaml`, com imagem oficial fixada por digest. Documente e execute `docker compose run --build --rm <linguagem>` com a suíte completa. Registre `dockerTestCommand` no catálogo e atualize [o guia Docker](docs/docker.md). Todo novo microprojeto deve oferecer essa execução sem SDK local.
+7. Adicione os testes nativos à CI. Quando todos os dez desafios da linguagem estiverem prontos, registre seus arquivos reais em `docs/catalogo.json` conforme [a arquitetura](docs/arquitetura.md). A matriz Docker da CI é calculada pelo catálogo e também precisa passar.
+8. Rode os testes afetados, `npm run docs:check` e `npm run build`. Descreva os resultados na PR e use `Closes #numero` para cada sub-issue concluída.
 
 Evite renomear contratos para acomodar uma única linguagem. Quando não existir o mesmo conceito de `null` ou de exceção, documente o equivalente e mantenha o comportamento observável. Não altere testes só para fazer uma solução incorreta passar.
 
