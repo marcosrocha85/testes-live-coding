@@ -78,6 +78,19 @@ h3 { font: 500 15px 'Space Grotesk', sans-serif; margin: 0 0 10px; }
 .code-header span { color: var(--muted); font: 10px var(--mono); overflow-wrap: anywhere; }
 .code-header button { background: #243329; color: var(--green); border: 1px solid #3a4f40; border-radius: 4px; padding: 4px 9px; font-size: 10px; flex-shrink: 0; }
 pre { font: 12px/1.85 var(--mono); overflow: auto; margin: 0; color: #d6e9d9; tab-size: 2; }
+/* Cores com contraste no fundo escuro, para soluções e arquivos auxiliares. */
+.hljs { font: inherit; color: #d6e9d9; }
+.hljs-comment, .hljs-quote { color: #95a69c; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-meta .hljs-keyword { color: #c7b6ff; }
+.hljs-string, .hljs-regexp, .hljs-template-tag, .hljs-template-variable { color: #b8efd1; }
+.hljs-number, .hljs-literal, .hljs-symbol, .hljs-bullet { color: #f7bb82; }
+.hljs-title, .hljs-section, .hljs-selector-id { color: #8fd6f4; }
+.hljs-type, .hljs-built_in, .hljs-title.class_, .hljs-title.class_.inherited__ { color: #f3d794; }
+.hljs-attr, .hljs-attribute, .hljs-property, .hljs-variable { color: #d6e9d9; }
+.hljs-meta, .hljs-meta .hljs-string { color: #8fd6f4; }
+.hljs-subst, .hljs-params { color: #d6e9d9; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }
 #code-block { padding: 22px; max-height: 620px; }
 .planned { padding: 30px; }
 .planned h4 { font: 500 24px 'Space Grotesk', sans-serif; margin: 0 0 12px; }

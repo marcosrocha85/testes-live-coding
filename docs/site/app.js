@@ -6,6 +6,13 @@ let exercicioAtual;
 let linguagemAtual;
 let codigoAtual = '';
 
+function mostrarCodigo(elemento, arquivo, linguagem) {
+  elemento.className = `hljs language-${linguagem}`;
+  // Este HTML é gerado no build pelo highlight.js, que escapa o código-fonte.
+  if (typeof arquivo.highlightedCode === 'string') elemento.innerHTML = arquivo.highlightedCode;
+  else elemento.textContent = arquivo.code ?? '';
+}
+
 function preencherLista(id, valores) {
   $(id).replaceChildren(...valores.map((valor) => {
     const item = document.createElement('li');
@@ -49,7 +56,7 @@ function renderizar() {
   const solucao = exercicio.solutions.find((item) => item.language === linguagemAtual.id);
   const disponivel = solucao.code !== null;
   codigoAtual = solucao.code ?? '';
-  $('code').textContent = codigoAtual;
+  mostrarCodigo($('code'), solucao, linguagemAtual.id);
   $('code-block').hidden = !disponivel;
   $('copy-code').hidden = !disponivel;
   $('planned').hidden = disponivel;
@@ -63,7 +70,7 @@ function renderizar() {
     summary.textContent = `Auxiliar usado nos exemplos: ${arquivo.path}`;
     const pre = document.createElement('pre');
     const code = document.createElement('code');
-    code.textContent = arquivo.code;
+    mostrarCodigo(code, arquivo, linguagemAtual.id);
     pre.append(code);
     details.append(summary, pre);
     return details;

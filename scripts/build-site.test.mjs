@@ -4,6 +4,14 @@ import { mkdtemp, readFile, rm, mkdir, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { buildSite, lerCodigo, projectRoot } from './build-site.mjs';
+import { destacarCodigo } from './highlight-code.mjs';
+
+// Reconstrói o texto visível sem interpretar HTML, para detectar perdas no código.
+function textoDoDestaque(html) {
+  const semSpans = html.replace(/<span class="hljs-[^"]*">|<\/span>/g, '');
+  const entidades = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#x27;': "'" };
+  return semSpans.replace(/&(?:amp|lt|gt|quot|#x27);/g, (entidade) => entidades[entidade]);
+}
 
 test('site contém as soluções JavaScript, TypeScript e Java e distingue linguagens planejadas', async (t) => {
   const output = await mkdtemp(resolve(tmpdir(), 'live-coding-site-'));
@@ -21,10 +29,14 @@ test('site contém as soluções JavaScript, TypeScript e Java e distingue lingu
     for (const linguagem of disponiveis) {
       const solucao = exercicio.solutions.find((item) => item.language === linguagem.id);
       assert.equal(solucao.code, await readFile(resolve(projectRoot, solucao.path), 'utf8'));
+      assert.match(solucao.highlightedCode, /class="hljs-/);
+      assert.equal(textoDoDestaque(solucao.highlightedCode), solucao.code);
       const usaLista = ['inverter_lista_ligada', 'mesclar_listas_ordenadas', 'ciclo_em_lista_ligada'].includes(exercicio.id);
       assert.equal(solucao.support.length, usaLista ? 1 : 0);
       for (const auxiliar of solucao.support) {
         assert.equal(auxiliar.code, await readFile(resolve(projectRoot, auxiliar.path), 'utf8'));
+        assert.match(auxiliar.highlightedCode, /class="hljs-/);
+        assert.equal(textoDoDestaque(auxiliar.highlightedCode), auxiliar.code);
         assert.ok(auxiliar.path.startsWith(`src/${linguagem.id}/`));
       }
     }
@@ -32,6 +44,34 @@ test('site contém as soluções JavaScript, TypeScript e Java e distingue lingu
   }
   assert.match(await readFile(resolve(output, 'index.html'), 'utf8'), /lang="pt-BR"/);
   assert.ok((await readFile(resolve(output, 'app.js'), 'utf8')).includes('textContent'));
+});
+
+test('destaque reconhece as oito linguagens do roteiro sem alterar o texto', () => {
+  const exemplos = {
+    javascript: 'const valor = 42; // número',
+    typescript: 'const valor: number = 42; // tipo',
+    java: 'public final class Exemplo { int valor = 42; }',
+    kotlin: 'val valor: Int = 42',
+    php: '<?php $valor = 42; echo "exemplo";',
+    swift: 'let valor: Int = 42',
+    pascal: 'program Exemplo; var valor: integer; begin valor := 42; end.',
+    cpp: 'int main() { return 42; }'
+  };
+  for (const [linguagem, codigo] of Object.entries(exemplos)) {
+    const html = destacarCodigo(codigo, linguagem);
+    assert.match(html, /class="hljs-keyword"/, linguagem);
+    assert.match(html, /class="hljs-number"/, linguagem);
+    assert.equal(textoDoDestaque(html), codigo, linguagem);
+  }
+});
+
+test('HTML dentro de comentários e strings aparece literalmente no destaque', () => {
+  const codigo = '// <script>alert("olá")</script> &amp;\r\nconst texto = `<img src=x onerror=alert(1)>`;\nconst aspas = "\'&<>";';
+  const html = destacarCodigo(codigo, 'javascript');
+  assert.doesNotMatch(html, /<(?!\/?span\b)/);
+  assert.equal(textoDoDestaque(html), codigo);
+  assert.match(html, /hljs-comment/);
+  assert.match(html, /hljs-string/);
 });
 test('publicação rejeita arquivos fora do microprojeto da linguagem', async () => {
   await assert.rejects(lerCodigo(projectRoot, { id: 'javascript' }, 'README.md'), /fora de seu microprojeto/);
