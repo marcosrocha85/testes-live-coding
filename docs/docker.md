@@ -18,6 +18,7 @@ docker compose run --build --rm swift
 docker compose run --build --rm pascal
 docker compose run --build --rm cpp
 docker compose run --build --rm go
+docker compose run --build --rm rust
 ```
 
 Os comandos funcionam em PowerShell, Linux e macOS:
@@ -40,6 +41,7 @@ As imagens base estão fixadas por digest, que identifica seu conteúdo. TypeScr
 | `pascal` | Free Pascal 3.2.2, 86 casos compartilhados, referências independentes e dez exemplos compilados |
 | `cpp` | C++20, GCC 15.2.0, 86 casos compartilhados, referências independentes, ASan/UBSan e dez exemplos |
 | `go` | Go 1.27.2, gofmt, go vet, 86 casos compartilhados, referências independentes, detector de corridas, testes em 32 bits e dez exemplos |
+| `rust` | Rust 1.92.0, rustfmt, Clippy, 86 casos compartilhados, referências independentes em debug e release e dez exemplos |
 
 Os serviços têm perfis para evitar iniciar todos por acidente. Ao indicar o serviço em `run`, seu perfil é ativado automaticamente. Não use `docker compose up` para esse fluxo: os testes são execuções temporárias, sem portas nem processos permanentes.
 
@@ -125,6 +127,15 @@ Um desafio e um exemplo Go, da raiz:
 ```sh
 docker compose run --build --rm go sh executar.sh testes busca_binaria
 docker compose run --build --rm go sh executar.sh exemplo soma_de_dois
+```
+
+Rust usa a imagem oficial `rust:1.92.0-bookworm`, fixada pelo digest `sha256:e90e846de4124376164ddfbaab4b0774c7bdeef5e738866295e5a90a34a307a2`. O arquivo rust-toolchain.toml fixa a mesma versão, rustfmt e Clippy. Fontes e casos são copiados e `runner` (UID 10001) baixa dependências com `cargo fetch --locked`, compila e executa toda a suíte. O comando padrão usa `CARGO_NET_OFFLINE=true`; Cargo.lock fixa versões e checksums de serde_json 1.0.145 e suas dependências de teste. Não há montagem do checkout, SDK instalado no computador nem volume persistente Rust. `target` e caches Cargo ficam no container; artefatos locais não entram no contexto.
+
+Um desafio e um exemplo Rust, da raiz:
+
+```sh
+docker compose run --build --rm rust sh executar.sh testes busca_binaria
+docker compose run --build --rm rust sh executar.sh exemplo soma_de_dois
 ```
 
 ## Adicionar uma linguagem

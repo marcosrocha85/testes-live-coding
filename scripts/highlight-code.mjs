@@ -8,9 +8,10 @@ import swift from 'highlight.js/lib/languages/swift';
 import pascal from 'highlight.js/lib/languages/delphi';
 import cpp from 'highlight.js/lib/languages/cpp';
 import go from 'highlight.js/lib/languages/go';
+import rust from 'highlight.js/lib/languages/rust';
 
 // A linguagem vem do catálogo: não tentamos adivinhá-la pelo conteúdo.
-for (const [nome, gramatica] of Object.entries({ javascript, typescript, java, kotlin, php, swift, pascal, cpp, go })) {
+for (const [nome, gramatica] of Object.entries({ javascript, typescript, java, kotlin, php, swift, pascal, cpp, go, rust })) {
   hljs.registerLanguage(nome, gramatica);
 }
 

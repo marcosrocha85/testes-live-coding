@@ -608,5 +608,63 @@
         "url": "https://github.com/marcosrocha85/testes-live-coding/issues/110"
       }
     ]
+  },
+  {
+    "language": "rust",
+    "name": "Rust",
+    "number": 111,
+    "url": "https://github.com/marcosrocha85/testes-live-coding/issues/111",
+    "exercises": [
+      {
+        "exercise": "soma_de_dois",
+        "number": 112,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/112"
+      },
+      {
+        "exercise": "parenteses_validos",
+        "number": 113,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/113"
+      },
+      {
+        "exercise": "inverter_lista_ligada",
+        "number": 114,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/114"
+      },
+      {
+        "exercise": "busca_binaria",
+        "number": 115,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/115"
+      },
+      {
+        "exercise": "mesclar_listas_ordenadas",
+        "number": 116,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/116"
+      },
+      {
+        "exercise": "compra_e_venda_de_acoes",
+        "number": 117,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/117"
+      },
+      {
+        "exercise": "subarray_maximo",
+        "number": 118,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/118"
+      },
+      {
+        "exercise": "subir_escadas",
+        "number": 119,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/119"
+      },
+      {
+        "exercise": "anagrama_valido",
+        "number": 120,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/120"
+      },
+      {
+        "exercise": "ciclo_em_lista_ligada",
+        "number": 121,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/121"
+      }
+    ]
   }
 ]

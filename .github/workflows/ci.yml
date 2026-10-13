@@ -22,7 +22,7 @@ jobs:
       - run: npm run docs:check
       - run: npm run build
       - name: Selecionar microprojetos Docker
-        # Pascal, C++ e Go incluem também os dez exemplos no comando padrão.
+        # Pascal, C++, Go e Rust incluem também os dez exemplos no comando padrão.
         id: docker-matrix
         run: |
           node --input-type=module -e '
@@ -98,6 +98,23 @@ jobs:
           chown -R runner:runner "$GITHUB_WORKSPACE"
       - name: Conferir formatação, analisar, testar em 64 e 32 bits e executar exemplos
         run: runuser -u runner -- sh src/go/executar.sh check
+  rust:
+    name: Rust 1.92.0
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    container:
+      image: rust:1.92.0-bookworm@sha256:e90e846de4124376164ddfbaab4b0774c7bdeef5e738866295e5a90a34a307a2
+    env:
+      CARGO_HOME: /home/runner/.cargo
+    steps:
+      - uses: actions/checkout@v7
+      - name: Preparar ferramentas fixadas e usuário sem privilégios no runner
+        run: |
+          rustup component add rustfmt clippy --toolchain 1.92.0
+          useradd --create-home --uid 10001 runner
+          chown -R runner:runner "$GITHUB_WORKSPACE"
+      - name: Conferir formatação, analisar, testar debug e release e executar exemplos
+        run: runuser -u runner -- sh src/rust/executar.sh check
   cpp:
     name: C++20 GCC 15.2.0
     runs-on: ubuntu-24.04

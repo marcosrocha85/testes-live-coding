@@ -68,6 +68,13 @@ services:
       context: .
       dockerfile: src/go/Dockerfile
 
+  rust:
+    profiles: [rust]
+    image: testes-live-coding-rust:local
+    build:
+      context: .
+      dockerfile: src/rust/Dockerfile
+
 volumes:
   java_maven:
   kotlin_gradle:

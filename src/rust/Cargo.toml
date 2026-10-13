@@ -1,0 +1,22 @@
+[package]
+name = "live-coding-rust"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.92.0"
+publish = false
+
+[lib]
+path = "lib.rs"
+
+[[bin]]
+name = "exemplos"
+path = "_examples/main.rs"
+
+[dev-dependencies]
+serde_json = "=1.0.145"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[profile.release]
+overflow-checks = true

@@ -326,6 +326,56 @@
           "src/go/lista/no.go"
         ]
       }
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "status": "implemented",
+      "extension": "rs",
+      "runtime": "Rust 1.92.0; edição 2024; Cargo, rustfmt e Clippy",
+      "testCommand": "sh src/rust/executar.sh check",
+      "dockerTestCommand": "docker compose run --build --rm rust",
+      "solutionFiles": {
+        "soma_de_dois": "src/rust/soma_de_dois/soma_de_dois.rs",
+        "parenteses_validos": "src/rust/parenteses_validos/parenteses_validos.rs",
+        "inverter_lista_ligada": "src/rust/inverter_lista_ligada/inverter_lista_ligada.rs",
+        "busca_binaria": "src/rust/busca_binaria/busca_binaria.rs",
+        "mesclar_listas_ordenadas": "src/rust/mesclar_listas_ordenadas/mesclar_listas_ordenadas.rs",
+        "compra_e_venda_de_acoes": "src/rust/compra_e_venda_de_acoes/compra_e_venda_de_acoes.rs",
+        "subarray_maximo": "src/rust/subarray_maximo/subarray_maximo.rs",
+        "subir_escadas": "src/rust/subir_escadas/subir_escadas.rs",
+        "anagrama_valido": "src/rust/anagrama_valido/anagrama_valido.rs",
+        "ciclo_em_lista_ligada": "src/rust/ciclo_em_lista_ligada/ciclo_em_lista_ligada.rs"
+      },
+      "testFiles": {
+        "soma_de_dois": "src/rust/soma_de_dois/soma_de_dois_test.rs",
+        "parenteses_validos": "src/rust/parenteses_validos/parenteses_validos_test.rs",
+        "inverter_lista_ligada": "src/rust/inverter_lista_ligada/inverter_lista_ligada_test.rs",
+        "busca_binaria": "src/rust/busca_binaria/busca_binaria_test.rs",
+        "mesclar_listas_ordenadas": "src/rust/mesclar_listas_ordenadas/mesclar_listas_ordenadas_test.rs",
+        "compra_e_venda_de_acoes": "src/rust/compra_e_venda_de_acoes/compra_e_venda_de_acoes_test.rs",
+        "subarray_maximo": "src/rust/subarray_maximo/subarray_maximo_test.rs",
+        "subir_escadas": "src/rust/subir_escadas/subir_escadas_test.rs",
+        "anagrama_valido": "src/rust/anagrama_valido/anagrama_valido_test.rs",
+        "ciclo_em_lista_ligada": "src/rust/ciclo_em_lista_ligada/ciclo_em_lista_ligada_test.rs"
+      },
+      "supportFiles": [
+        "src/rust/lib.rs"
+      ],
+      "supportFilesByExercise": {
+        "inverter_lista_ligada": [
+          "src/rust/lib.rs",
+          "src/rust/_shared/no.rs"
+        ],
+        "mesclar_listas_ordenadas": [
+          "src/rust/lib.rs",
+          "src/rust/_shared/no.rs"
+        ],
+        "ciclo_em_lista_ligada": [
+          "src/rust/lib.rs",
+          "src/rust/_shared/no.rs"
+        ]
+      }
     }
   ],
   "exercises": [
