@@ -22,7 +22,7 @@ jobs:
       - run: npm run docs:check
       - run: npm run build
       - name: Selecionar microprojetos Docker
-        # Pascal, C++, Go e Rust incluem também os dez exemplos no comando padrão.
+        # Pascal, C++, Go, Rust e C# incluem dez exemplos no comando padrão.
         id: docker-matrix
         run: |
           node --input-type=module -e '
@@ -115,6 +115,25 @@ jobs:
           chown -R runner:runner "$GITHUB_WORKSPACE"
       - name: Conferir formatação, analisar, testar debug e release e executar exemplos
         run: runuser -u runner -- sh src/rust/executar.sh check
+  csharp:
+    name: C# 14 SDK .NET 10.0.100
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    container:
+      image: mcr.microsoft.com/dotnet/sdk:10.0.100-noble@sha256:c7445f141c04f1a6b454181bd098dcfa606c61ba0bd213d0a702489e5bd4cd71
+    env:
+      DOTNET_CLI_HOME: /home/runner
+      NUGET_PACKAGES: /home/runner/.nuget/packages
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_NOLOGO: '1'
+    steps:
+      - uses: actions/checkout@v7
+      - name: Preparar usuário sem privilégios no runner
+        run: |
+          useradd --create-home --uid 10001 runner
+          chown -R runner:runner "$GITHUB_WORKSPACE"
+      - name: Conferir formatação, compilar com análise e testar debug, release e exemplos
+        run: runuser -u runner -- sh src/csharp/executar.sh check
   cpp:
     name: C++20 GCC 15.2.0
     runs-on: ubuntu-24.04

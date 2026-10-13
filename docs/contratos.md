@@ -7,7 +7,7 @@ Um contrato explica o que a função recebe, devolve e pode modificar. Isso perm
 - Arrays numéricos usam inteiros entre -1.000.000 e 1.000.000 e têm no máximo 10.000 elementos. Alvos usam o mesmo intervalo. Preços não podem ser negativos. Esses limites mantêm somas e diferenças exatas em JavaScript e cabem em inteiros de 64 bits nos portes.
 - Busca binária recebe um array ordenado. Mesclagem recebe listas ordenadas e independentes, sem ciclos.
 - Inversão recebe uma lista sem ciclo. Detecção de ciclo aceita listas cíclicas ou terminadas em `null`.
-- Nós representam `valor` e `proximo` nos dez portes implementados. Cada linguagem pode usar nomes idiomáticos, preservando a identidade e os vínculos; Go exporta os campos como `Valor` e `Proximo`.
+- Nós representam `valor` e `proximo` nos onze portes implementados. Cada linguagem pode usar nomes idiomáticos, preservando a identidade e os vínculos; Go exporta os campos como `Valor` e `Proximo`.
 - Anagramas comparam pontos de código Unicode de strings bem formadas. Maiúsculas e espaços importam. Não há normalização nem comparação de grafemas. Portes devem preservar esse comportamento ao decodificar UTF-8 ou UTF-16.
 - Escadas aceita inteiros de 0 a 77. O resultado de 77 degraus cabe em `Number` com precisão e em inteiros de 64 bits. Valores fora desse domínio são rejeitados.
 
@@ -44,6 +44,8 @@ C++20 usa `std::int64_t` nas somas e contagens e `std::optional` para ausência 
 Go usa `int64` para valores, somas e contagens e `int` para índices. Ausência de par ou soma usa um retorno com `ok=false`; listas vazias usam `nil`. Escadas recebe `float64` para rejeitar frações e não finitos antes da conversão, retorna contagens em `int64` e um `error` equivalente ao erro de domínio (`ErrDegrausInvalidos`). Anagrama lê pontos completos com `range`/`rune`, sem normalização. Nós reais `*lista.No` preservam identidade por ponteiro; somente inversão e mesclagem alteram as ligações. A suíte também roda em 32 bits para conferir a precisão independentemente de `int`. Essas escolhas preservam o comportamento comum.
 
 Rust usa i64 para valores, somas e contagens, Option para ausência de par ou soma e None para fim de lista. Escadas recebe f64 somente para validar o domínio e retorna Result<i64, DegrausInvalidos>, com Err equivalente à rejeição RangeError. Anagrama percorre chars de UTF-8 válido sem normalização. Nós reais Rc<RefCell<No>> conservam identidade por Rc::ptr_eq; inversão e mesclagem alteram ligações, enquanto Floyd somente lê. Os donos desfazem ciclos fortes após a consulta para liberar os nós. Essas escolhas preservam as mesmas entradas e respostas.
+
+C# usa long para valores, somas e contagens e int para índices. Soma de dois retorna uma tupla nullable; subarray usa long? para ausência, e listas vazias usam No? igual a null. Escadas recebe double apenas para validar o domínio e lança ArgumentOutOfRangeException, equivalente a RangeError. Anagrama percorre EnumerateRunes de strings UTF-16 bem formadas sem normalização. Nós são objetos reais No, com identidade por ReferenceEquals; inversão e mesclagem mudam ligações, enquanto Floyd somente lê. O coletor de lixo pode recolher ciclos inalcançáveis. Essas escolhas preservam o comportamento comum.
 
 ## Complexidade em palavras simples
 

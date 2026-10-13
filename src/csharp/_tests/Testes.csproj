@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsTestProject>true</IsTestProject>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../LiveCoding.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="[17.14.1]" />
+    <PackageReference Include="xunit.v3" Version="[3.2.1]" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="[3.1.5]" PrivateAssets="all" />
+    <Compile Include="../*/*Test.cs" />
+    <Using Include="Xunit" />
+    <None Include="../../../docs/casos/*.json" Link="casos/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

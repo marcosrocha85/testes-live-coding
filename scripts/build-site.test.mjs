@@ -13,15 +13,15 @@ function textoDoDestaque(html) {
   return semSpans.replace(/&(?:amp|lt|gt|quot|#x27);/g, (entidade) => entidades[entidade]);
 }
 
-test('site contém os fontes e auxiliares das dez linguagens implementadas', async (t) => {
+test('site contém os fontes e auxiliares das onze linguagens implementadas', async (t) => {
   const output = await mkdtemp(resolve(tmpdir(), 'live-coding-site-'));
   t.after(() => rm(output, { recursive: true, force: true }));
   const resultado = await buildSite({ output });
   assert.equal(resultado.exercises, 10);
-  assert.equal(resultado.languages, 10);
+  assert.equal(resultado.languages, 11);
   const dados = JSON.parse(await readFile(resolve(output, 'catalogo.json'), 'utf8'));
   const disponiveis = dados.languages.filter((linguagem) => linguagem.status === 'implemented');
-  assert.deepEqual(disponiveis.map((linguagem) => linguagem.id), ['javascript', 'typescript', 'java', 'kotlin', 'php', 'swift', 'pascal', 'cpp', 'go', 'rust']);
+  assert.deepEqual(disponiveis.map((linguagem) => linguagem.id), ['javascript', 'typescript', 'java', 'kotlin', 'php', 'swift', 'pascal', 'cpp', 'go', 'rust', 'csharp']);
   for (const exercicio of dados.exercises) {
     assert.ok(exercicio.cases.length > 0);
     assert.ok(exercicio.why.length > 0);
@@ -57,6 +57,10 @@ test('site contém os fontes e auxiliares das dez linguagens implementadas', asy
         if (usaLista) esperados.push('src/rust/_shared/no.rs');
         assert.deepEqual(solucao.support.map(item => item.path), esperados);
         assert.match(solucao.code, /pub fn /);
+      } else if (linguagem.id === 'csharp') {
+        assert.deepEqual(solucao.support.map(item => item.path), usaLista ? ['src/csharp/_shared/No.cs'] : []);
+        assert.match(solucao.code, /namespace LiveCoding;/);
+        assert.match(solucao.code, /public static /);
       } else assert.equal(solucao.support.length, usaLista || usaUnicode ? 1 : 0);
       for (const auxiliar of solucao.support) {
         assert.equal(auxiliar.code, await readFile(resolve(projectRoot, auxiliar.path), 'utf8'));
@@ -71,7 +75,7 @@ test('site contém os fontes e auxiliares das dez linguagens implementadas', asy
   assert.ok((await readFile(resolve(output, 'app.js'), 'utf8')).includes('textContent'));
 });
 
-test('destaque reconhece as dez linguagens do roteiro sem alterar o texto', () => {
+test('destaque reconhece as onze linguagens do roteiro sem alterar o texto', () => {
   const exemplos = {
     javascript: 'const valor = 42; // número',
     typescript: 'const valor: number = 42; // tipo',
@@ -82,7 +86,8 @@ test('destaque reconhece as dez linguagens do roteiro sem alterar o texto', () =
     pascal: 'program Exemplo; var valor: integer; begin valor := 42; end.',
     cpp: 'int main() { return 42; }',
     go: 'package exemplo\nfunc valor() int64 { return 42 }',
-    rust: 'fn valor() -> i64 { 42 }'
+    rust: 'fn valor() -> i64 { 42 }',
+    csharp: 'public static class Exemplo { public static long Valor() => 42; }'
   };
   for (const [linguagem, codigo] of Object.entries(exemplos)) {
     const html = destacarCodigo(codigo, linguagem);

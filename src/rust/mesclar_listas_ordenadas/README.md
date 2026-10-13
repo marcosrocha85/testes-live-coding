@@ -86,6 +86,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/mesclar_listas_ordenadas/mesclar_listas_ordenadas_test.go)
 - [Solução Rust](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/rust/mesclar_listas_ordenadas/mesclar_listas_ordenadas.rs)
 - [Testes Rust](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/rust/mesclar_listas_ordenadas/mesclar_listas_ordenadas_test.rs)
+- [Solução C#](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/csharp/mesclar_listas_ordenadas/MesclarListasOrdenadas.cs)
+- [Testes C#](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/csharp/mesclar_listas_ordenadas/MesclarListasOrdenadasTest.cs)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/mesclar_listas_ordenadas.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#mesclar_listas_ordenadas.javascript)
 
@@ -202,6 +204,16 @@ docker compose run --build --rm rust sh executar.sh testes mesclar_listas_ordena
 ```
 
 Com Docker, todos os desafios de Rust: `docker compose run --build --rm rust`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### C#
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm csharp sh executar.sh testes MesclarListasOrdenadasTest
+```
+
+Com Docker, todos os desafios de C#: `docker compose run --build --rm csharp`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Rust
 

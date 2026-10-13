@@ -19,6 +19,7 @@ docker compose run --build --rm pascal
 docker compose run --build --rm cpp
 docker compose run --build --rm go
 docker compose run --build --rm rust
+docker compose run --build --rm csharp
 ```
 
 Os comandos funcionam em PowerShell, Linux e macOS:
@@ -42,6 +43,7 @@ As imagens base estão fixadas por digest, que identifica seu conteúdo. TypeScr
 | `cpp` | C++20, GCC 15.2.0, 86 casos compartilhados, referências independentes, ASan/UBSan e dez exemplos |
 | `go` | Go 1.27.2, gofmt, go vet, 86 casos compartilhados, referências independentes, detector de corridas, testes em 32 bits e dez exemplos |
 | `rust` | Rust 1.92.0, rustfmt, Clippy, 86 casos compartilhados, referências independentes em debug e release e dez exemplos |
+| `csharp` | SDK .NET 10.0.100, C# 14, formatação, análise, 86 casos compartilhados, referências independentes em debug/release e dez exemplos |
 
 Os serviços têm perfis para evitar iniciar todos por acidente. Ao indicar o serviço em `run`, seu perfil é ativado automaticamente. Não use `docker compose up` para esse fluxo: os testes são execuções temporárias, sem portas nem processos permanentes.
 
@@ -136,6 +138,15 @@ Um desafio e um exemplo Rust, da raiz:
 ```sh
 docker compose run --build --rm rust sh executar.sh testes busca_binaria
 docker compose run --build --rm rust sh executar.sh exemplo soma_de_dois
+```
+
+C# usa a imagem oficial `mcr.microsoft.com/dotnet/sdk:10.0.100-noble`, fixada pelo digest `sha256:c7445f141c04f1a6b454181bd098dcfa606c61ba0bd213d0a702489e5bd4cd71`. global.json fixa o mesmo SDK sem rollForward. Fontes e casos são copiados; restore, compilação e testes rodam como runner (UID 10001). Os três packages.lock.json fixam os pacotes NuGet dos testes e seus hashes. O comando exige formatação, análise, avisos como erros, toda a suíte em debug/release e dez exemplos. Não há montagem do checkout, SDK instalado no host nem volume persistente C#. Pacotes, bin e obj ficam dentro do container e das camadas de imagem. Artefatos locais ficam fora do contexto.
+
+Uma classe de testes e um exemplo C#, da raiz:
+
+```sh
+docker compose run --build --rm csharp sh executar.sh testes BuscaBinariaTest
+docker compose run --build --rm csharp sh executar.sh exemplo soma_de_dois
 ```
 
 ## Adicionar uma linguagem

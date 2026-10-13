@@ -48,6 +48,8 @@ jobs:
         run: docker compose run --build --rm -T go
       - name: Verificar Rust 1.92.0, testar debug e release e executar os dez exemplos
         run: docker compose run --build --rm -T rust
+      - name: Verificar C# 14 e SDK .NET fixado, testar debug e release e executar dez exemplos
+        run: docker compose run --build --rm -T csharp
       - run: npm run docs:check
       - run: npm run build
       - uses: actions/configure-pages@v6
