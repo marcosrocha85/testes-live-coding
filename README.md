@@ -4,7 +4,7 @@
 
 Um guia de estudo para entender, implementar e explicar desafios comuns de entrevistas técnicas. Cada solução tem comentários simples, testes automatizados e uma explicação do raciocínio e da capacidade avaliada.
 
-Os **dez desafios estão implementados em JavaScript, TypeScript, Java, Kotlin, PHP, Swift, Pascal, C++, Go e Rust**, com testes próprios para cada linguagem. As dez linguagens do roteiro estão disponíveis para estudo.
+Os **dez desafios estão implementados em JavaScript, TypeScript, Java, Kotlin, PHP, Swift, Pascal, C++, Go, Rust e C#**, com testes próprios para cada linguagem. As onze linguagens do roteiro estão disponíveis para estudo.
 
 - [Wiki do projeto](https://github.com/marcosrocha85/testes-live-coding/wiki)
 - [Explicações dos desafios](docs/tests/README.md)
@@ -20,6 +20,7 @@ Os **dez desafios estão implementados em JavaScript, TypeScript, Java, Kotlin, 
 - [Guia de C++ para iniciantes](docs/linguagens/cpp.md)
 - [Guia de Go para iniciantes](docs/linguagens/go.md)
 - [Guia de Rust para iniciantes](docs/linguagens/rust.md)
+- [Guia de C# para iniciantes](docs/linguagens/csharp.md)
 - [Roteiro e issues por linguagem](docs/roadmap.md)
 
 O site é atualizado após a integração de cada entrega à `main`. A Wiki tem explicações dos dez desafios; suas fontes estão versionadas em [docs/wiki](docs/wiki/Home.md).
@@ -28,7 +29,7 @@ O site é atualizado após a integração de cada entrega à `main`. A Wiki tem 
 
 ### Com Docker
 
-Instale Git e Docker com suporte a containers Linux. Cada linguagem tem seu próprio container de testes; você pode executar só a que estiver estudando, sem instalar Node.js, TypeScript, JDK, Maven, Gradle, Kotlin, PHP, Composer, Swift, Free Pascal, GCC, Go ou Rust no computador:
+Instale Git e Docker com suporte a containers Linux. Cada linguagem tem seu próprio container de testes; você pode executar só a que estiver estudando, sem instalar Node.js, TypeScript, JDK, Maven, Gradle, Kotlin, PHP, Composer, Swift, Free Pascal, GCC, Go, Rust ou SDK .NET no computador:
 
 ```sh
 git clone https://github.com/marcosrocha85/testes-live-coding.git
@@ -43,6 +44,7 @@ docker compose run --build --rm pascal
 docker compose run --build --rm cpp
 docker compose run --build --rm go
 docker compose run --build --rm rust
+docker compose run --build --rm csharp
 ```
 
 O primeiro uso baixa a imagem e as dependências. `--build` inclui suas alterações e `--rm` remove o container após os testes. Os testes usam uma cópia dos fontes, e os arquivos de build ficam dentro do Docker. Veja [o guia Docker](docs/docker.md) para entender os comandos, caches e como adicionar uma linguagem.
@@ -88,7 +90,7 @@ No PowerShell:
 .\src\java\mvnw.cmd -f src/java/pom.xml clean verify
 ```
 
-Java tem testes JUnit independentes dos workspaces npm. As soluções usam a biblioteca padrão; JUnit e Gson são dependências somente dos testes. A CI e o workflow Pages conferem as dez linguagens antes da publicação.
+Java tem testes JUnit independentes dos workspaces npm. As soluções usam a biblioteca padrão; JUnit e Gson são dependências somente dos testes. A CI e o workflow Pages conferem as onze linguagens antes da publicação.
 
 Para Kotlin, prefira `docker compose run --build --rm kotlin`, que valida sem instalar SDK no computador. Se já tiver **JDK 21** local, use o Gradle Wrapper:
 
@@ -155,6 +157,14 @@ docker compose run --build --rm rust sh executar.sh exemplo soma_de_dois
 
 O exemplo imprime `soma_de_dois: Some([0, 1])`. Soluções usam a biblioteca padrão, i64, Option/Result, chars Unicode e nós reais Rc<RefCell<No>>. Cargo.lock fixa a dependência de teste serde_json. Veja o [guia Rust](docs/linguagens/rust.md) para ownership, empréstimos, identidade, mutação e liberação de listas e ciclos. `npm test` não executa Rust.
 
+Para C#, use `docker compose run --build --rm csharp`. O SDK .NET 10.0.100 e C# 14 estão fixados. O comando confere formatação, compila com análise e avisos como erros, executa a suíte xUnit em debug e release e os dez exemplos:
+
+```sh
+docker compose run --build --rm csharp sh executar.sh exemplo soma_de_dois
+```
+
+O exemplo imprime `soma_de_dois: (0, 1)`. As soluções usam a biblioteca padrão, long, nullable, ReadOnlySpan, runes Unicode e objetos No reais. As dependências de teste são fixadas nos lockfiles NuGet. Veja o [guia C#](docs/linguagens/csharp.md) para ferramentas, tuplas, spans, Unicode, identidade, mutação e erros. `npm test` não executa C#.
+
 ## Os dez desafios iniciais
 
 | Pasta | Problema | Ideia | Capacidade avaliada |
@@ -193,11 +203,12 @@ src/
   cpp/                    # Dez desafios, GCC, sanitizadores e exemplos compilados
   go/                     # Dez desafios, Go fixado, testes nativos e exemplos compilados
   rust/                   # Dez desafios, Cargo, rustfmt, Clippy e exemplos compilados
+  csharp/                 # Dez desafios, SDK .NET, xUnit e exemplos compilados
 scripts/                  # Geradores, preview e publicação da Wiki
 .github/                  # CI, publicação e templates de issues
 ```
 
-Cada linguagem é um microprojeto independente, com ferramentas e testes adequados a ela. Os arquivos reais das dez linguagens estão nas abas do site, sem marcadores de nova linguagem.
+Cada linguagem é um microprojeto independente, com ferramentas e testes adequados a ela. Os arquivos reais das onze linguagens estão nas abas do site, sem marcadores de nova linguagem.
 
 ## Comandos úteis
 
@@ -213,6 +224,7 @@ Cada linguagem é um microprojeto independente, com ferramentas e testes adequad
 | `docker compose run --build --rm cpp` | Compilação C++20, testes com sanitizadores e dez exemplos em um container temporário |
 | `docker compose run --build --rm go` | gofmt, go vet, suíte com detector de corridas, testes em 32 bits e dez exemplos em um container temporário |
 | `docker compose run --build --rm rust` | rustfmt, Clippy, suíte em debug e release e dez exemplos em um container temporário |
+| `docker compose run --build --rm csharp` | Formatação, análise, compilação C#, testes debug/release e dez exemplos em um container temporário |
 | `swift test --package-path src/swift --jobs 2` | Compilar e testar Swift com SDK local |
 | `composer --working-dir=src/php check` | Lint e testes PHP com ferramentas locais |
 | `./src/kotlin/gradlew --no-daemon -p src/kotlin clean check jar` | Compilar e testar Kotlin com JDK 21 local |

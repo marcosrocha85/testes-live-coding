@@ -88,6 +88,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/subarray_maximo/subarray_maximo_test.go)
 - [Solução Rust](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/rust/subarray_maximo/subarray_maximo.rs)
 - [Testes Rust](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/rust/subarray_maximo/subarray_maximo_test.rs)
+- [Solução C#](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/csharp/subarray_maximo/SubarrayMaximo.cs)
+- [Testes C#](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/csharp/subarray_maximo/SubarrayMaximoTest.cs)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subarray_maximo.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subarray_maximo.javascript)
 
@@ -204,6 +206,16 @@ docker compose run --build --rm rust sh executar.sh testes subarray_maximo
 ```
 
 Com Docker, todos os desafios de Rust: `docker compose run --build --rm rust`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### C#
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm csharp sh executar.sh testes SubarrayMaximoTest
+```
+
+Com Docker, todos os desafios de C#: `docker compose run --build --rm csharp`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em C++
 

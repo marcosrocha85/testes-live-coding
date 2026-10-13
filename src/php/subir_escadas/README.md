@@ -90,6 +90,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/subir_escadas/subir_escadas_test.go)
 - [Solução Rust](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/rust/subir_escadas/subir_escadas.rs)
 - [Testes Rust](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/rust/subir_escadas/subir_escadas_test.rs)
+- [Solução C#](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/csharp/subir_escadas/SubirEscadas.cs)
+- [Testes C#](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/csharp/subir_escadas/SubirEscadasTest.cs)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/subir_escadas.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#subir_escadas.javascript)
 
@@ -206,6 +208,16 @@ docker compose run --build --rm rust sh executar.sh testes subir_escadas
 ```
 
 Com Docker, todos os desafios de Rust: `docker compose run --build --rm rust`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### C#
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm csharp sh executar.sh testes SubirEscadasTest
+```
+
+Com Docker, todos os desafios de C#: `docker compose run --build --rm csharp`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em PHP
 

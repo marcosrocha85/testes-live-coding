@@ -89,6 +89,8 @@ Os portes devem executar esses exemplos e acrescentar testes próprios da lingua
 - [Testes Go](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/go/compra_e_venda_de_acoes/compra_e_venda_de_acoes_test.go)
 - [Solução Rust](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/rust/compra_e_venda_de_acoes/compra_e_venda_de_acoes.rs)
 - [Testes Rust](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/rust/compra_e_venda_de_acoes/compra_e_venda_de_acoes_test.rs)
+- [Solução C#](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/csharp/compra_e_venda_de_acoes/CompraEVendaDeAcoes.cs)
+- [Testes C#](https://github.com/marcosrocha85/testes-live-coding/blob/main/src/csharp/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.cs)
 - [Casos JSON](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/casos/compra_e_venda_de_acoes.json)
 - [Comparar linguagens no site](https://marcosrocha85.github.io/testes-live-coding/#compra_e_venda_de_acoes.javascript)
 
@@ -205,6 +207,16 @@ docker compose run --build --rm rust sh executar.sh testes compra_e_venda_de_aco
 ```
 
 Com Docker, todos os desafios de Rust: `docker compose run --build --rm rust`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
+
+### C#
+
+Da raiz, sem instalar compilador no computador:
+
+```sh
+docker compose run --build --rm csharp sh executar.sh testes CompraEVendaDeAcoesTest
+```
+
+Com Docker, todos os desafios de C#: `docker compose run --build --rm csharp`. Veja [como executar sem SDK local](https://github.com/marcosrocha85/testes-live-coding/blob/main/docs/docker.md).
 
 ## Particularidades em Java
 

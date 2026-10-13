@@ -16,3 +16,6 @@ vendor/
 heap.trc
 *.test
 *.exe
+bin/
+obj/
+TestResults/

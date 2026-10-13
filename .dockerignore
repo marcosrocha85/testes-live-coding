@@ -20,6 +20,9 @@
 **/.build
 **/.swiftpm
 **/.cargo
+**/bin
+**/obj
+**/TestResults
 **/*.o
 **/*.ppu
 **/heap.trc

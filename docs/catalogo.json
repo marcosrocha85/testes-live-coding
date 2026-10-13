@@ -376,6 +376,51 @@
           "src/rust/_shared/no.rs"
         ]
       }
+    },
+    {
+      "id": "csharp",
+      "name": "C#",
+      "status": "implemented",
+      "extension": "cs",
+      "runtime": "SDK .NET 10.0.100; C# 14; xUnit.net 3.2.1",
+      "testCommand": "sh src/csharp/executar.sh check",
+      "dockerTestCommand": "docker compose run --build --rm csharp",
+      "solutionFiles": {
+        "soma_de_dois": "src/csharp/soma_de_dois/SomaDeDois.cs",
+        "parenteses_validos": "src/csharp/parenteses_validos/ParentesesValidos.cs",
+        "inverter_lista_ligada": "src/csharp/inverter_lista_ligada/InverterListaLigada.cs",
+        "busca_binaria": "src/csharp/busca_binaria/BuscaBinaria.cs",
+        "mesclar_listas_ordenadas": "src/csharp/mesclar_listas_ordenadas/MesclarListasOrdenadas.cs",
+        "compra_e_venda_de_acoes": "src/csharp/compra_e_venda_de_acoes/CompraEVendaDeAcoes.cs",
+        "subarray_maximo": "src/csharp/subarray_maximo/SubarrayMaximo.cs",
+        "subir_escadas": "src/csharp/subir_escadas/SubirEscadas.cs",
+        "anagrama_valido": "src/csharp/anagrama_valido/AnagramaValido.cs",
+        "ciclo_em_lista_ligada": "src/csharp/ciclo_em_lista_ligada/CicloEmListaLigada.cs"
+      },
+      "testFiles": {
+        "soma_de_dois": "src/csharp/soma_de_dois/SomaDeDoisTest.cs",
+        "parenteses_validos": "src/csharp/parenteses_validos/ParentesesValidosTest.cs",
+        "inverter_lista_ligada": "src/csharp/inverter_lista_ligada/InverterListaLigadaTest.cs",
+        "busca_binaria": "src/csharp/busca_binaria/BuscaBinariaTest.cs",
+        "mesclar_listas_ordenadas": "src/csharp/mesclar_listas_ordenadas/MesclarListasOrdenadasTest.cs",
+        "compra_e_venda_de_acoes": "src/csharp/compra_e_venda_de_acoes/CompraEVendaDeAcoesTest.cs",
+        "subarray_maximo": "src/csharp/subarray_maximo/SubarrayMaximoTest.cs",
+        "subir_escadas": "src/csharp/subir_escadas/SubirEscadasTest.cs",
+        "anagrama_valido": "src/csharp/anagrama_valido/AnagramaValidoTest.cs",
+        "ciclo_em_lista_ligada": "src/csharp/ciclo_em_lista_ligada/CicloEmListaLigadaTest.cs"
+      },
+      "exerciseTestCommand": "docker compose run --build --rm csharp sh executar.sh testes {testClass}",
+      "supportFilesByExercise": {
+        "inverter_lista_ligada": [
+          "src/csharp/_shared/No.cs"
+        ],
+        "mesclar_listas_ordenadas": [
+          "src/csharp/_shared/No.cs"
+        ],
+        "ciclo_em_lista_ligada": [
+          "src/csharp/_shared/No.cs"
+        ]
+      }
     }
   ],
   "exercises": [

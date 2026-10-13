@@ -666,5 +666,63 @@
         "url": "https://github.com/marcosrocha85/testes-live-coding/issues/121"
       }
     ]
+  },
+  {
+    "language": "csharp",
+    "name": "C#",
+    "number": 122,
+    "url": "https://github.com/marcosrocha85/testes-live-coding/issues/122",
+    "exercises": [
+      {
+        "exercise": "soma_de_dois",
+        "number": 123,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/123"
+      },
+      {
+        "exercise": "parenteses_validos",
+        "number": 124,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/124"
+      },
+      {
+        "exercise": "inverter_lista_ligada",
+        "number": 125,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/125"
+      },
+      {
+        "exercise": "busca_binaria",
+        "number": 126,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/126"
+      },
+      {
+        "exercise": "mesclar_listas_ordenadas",
+        "number": 127,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/127"
+      },
+      {
+        "exercise": "compra_e_venda_de_acoes",
+        "number": 128,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/128"
+      },
+      {
+        "exercise": "subarray_maximo",
+        "number": 129,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/129"
+      },
+      {
+        "exercise": "subir_escadas",
+        "number": 130,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/130"
+      },
+      {
+        "exercise": "anagrama_valido",
+        "number": 131,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/131"
+      },
+      {
+        "exercise": "ciclo_em_lista_ligada",
+        "number": 132,
+        "url": "https://github.com/marcosrocha85/testes-live-coding/issues/132"
+      }
+    ]
   }
 ]

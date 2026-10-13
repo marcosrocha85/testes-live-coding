@@ -5,6 +5,7 @@ import { notasPascal, exemplosPascal, programaPascal } from './pascal-docs.mjs';
 import { notasCpp, exemplosCpp, programaCpp } from './cpp-docs.mjs';
 import { notasGo, exemplosGo, programaGo } from './go-docs.mjs';
 import { notasRust, exemplosRust, programaRust } from './rust-docs.mjs';
+import { notasCSharp, exemplosCSharp, programaCSharp } from './csharp-docs.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const catalogo = JSON.parse(await readFile(resolve(root, 'docs/catalogo.json'), 'utf8'));
@@ -175,7 +176,7 @@ for (const exercicio of catalogo.exercises) {
     if (!linguagem.dockerTestCommand) throw new Error(`Linguagem implementada sem comando Docker: ${linguagem.id}`);
     const comando = comandoDesafio(linguagem, exercicio.id);
     const docker = `\nCom Docker, todos os desafios de ${linguagem.name}: \`${linguagem.dockerTestCommand}\`. Veja [como executar sem SDK local](${baseGitHub}/blob/main/docs/docker.md).\n`;
-    if (['pascal', 'cpp', 'go', 'rust'].includes(linguagem.id)) {
+    if (['pascal', 'cpp', 'go', 'rust', 'csharp'].includes(linguagem.id)) {
       return `### ${linguagem.name}\n\nDa raiz, sem instalar compilador no computador:\n\n\`\`\`sh\n${comando}\n\`\`\`\n` + docker;
     }
     if (linguagem.id === 'java') {
@@ -252,6 +253,9 @@ for (const exercicio of catalogo.exercises) {
     if (linguagem.id === 'rust') {
       notas = `\n## Particularidades em Rust\n\n${notasRust[exercicio.id]}\n\n## Exemplo executável em Rust\n\nDa raiz, compile e execute no container:\n\n\`\`\`sh\ndocker compose run --build --rm rust sh executar.sh exemplo ${exercicio.id}\n\`\`\`\n\nEste trecho faz parte de \`_examples/main.rs\`, gerado com os imports e main. As macros assert conferem o resultado antes de imprimir:\n\n\`\`\`rust\n${exemplosRust[exercicio.id]}\n\`\`\`\n\nVeja [o guia Rust](${baseGitHub}/blob/main/docs/linguagens/rust.md) para Cargo, ownership, empréstimos, Option, Result, Unicode e liberação de listas.\n`;
     }
+    if (linguagem.id === 'csharp') {
+      notas = `\n## Particularidades em C#\n\n${notasCSharp[exercicio.id]}\n\n## Exemplo executável em C#\n\nDa raiz, compile e execute no container:\n\n\`\`\`sh\ndocker compose run --build --rm csharp sh executar.sh exemplo ${exercicio.id}\n\`\`\`\n\nEste trecho faz parte de \`_examples/Program.cs\`, gerado junto com os imports. Exigir encerra o programa se o resultado for inesperado:\n\n\`\`\`csharp\n${exemplosCSharp[exercicio.id]}\n\`\`\`\n\nVeja [o guia C#](${baseGitHub}/blob/main/docs/linguagens/csharp.md) para SDK .NET, spans, tuplas, nullable, referências, Unicode e erros.\n`;
+    }
     await salvar(`src/${linguagem.id}/${exercicio.id}/README.md`, aviso + corpo + notas);
   }
 }
@@ -271,6 +275,10 @@ if (catalogo.languages.some(item => item.id === 'go')) {
 
 if (catalogo.languages.some(item => item.id === 'rust')) {
   await salvar('src/rust/_examples/main.rs', programaRust(catalogo.exercises));
+}
+
+if (catalogo.languages.some(item => item.id === 'csharp')) {
+  await salvar('src/csharp/_examples/Program.cs', programaCSharp(catalogo.exercises));
 }
 
 if (disponiveis.some(item => item.id === 'swift')) {

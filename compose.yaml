@@ -75,6 +75,13 @@ services:
       context: .
       dockerfile: src/rust/Dockerfile
 
+  csharp:
+    profiles: [csharp]
+    image: testes-live-coding-csharp:local
+    build:
+      context: .
+      dockerfile: src/csharp/Dockerfile
+
 volumes:
   java_maven:
   kotlin_gradle:
