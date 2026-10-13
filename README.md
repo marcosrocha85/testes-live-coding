@@ -1,5 +1,9 @@
 # Testes de live coding
 
+[![CI](https://github.com/marcosrocha85/testes-live-coding/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/marcosrocha85/testes-live-coding/actions/workflows/ci.yml)
+[![Publicação do site](https://github.com/marcosrocha85/testes-live-coding/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/marcosrocha85/testes-live-coding/actions/workflows/pages.yml)
+[![Me pague um café](https://img.shields.io/badge/Me%20pague%20um%20caf%C3%A9-LivePix-f7bb82)](https://livepix.gg/marcosrocha)
+
 **[Acesse o site: problemas, explicações e código por linguagem](https://marcosrocha85.github.io/testes-live-coding/)**
 
 Um guia de estudo para entender, implementar e explicar desafios comuns de entrevistas técnicas. Cada solução tem comentários simples, testes automatizados e uma explicação do raciocínio e da capacidade avaliada.
